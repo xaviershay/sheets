@@ -6,60 +6,66 @@
 
 upper = \relative {
   \key c \major
-  c8.  d16  e8   c    g'4  r    
-  c,8. d16  e8   c    bes4   r    
-  c8.  d16  e8   c    g'4  g16  f    e    d    
+  R1 R R R
+
+  c8.  d16  e8\staccato   c\staccato    g'4  r    
+  c,8. d16  e8\staccato   c\staccato    bes4   r    
+  c8.  d16  e8\staccato   c\staccato    g'4  g16  f    e    d    
   c8   c16  d    e8   c16  bes    d4   r    
 
-  c8.  d16  e8   g    c4   r    
-  e,8. f16  g8   e    aes4   g16  f    e    d    
-  c8.  d16  e8   g    c4   r    
-  c16  c    c    c    c8   g    b    g    bes   d    
+  c8.  d16  e8\staccato   g\staccato    c4   r    
+  e,8. f16  g8\staccato   e\staccato    aes4   g16  f    e    d    
+  c8.  d16  e8\staccato   g\staccato    c4   r    
+  c16-4  c-3    c-2    c-1    c8-4   g-1    bes    g    b   d    
 
   \bar "||"
   \key ees \major
-  c8.  d16  ees8   c    aes'   aes,16 g    aes    g    aes8   
-  g8.  aes16  bes8   g    ees'   ees,16 d    ees    d    ees8   
-  d8.  ees16  f8   d    bes'   aes    g    f    
-  ees8.  f16  g8   bes    ees    ees d    cis    
+  c8.  d16  ees8   c    aes'-5   aes,16-2( g    aes    g    aes8)
+  g8.  aes16  bes8   g    ees'-5   ees,16-2( d    ees    d    ees8)   
+  d8.  ees16  f8   d    bes'-5(   aes-3    g-2    f-1)    
+  ees8.-2  f16-1  g8-2   bes-3    ees-5    ees-5( d-4    cis-3)    
 
-  c8. aes16 ees8 aes c c ees c
+  c8.-4 aes16-2 ees8-1 aes-2 c-4 c( d c)
   bes8. aes16 g8 aes bes4 r
-  b8. c16 d8 c b g b g
-  f4 aes g b
+  b8.-3 c16 d8 c b-3( g-1) b-4( g-2)
+  f4-1 aes g b
 
   \bar "||"
   \key c \major
-  <<c8 c,>>   e16  g    ges8   bes16  des    c8   g16  e    bes'8  ges16  des    
-  c8   e16  g    aes8   c16  ees    e8   c16  aes    d8   bes16  f    
-  des'8  aes16  f    b8   g16  d    aes'8  f16  des    g8   d16  bes    
-
-  r4   c'8. d16  e8   c    g    c    
-  e4   c8   e    f4   des    
-  r    c8.  d16  e8   c    g    c    
-  e4   c8   e    d4   bes    
-  r    c8.  d16  e8   c    e    f    
-  g4   e8   g    aes4   f    
-  r    e8.  f16  g8   e    g    c    
-  c4   g8   c    bes4   g    
-  c r r2
+  <<c8-5 c,-1>>   e16-2  g-3    ges8-1   bes16-3  des-5    c8-4   g16-2  e-1    bes'8-5  ges16-4  des-2    
+  c8-1   e16-2  g-3    aes8-1   c16-2  ees-4    e8-5   c16-3  aes-1    d8-5   bes16-3  f-1    
+  des'8-4  aes16-2  f-1    b8-5   g16-3  d-1    aes'8-4  f16-2  des-1    g8-5   d16-3  bes-1    
 
   \bar "||"
+  c4-2   c'8. d16  e8   c    g-1    c-2    
+  e4-4   c8   e    f4-5   des-2    
+  r    c8.  d16  e8   c    g-1    c-3    
+  e4   c8   e    d4-4   bes-2    
+  r    c8.-1 d16  e8   c    e-2    f-3    
+  g4-4   e8-1   g-3    aes4-4   f-2    
+  r    e8.  f16  g8   e    g-2    c-5    
+  c4   g8   c    bes4   g    
+  <<c c,>> r r2
+
+  \bar "|."
 }
 lower = \relative c {
   \clef bass
+  c4 r r g
+  c4 r bes g
+
+  c8 <<e g>> r4 r g,8 <<e' g>>
+  c,8 <<e g>> r4  bes,8 <<d f>> g, <<d' f>>
 
   c8 <<e g>> r <<e g>> r <<e g>> g,8 <<e' g>>
-  c,8 <<e g>> r <<e g>> cis, <<cis f>> g, <<cis f>>
+  c,8 <<e g>> r <<e g>> des <<des f>> g, <<des' f>>
   c8 <<e g>> r <<e g>> r <<e g>> g,8 <<e' g>>
   c,8 <<e g>> r <<e g>> bes, <<d f>> g, <<d' f>>
 
   c8 <<e g>> r <<e g>> r <<e g>> g,8 <<e' g>>
-  c,8 <<e g>> r <<e g>> cis, <<cis f>> g, <<cis f>>
+  c,8 <<e g>> r <<e g>> des <<des f>> g, <<des' f>>
   c8 <<e g>> r <<e g>> r <<e g>> g,8 <<e' g>>
   c,8 <<e g>> r <<e g>> bes, <<d f>> g, <<d' f>> 
-
-  \bar "||"
 
   \key ees \major
   aes, <<aes' c>> r <<aes c>> ees, <<aes c>> r <<aes c>>
@@ -73,8 +79,6 @@ lower = \relative c {
   g, <<f' b>> r <<f b>> g, <<f' b>> r <<f b>>
   des, <<f aes>> r <<f aes>> aes, <<f' b>> b, <<f' b>> 
  
-  \bar "||"
-
   \key c \major
   c,4 ges c ges
   c aes e' bes
@@ -90,7 +94,6 @@ lower = \relative c {
   c,8 <<e' g>> r <<e g>> r <<e g>> g, <<e' g>>
   c,,8 <<e' g>> r <<e g>> bes,, <<d' f>> bes,, <<d' f>>
   <<c,4 c'>> r r2 
-  \bar "||"
 }
 
 \score {
@@ -100,5 +103,10 @@ lower = \relative c {
     \new Staff = "lower" \lower
   >>
   \layout { }
-  \midi { }
+  \midi {
+     \context {
+       \Score
+       tempoWholesPerMinute = #(ly:make-moment 120 4)
+     }
+   }
 }
