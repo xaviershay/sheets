@@ -21,11 +21,16 @@ upper = \relative {
   c8.  d16  ees8   c    aes'   aes,16 g    aes    g    aes8   
   g8.  aes16  bes8   g    ees'   ees,16 d    ees    d    ees8   
   d8.  ees16  f8   d    bes'   aes    g    f    
-  ees8.  f16  g8   bes    ees    d    cis    c    
+  ees8.  f16  g8   bes    ees    ees d    cis    
+
+  c8. aes16 ees8 aes c c ees c
+  bes8. aes16 g8 aes bes4 r
+  b8. c16 d8 c b g b g
+  f4 aes g b
 
   \bar "||"
   \key c \major
-  c,   e16  g    ges8   bes16  des    c8   g16  e    bes'8  ges16  des    
+  <<c8 c,>>   e16  g    ges8   bes16  des    c8   g16  e    bes'8  ges16  des    
   c8   e16  g    aes8   c16  ees    e8   c16  aes    d8   bes16  f    
   des'8  aes16  f    b8   g16  d    aes'8  f16  des    g8   d16  bes    
 
@@ -61,6 +66,12 @@ lower = \relative c {
   ees, <<g bes>> r <<g bes>> bes, <<g' bes>> r <<g bes>>
   bes, <<f' bes>> r <<f bes>> f, <<f' bes>> r <<f bes>>
   ees, <<g bes>> r <<g bes>> bes, <<g' bes>> a, <<g' a>> 
+
+  aes, <<aes' c>> r <<aes c>> ees, <<aes c>> r <<aes c>>
+  ees, <<g bes>> r <<g bes>> bes, <<g' bes>> r <<g bes>>
+
+  g, <<f' b>> r <<f b>> g, <<f' b>> r <<f b>>
+  des, <<f aes>> r <<f aes>> aes, <<f' b>> b, <<f' b>> 
  
   \bar "||"
 
