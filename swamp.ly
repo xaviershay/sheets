@@ -9,25 +9,25 @@ upper = \relative {
   R1 R R R
 
   c8.  d16  e8\staccato   c\staccato    g'4  r    
-  c,8. d16  e8\staccato   c\staccato    bes4   r    
+  c,8. d16  e8\staccato   c\staccato    des4   r    
   c8.  d16  e8\staccato   c\staccato    g'4  g16  f    e    d    
   c8   c16  d    e8   c16  bes    d4   r    
 
   c8.  d16  e8\staccato   g\staccato    c4   r    
   e,8. f16  g8\staccato   e\staccato    aes4   g16  f    e    d    
   c8.  d16  e8\staccato   g\staccato    c4   r    
-  c16-4  c-3    c-2    c-1    c8-4   g-1    bes    g    b   d    
+  c16-4  c-3    c-2    c-1    c8-4(   g-1)    bes(    g    b   d)    
 
   \bar "||"
   \key ees \major
-  c8.  d16  ees8   c    aes'-5   aes,16-2( g    aes    g    aes8)
-  g8.  aes16  bes8   g    ees'-5   ees,16-2( d    ees    d    ees8)   
-  d8.  ees16  f8   d    bes'-5(   aes-3    g-2    f-1)    
-  ees8.-2  f16-1  g8-2   bes-3    ees-5    ees-5( d-4    cis-3)    
+  c8.  d16  ees8\staccato   c\staccato    aes'-5   aes,16-2( g    aes    g    aes8)
+  g8.  aes16  bes8\staccato   g\staccato    ees'-5   ees,16-2( d    ees    d    ees8)   
+  d8.  ees16  f8\staccato   d\staccato    bes'-5(   aes-3    g-2    f-1)    
+  ees8.-2  f16-1  g8-2\staccato   bes-3\staccato    ees-5    ees-5( d-4    cis-3)    
 
-  c8.-4 aes16-2 ees8-1 aes-2 c-4 c( d c)
-  bes8. aes16 g8 aes bes4 r
-  b8.-3 c16 d8 c b-3( g-1) b-4( g-2)
+  c8.-4 aes16-2 ees8-1\staccato aes-2\staccato c-4 c( d c)
+  bes8. aes16 g8\staccato aes\staccato bes4 r
+  b8.-3 c16 d8\staccato c\staccato b-3( g-1) b-4( g-2)
   f4-1 aes g b
 
   \bar "||"
@@ -37,14 +37,14 @@ upper = \relative {
   des'8-4  aes16-2  f-1    b8-5   g16-3  d-1    aes'8-4  f16-2  des-1    g8-5   d16-3  bes-1    
 
   \bar "||"
-  c4-2   c'8. d16  e8   c    g-1    c-2    
-  e4-4   c8   e    f4-5   des-2    
-  r    c8.  d16  e8   c    g-1    c-3    
-  e4   c8   e    d4-4   bes-2    
-  r    c8.-1 d16  e8   c    e-2    f-3    
-  g4-4   e8-1   g-3    aes4-4   f-2    
-  r    e8.  f16  g8   e    g-2    c-5    
-  c4   g8   c    bes4   g    
+  c4-2   c'8. d16  e8\staccato   c\staccato    g-1\staccato    c-2\staccato    
+  e4-4   c8\staccato   e\staccato    f4-5   des-2    
+  c4    c8.  d16  e8\staccato c\staccato    g-1\staccato    c-3\staccato    
+  e4-5   c8-3\staccato   e-5\staccato    d4-4   bes-2    
+  r    c8.-1 d16  e8\staccato   c\staccato    e-2\staccato    f-3\staccato    
+  g4-4   e8-1\staccato   g-3\staccato    aes4-4   f-2    
+  e4    e8.  f16  g8\staccato   e\staccato    g-2\staccato    c-5\staccato    
+  c4   g8\staccato   c\staccato    bes4   g    
   <<c c,>> r r2
 
   \bar "|."
