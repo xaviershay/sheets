@@ -4,25 +4,43 @@
   arranger = "Xavier Shay"
 }
 
+#(define apply-duration (lambda (note a b c d)
+  (make-music
+    'NoteEvent 
+    'duration 
+      (ly:make-duration a b c d) 
+    'pitch 
+      (ly:music-property (first (ly:music-property note 'elements)) 'pitch))))
+
+motif = #(define-music-function (parser location a b c d) (ly:music? ly:music? ly:music? ly:music?) 
+  (make-sequential-music
+    (list
+      (apply-duration a 3 1 1 1)
+      (apply-duration b 4 0 1 1)
+      (make-music 'ArticulationEvent 'articulation-type "staccato")
+      (apply-duration c 3 0 1 1)
+      (make-music 'ArticulationEvent 'articulation-type "staccato")
+      (apply-duration d 3 0 1 1))))
+
 upper = \relative {
   \key c \major
   R1 R R R
 
-  c8.  d16  e8\staccato   c\staccato    g'4  r    
-  c,8. d16  e8\staccato   c\staccato    des4   r    
-  c8.  d16  e8\staccato   c\staccato    g'4  g16  f    e    d    
+  \motif c d e c g'4  r    
+  \motif c, d e c des4 r    
+  \motif c d e c g'4  g16  f    e    d    
   c8   c16  d    e8   c16  bes    d4   r    
 
-  c8.  d16  e8\staccato   g\staccato    c4   r    
-  e,8. f16  g8\staccato   e\staccato    aes4   g16  f    e    d    
-  c8.  d16  e8\staccato   g\staccato    c4   r    
+  \motif c d e g c4 r
+  \motif e, f g e aes4  g16  f    e    d    
+  \motif c d e g c4 r
   c16-4  c-3    c-2    c-1    c8-4(   g-1)    bes(    g    b   d)    
 
   \bar "||"
   \key ees \major
-  c8.  d16  ees8\staccato   c\staccato    aes'-5   aes,16-2( g    aes    g    aes8)
-  g8.  aes16  bes8\staccato   g\staccato    ees'-5   ees,16-2( d    ees    d    ees8)   
-  d8.  ees16  f8\staccato   d\staccato    bes'-5(   aes-3    g-2    f-1)    
+  \motif c d ees c    aes'-5   aes,16-2( g    aes    g    aes8)
+  \motif g aes bes g  ees'-5   ees,16-2( d    ees    d    ees8)   
+  \motif d ees f d    bes'-5(   aes-3    g-2    f-1)    
   ees8.-2  f16-1  g8-2\staccato   bes-3\staccato    ees-5    ees-5( d-4    cis-3)    
 
   c8.-4 aes16-2 ees8-1\staccato aes-2\staccato c-4 c( d c)
@@ -32,18 +50,21 @@ upper = \relative {
 
   \bar "||"
   \key c \major
-  <<c8-5 c,-1>>   e16-2  g-3    ges8-1   bes16-3  des-5    c8-4   g16-2  e-1    bes'8-5  ges16-4  des-2    
-  c8-1   e16-2  g-3    aes8-1   c16-2  ees-4    e8-5   c16-3  aes-1    d8-5   bes16-3  f-1    
-  des'8-4  aes16-2  f-1    b8-5   g16-3  d-1    aes'8-4  f16-2  des-1    g8-5   d16-3  bes-1    
+  \set tupletSpannerDuration = #(ly:make-moment 1 4) 
+  \times 2/3 {
+    <<c8-5 c,-1>>   e-2  g-3   ges-1   bes-3  des-5   c-4   g-2  e-1    bes'-5  ges-4  des-2 
+    c-1 e-2  g-3 aes-1 c-2 ees-4  e-5   c-3  aes-1   d-5  bes-3  f-1    
+    des'-4  aes-2  f-1   b-5   g-3  d-1   aes'-4  f-2  des-1   g-5 d-3  bes-1 
+  }
 
   \bar "||"
-  c4-2   c'8. d16  e8\staccato   c\staccato    g-1\staccato    c-2\staccato    
-  e4-4   c8\staccato   e\staccato    f4-5   des-2    
-  c4    c8.  d16  e8\staccato c\staccato    g-1\staccato    c-3\staccato    
+  c4-2 \motif c' d e c  g8-1\staccato    c-2\staccato    
+  e4-4 c8\staccato   e\staccato    f4-5   des-2    
+  c4   \motif c d e c   g8-1\staccato    c-3\staccato    
   e4-5   c8-3\staccato   e-5\staccato    d4-4   bes-2    
   r    c8.-1 d16  e8\staccato   c\staccato    e-2\staccato    f-3\staccato    
   g4-4   e8-1\staccato   g-3\staccato    aes4-4   f-2    
-  e4    e8.  f16  g8\staccato   e\staccato    g-2\staccato    c-5\staccato    
+  e4   \motif e f g e g8-2\staccato    c-5\staccato    
   c4   g8\staccato   c\staccato    bes4   g    
   <<c c,>> r r2
 
