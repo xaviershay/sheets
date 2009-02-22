@@ -73,40 +73,42 @@ upper = \relative c'' {
   <<bes,4. d g>>
   <<c,,4.\staccato ees4.\staccato>>
   <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-
-  <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-  g,
-
-  c
-  <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-
-  <<d4.\staccato f4.\staccato>>
-  <<d4.\staccato f4.\staccato>>
-  <<d4.\staccato f4.\staccato>>
-  g,
-
-  c
-  <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-
-  <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-  <<c4.\staccato ees4.\staccato>>
-  g,
-
-  c
-  <<c4.\staccato ees4.\staccato>>
-  <<d4.\staccato f4.\staccato>>
   <<d4.\staccato f4.\staccato>>
 
   <<c4.\staccato ees4.\staccato>>
-  g,4 ees'8 c4. r
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\tenuto ees4.\tenuto>>
+
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<d4.\staccato f4.\staccato>>
+
+  <<f4.\staccato aes\staccato>>
+  <<f4.\staccato aes\staccato>>
+  <<f4.\staccato aes\staccato>>
+  <<f4.\tenuto b4.\tenuto>>
+
+  <<g4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<d4.\staccato f4.\staccato>>
+
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\tenuto ees4.\tenuto>>
+
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<b4.\staccato d4.\staccato>>
+  <<b4.\staccato d4.\staccato>>
+
+  <<c4.\staccato ees4.\staccato>>
+  <<b4.\staccato d4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
 
   \bar "||"
   \time 4/4
@@ -120,6 +122,22 @@ upper = \relative c'' {
   \bar "||"
   \time 3/4
   \key c \minor
+  R1*3/4 |
+  R1*3/4 |
+  R1*3/4 |
+  R1*3/4 |
+  R1*3/4 |
+  R1*3/4 |
+  R1*3/4 |
+  R1*3/4 |
+
+  c,8 d ees b c d
+  c8 d ees b c d
+  c g' c, aes' c, f 
+  g c, ees f c d
+
+  c8 d ees b c d
+  c8 d ees b c d
 }
 lower = \relative c {
   \time 6/4
@@ -177,7 +195,7 @@ lower = \relative c {
   \clef bass
   \time 3/4
   \key c \minor
-  c8 d ees b c d
+  c,,8 d ees b c d
   c8 d ees b c d
   c g' c, aes' c, f 
   g c, ees f c d
