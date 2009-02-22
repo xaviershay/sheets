@@ -141,7 +141,18 @@ upper = \relative {
   g4-4   e8-1\staccato   g-3\staccato    aes4-4   f-2    
   e4   \motif e f g e g8-2\staccato    c-5\staccato    
   c4   g8\staccato   c\staccato    bes4   g    
-  <<c c,>> r r2
+  <<c c,>> 
+
+  \motif c d e c  g8-1\staccato    c-2\staccato    
+  e4-4 c8\staccato   e\staccato    f4-5   des-2    
+  c4   \motif c d e c   g8-1\staccato    c-3\staccato    
+  e4-5   c8-3\staccato   e-5\staccato    d4-4   bes-2    
+  r    c8.-1 d16  e8\staccato   c\staccato    e-2\staccato    f-3\staccato    
+  g4-4   e8-1\staccato   g-3\staccato    aes4-4   f-2    
+  e4   \motif e f g e g8-2\staccato    c-5\staccato    
+  c4   g8\staccato   c\staccato    bes4   g    
+
+  <<c4 c,>> r4 r2
 
   R1
   R1
@@ -215,6 +226,17 @@ lower = \relative c {
   c,,8 <<e' g>> r <<e g>> des, <<des' f>> des, <<des' f>>
   c,8 <<e' g>> r <<e g>> r <<e g>> g, <<e' g>>
   c,,8 <<e' g>> r <<e g>> bes,, <<d' f>> bes,, <<d' f>>
+
+  <<c8 c,>> <<e' g>> r <<e g>> r <<e g>> r <<e g>>
+  r <<e g>> r <<e g>> r <<des f>> r <<des f>>
+  r <<e g>> r <<e g>> r <<e g>> r <<e g>>
+  r <<e g>> r <<e g>> r <<d f>> r <<d f>>
+
+  r8 <<e g>> r <<e g>> r <<e g>> r <<e g>>
+  r <<e g>> r <<e g>> r <<des f>> r <<des f>>
+  r <<e g>> r <<e g>> r <<e g>> r <<e g>>
+  r <<e g>> r <<e g>> r <<d f>> r <<d f>>
+
   <<c,4 c'>> r g, c
   r2 bes4 g c8 c, r4 r2
 }
