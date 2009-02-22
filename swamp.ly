@@ -43,7 +43,7 @@ upper = \relative {
   \motif c d e c g'4  r    
   \motif c, d e c des4 r    
   \motif c d e c g'4  g16  f    e    d    
-  c8   c16  d    e8   c16  bes    d4   r    
+  c8   c16  d    e8   c  \repeat tremolo 4 {bes16 d}
 
   \motif c d e g c4 r
   \motif e, f g e aes4  g16  f    e    d    
@@ -70,14 +70,33 @@ upper = \relative {
 
   \bar "||"
   \key c \major
+    %\override TupletBracket #'bracket-visibility = ##t 
+    << {
+      \times 2/3 {
+        \tupletUp
+        \autoBeamOff
+        \stemDown c8-5 
+        \autoBeamOn
+        e,,-1 g-1
+      }
+    } \\ { 
+      % Hidden note for arpeggio to indicate the next note is to be played by the LH
+      \hideNotes \stemUp e4\arpeggio \unHideNotes 
+    } >>
+
   \set tupletSpannerDuration = #(ly:make-moment 1 4) 
   \times 2/3 {
-    <<c8-5 c,-1>>   e-2  g-3   ges-1   bes-3  des-5   c-4   g-2  e-1    bes'-5  ges-4  des-2 
+    % Force tupletDown so triplet markings don't clash with fingering
+    \tupletDown
+    ges8-2   bes-3  des-5   c-4   g-2  e-1    bes'-5  ges-4  des-2 
     c-1 e-2  g-3 aes-1 c-2 ees-4  e-5   c-3  aes-1   d-5  bes-3  f-1    
-    des'-4  aes-2  f-1   b-5   g-3  d-1   aes'-4  f-2  des-1   g-5 d-3  bes-1 
+    des'-4  aes-2  f-1   b-5   g-3  d-1   aes'-4  f-2  des-1   g-5 d-3  bes-2 
   }
   \times 2/3 {
-    <<c8-5 c,-1>>   e-2  g-3   ges-1   bes-3  des-5   c-4   g-2  e-1    bes'-5  ges-4  des-2 
+    \autoBeamOff
+    c8-1 
+    \autoBeamOn
+    e'-4  g-5   ges-1   bes-3  des-5   c-4   g-2  e-1    bes'-5  ges-4  des-2 
     c-1 e-2  g-3 aes-1 c-2 ees-4  e-5   c-3  aes-1   d-5  bes-3  f-1    
     des'-4  aes-2  f-1   b-5   g-3  d-1   aes'-4  f-2  des-1   g-5 d-3  bes-1 
   }
@@ -88,7 +107,7 @@ upper = \relative {
   \motif c d e c g'4  r    
   \motif c, d e c des4 r    
   \motif c d e c g'4  g16  f    e    d    
-  c8   c16  d    e8   c16  bes    d4   r    
+  c8   c16  d    e8   c  \repeat tremolo 4 {bes16 d}
 
   \motif c d e g c4 r
   \motif e, f g e aes4  g16  f    e    d    
@@ -98,7 +117,7 @@ upper = \relative {
   \bar "||"
   \key ees \major
 
-  r8 <<c, ees>> r8 <<c ees>> r8 <<c ees>> r8 <<c ees>>
+  r8 <<c,, ees>> r8 <<c ees>> r8 <<c ees>> r8 <<c ees>>
   r8 <<g, bes ees>> r8 <<g, bes ees>> r8 <<g, bes ees>> r8 <<g, bes ees>>
   r8 <<bes d f>> r8 <<bes, d f>> 
   << {r2 r8 <<bes, ees>>} \\ { r8 c8( bes aes g4) } >>
@@ -128,7 +147,7 @@ upper = \relative {
 }
 bassA = \relative c {
   c8 <<e g>> r4 g,8 <<e' g>> c,8 <<e g>> 
-  r2  des8 <<des f>> g, <<des' f>>
+  r2  f,8 <<des' f>> g, <<des' f>>
   c8 <<e g>> r4 g,8 <<e' g>> c,8 <<e g>> 
   r2  bes,8 <<d f>> g, <<d' f>>
 }
@@ -142,11 +161,6 @@ bassB = \relative c' {
   ees, <<g bes>> r <<g bes>> bes, <<g' bes>> r <<g bes>>
   g, <<f' b>> r <<f b>> g, <<f' b>> r <<f b>>
   des, <<f aes>> r <<f aes>> aes, <<f' b>> b, <<f' b>> 
-}
-bassBridge = \relative c {
-  c,4 ges c ges
-  c aes e' bes
-  des g, des' g,
 }
 
 lower = \relative c {
@@ -167,18 +181,22 @@ lower = \relative c {
   \bassA
   \bassA
 
-  \bassBridge
-  \bassBridge
+  c,4-5\arpeggio ges-5 c-1 ges
+  c aes e' bes
+  des g, des' g,
+  c4 ges c ges
+  c aes e' bes
+  des g, des' g,
 
   \bassA
   \bassA
 
-  \motif c d ees c    aes'8   aes,16( g    aes    g    aes8)
+  \key ees \major
+  \motif c' d ees c    aes'8   aes,16( g    aes    g    aes8)
   \motif g aes bes g  ees'8   ees,16( d    ees    d    ees8)   
   \motif d ees f d    bes'8(   aes    g    f)    
   ees8.  f16  g8\staccato   bes\staccato    ees    ees( d    cis)    
 
-  \key ees \major
   c8. aes16 ees8\staccato aes\staccato c c( d c)
   bes8. aes16 g8\staccato aes\staccato bes4 r
   b8. c16 d8\staccato c\staccato b( g) b( g)
@@ -199,6 +217,8 @@ lower = \relative c {
 
 \score {
   \new PianoStaff <<
+    \set PianoStaff.connectArpeggios = ##t
+    \override PianoStaff.Arpeggio #'stencil = #ly:arpeggio::brew-chord-bracket
     \set PianoStaff.instrumentName = #"Piano  "
     \new Staff = "upper" \upper
     \new Staff = "lower" \lower
