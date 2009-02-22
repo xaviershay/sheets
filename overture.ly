@@ -67,29 +67,59 @@ upper = \relative c'' {
   <<des,8 ges bes>>
   <<des,8 ges bes>>
   <<des,8 ges bes>>
+
   \bar "||"
-
+  \key c \minor
   <<bes,4. d g>>
-  r4. r4. r4.
+  <<c,,4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
 
-  R1*3/2 |
-  R1*3/2 |
-  R1*3/2 |
-  R1*3/2 |
-  R1*3/2 |
-  R1*3/2 |
-  R1*3/2 |
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  g,
+
+  c
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+
+  <<d4.\staccato f4.\staccato>>
+  <<d4.\staccato f4.\staccato>>
+  <<d4.\staccato f4.\staccato>>
+  g,
+
+  c
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  <<c4.\staccato ees4.\staccato>>
+  g,
+
+  c
+  <<c4.\staccato ees4.\staccato>>
+  <<d4.\staccato f4.\staccato>>
+  <<d4.\staccato f4.\staccato>>
+
+  <<c4.\staccato ees4.\staccato>>
+  g,4 ees'8 c4. r
 
   \bar "||"
   \time 4/4
+  \key c \major
 
-  c,4 b8 c e4 c~
+  c'4 b8 c e4 c~
   c4 b8 c f4 c~
   c4 b8 c g'2~
   g8 f e d c d g,4
 
   \bar "||"
   \time 3/4
+  \key c \minor
 }
 lower = \relative c {
   \time 6/4
@@ -137,9 +167,16 @@ lower = \relative c {
   c4. r
 
   \time 4/4
-  R1 R1 R1 R1
+  \clef treble
+  \key c \major
+  c'8 g' r4 b8 g r4
+  c,8 f r4 b8 f r4
+  e8 g r4 c,8 d e f
+  g2 e4 b4 
 
+  \clef bass
   \time 3/4
+  \key c \minor
   c8 d ees b c d
   c8 d ees b c d
   c g' c, aes' c, f 
