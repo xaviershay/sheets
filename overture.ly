@@ -68,8 +68,28 @@ upper = \relative c'' {
   <<des,8 ges bes>>
   <<des,8 ges bes>>
   \bar "||"
-  <<bes,4. d g>>
 
+  <<bes,4. d g>>
+  r4. r4. r4.
+
+  R1*3/2 |
+  R1*3/2 |
+  R1*3/2 |
+  R1*3/2 |
+  R1*3/2 |
+  R1*3/2 |
+  R1*3/2 |
+
+  \bar "||"
+  \time 4/4
+
+  c,4 b8 c e4 c~
+  c4 b8 c f4 c~
+  c4 b8 c g'2~
+  g8 f e d c d g,4
+
+  \bar "||"
+  \time 3/4
 }
 lower = \relative c {
   \time 6/4
@@ -115,6 +135,30 @@ lower = \relative c {
   b4 d8 f4 b,8
   c4. g4 ees'8
   c4. r
+
+  \time 4/4
+  R1 R1 R1 R1
+
+  \time 3/4
+  c8 d ees b c d
+  c8 d ees b c d
+  c g' c, aes' c, f 
+  g c, ees f c d
+
+  c8 d ees b c d
+  c8 d ees b c d
+  b d b f' b, aes' 
+  b, f' b, aes' b, f' 
+
+  c8 d ees b c d
+  c8 d ees b c d
+  c g' c, aes' c, f 
+  g c, ees f c d
+
+  c8 d ees b c d
+  c8 d ees b c d
+
+  % About the 1:30 mark
 }
 
 \score {
