@@ -67,9 +67,9 @@ upper = \relative c'' {
   <<des,8 ges bes>>
   <<des,8 ges bes>>
   <<des,8 ges bes>>
+  \bar "||"
   <<bes,4. d g>>
 
-  \bar "||"
 }
 lower = \relative c {
   \time 6/4
@@ -94,7 +94,27 @@ lower = \relative c {
   <<g,,2 g'>>
   <<aes,4. aes'>>
   <<bes,4. bes'>>
-  <<g,8 g'>>
+  
+  \key c \minor
+  <<g,4 g'>> ees8 d ees d
+  c4 g'8 aes4 g8
+  c,4 ees8 d ees d
+  c4. g
+
+  c4 ees8 d ees d
+  c4 g'8 aes4 g8
+  bes4. g4 f8
+  d4. g,
+
+  c4 ees8 d ees d
+  c4 g'8 aes4 g8
+  c,4 ees8 d ees d
+  c4. g
+
+  c4 ees8 d ees d
+  b4 d8 f4 b,8
+  c4. g4 ees'8
+  c4. r
 }
 
 \score {
