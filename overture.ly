@@ -100,7 +100,7 @@ lower = \relative c {
   R1*3/2 |
   R1*3/2 |
   c4 e g aes4. g4.~
-  g2~ g16 d fis a
+  g4~ g8 d fis a
   \times 3/4 {
     bes4 a fis d
   }
@@ -123,7 +123,7 @@ lower = \relative c {
 
   c4 ees8 d ees d
   c4 g'8 aes4 g8
-  bes4. g4 f8
+  b4. g4 f8
   d4. g,
 
   c4 ees8 d ees d
@@ -171,7 +171,7 @@ lower = \relative c {
   \midi {
      \context {
        \Score
-       tempoWholesPerMinute = #(ly:make-moment 120 4)
+       tempoWholesPerMinute = #(ly:make-moment 200 4)
      }
    }
 }
