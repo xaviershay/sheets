@@ -133,7 +133,7 @@ upper = \relative {
   % C
   \bar "||"
   \key c \major
-  c'4-2 \motif c d e c  g8-1\staccato    c-2\staccato    
+  r4 \motif c' d e c  g8-1\staccato    c-2\staccato    
   e4-4 c8\staccato   e\staccato    f4-5   des-2    
   c4   \motif c d e c   g8-1\staccato    c-3\staccato    
   e4-5   c8-3\staccato   e-5\staccato    d4-4   bes-2    
@@ -142,6 +142,9 @@ upper = \relative {
   e4   \motif e f g e g8-2\staccato    c-5\staccato    
   c4   g8\staccato   c\staccato    bes4   g    
   <<c c,>> r r2
+
+  R1
+  R1
 
   \bar "|."
 }
@@ -203,7 +206,7 @@ lower = \relative c {
   f4 aes g b
 
   \key c \major
-  c,8 <<e' g>> r <<e g>> r <<e g>> g, <<e' g>>
+  c8 <<e g>> r <<e g>> r <<e g>> g, <<e' g>>
   c,,8 <<e' g>> r <<e g>> des, <<des' f>> des, <<des' f>>
   c,8 <<e' g>> r <<e g>> r <<e g>> g, <<e' g>>
   c,,8 <<e' g>> r <<e g>> bes,, <<d' f>> bes,, <<d' f>>
@@ -212,7 +215,8 @@ lower = \relative c {
   c,,8 <<e' g>> r <<e g>> des, <<des' f>> des, <<des' f>>
   c,8 <<e' g>> r <<e g>> r <<e g>> g, <<e' g>>
   c,,8 <<e' g>> r <<e g>> bes,, <<d' f>> bes,, <<d' f>>
-  <<c,4 c'>> r r2 
+  <<c,4 c'>> r g, c
+  r2 bes4 g c8 c, r4 r2
 }
 
 \score {
