@@ -2,11 +2,9 @@
 \header {
  title = "Big Apple Contest"
  composer = "Solomon Douglas"
- meter = "fast"
- piece = "Swing"
  tagline = \markup {
    \column {
-     "Xavier Shay"
+     "Transcribed by Xavier Shay"
      "Melbourne, 9th March 2009"
    }
  }
@@ -33,7 +31,6 @@ ncr = \revert NoteHead #'style
 
 jzchords = { }
 
-
 %%%%%%%%%%%% Keys'n'thangs %%%%%%%%%%%%%%%%%
 
 global = {
@@ -47,6 +44,7 @@ Key = { \key bes \major }
 % ------ Trumpet ------
 trpt = \transpose c d \relative c'' {
  \Key
+  \set Score.skipBars = ##t
 
   bes8 bes r bes bes bes r bes 
   bes4 bes,2. 
@@ -57,23 +55,37 @@ trpt = \transpose c d \relative c'' {
   \bar "||"
 
   % A
-    bes bes~ bes4 a8 bes r4 |
-    r2 r8 bes8~ bes bes~ |
-    bes bes~ bes4 a8 bes r4 |
-    r2 r8 bes8~ bes bes~ |
-    bes bes~ bes4 a8 bes r4 |
-    r2 r4 r8 bes,8~ |
-    bes4~ bes8 bes~ bes4~ bes8 bes8~ |
-    bes4~ bes8 bes~ bes8 bes'~ bes bes~ |
+  bes bes~ bes4 a8 bes r4 |
+  r2 r8 bes8~ bes bes~ |
+  bes bes~ bes4 a8 bes r4 |
+  r2 r8 bes8~ bes bes~ |
+  bes bes~ bes4 a8 bes r4 |
+  r2 r4 r8 bes,8~ |
+  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+  bes4~ bes8 bes~ bes8 bes'~ bes bes~ |
 
-    bes bes~ bes4 a8 bes r4 |
-    r2 r8 bes8~ bes bes~ |
-    bes bes~ bes4 a8 bes r4 |
-    r2 r8 bes8~ bes bes~ |
-    bes bes~ bes4 a8 bes r4 |
-    r2 r4 r8 bes,8~ |
-    bes4~ bes8 bes~ bes4~ bes8 bes8~ |
-    bes4~ bes8 bes~ bes4 r |
+  bes8 bes~ bes4 a8 bes r4 |
+  r2 r8 bes8~ bes bes~ |
+  bes bes~ bes4 a8 bes r4 |
+  r2 r8 bes8~ bes bes~ |
+  bes bes~ bes4 a8 bes r4 |
+  r2 r4 r8 bes,8~ |
+  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+  bes4~ bes8 bes~ bes4 r |
+
+  R1*3
+  r2 r8 bes'~ bes bes~ |
+
+  bes8 bes~ bes4 a8 bes r4 |
+  r2 r8 bes8~ bes bes~ |
+  bes bes~ bes4 a8 bes r4 |
+  r2 r8 bes8~ bes bes~ |
+  bes bes~ bes4 a8 bes r4 |
+  r2 r4 r8 bes,8~ |
+  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+  bes4~ bes8 bes~ bes4 r |
+
+  \bar "||"
 }
 trpharmony = \transpose c' d {
  \jzchords
@@ -108,9 +120,29 @@ alto = \transpose c a \relative c' {
    bes4~ bes8 bes~ bes4~ bes8 bes8~ |
    bes4~ bes8 bes~ bes4 r  |
  }
+ \sl d'^"Solo" d d d
+ d d d d
+ d d d d
+ d d
+ \nsl
+ r2
+
+ r2 r4 r8 bes8~ |
+ bes8 bes~ bes4 d8 f r4 |
+ r2 r4 r8 bes,8~ |
+ bes8 bes~ bes4 g8 f r4 |
+ r2 r4 r8 bes8~ |
+ bes8 bes~ bes4 d8 f r8 bes,8~ |
+ bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+ bes4~ bes8 bes~ bes4 r  |
 }
-altoharmony = \transpose c' a {
+altoharmony = \transpose c' a \chordmode {
  \jzchords
+ s1 * 6
+ s1 * 8
+ bes1 bes/g c:min7 f:7
+
+
 }
 altosax = {
  \global
@@ -138,28 +170,12 @@ barisax = {
  >>
 }
 
-% ------ Trombone ------
-tbone = \relative c {
- \Key
- c1 c c
-}
-tboneharmony = \chordmode {
- \jzchords
-}
-trombone = {
- \global
- \set Staff.instrumentName = #"Trombone"
- \clef bass
- <<
-   \tbone
- >>
-}
-
 % ############ Rhythm Section #############
 
 % ------ Guitar ------
 gtr = \relative c'' {
  \Key
+\set Score.skipBars = ##t
  R1 * 6
  \sl 
  % A
@@ -193,80 +209,46 @@ guitar = {
  >>
 }
 
-%% ------ Piano ------
-rhUpper = \relative c'' {
- \voiceOne
- \Key
- c1 c c
-}
-rhLower = \relative c' {
- \voiceTwo
- \Key
- e1 e e
-}
-
-lhUpper = \relative c' {
- \voiceOne
- \Key
- g1 g g
-}
-lhLower = \relative c {
- \voiceTwo
- \Key
- c1 c c
-}
-
-PianoRH = {
- \clef treble
- \global
- \set Staff.midiInstrument = "acoustic grand"
- <<
-   \new Voice = "one" \rhUpper
-   \new Voice = "two" \rhLower
- >>
-}
-PianoLH = {
- \clef bass
- \global
- \set Staff.midiInstrument = "acoustic grand"
- <<
-   \new Voice = "one" \lhUpper
-   \new Voice = "two" \lhLower
- >>
-}
-
-piano = {
- <<
-   \set PianoStaff.instrumentName = #"Piano"
-   \new Staff = "upper" \PianoRH
-   \new Staff = "lower" \PianoLH
- >>
-}
-
-% ------ Bass Guitar ------
-Bass = \relative c {
- \Key
- c1 c c
-}
-bass = {
- \global
- \set Staff.instrumentName = #"Bass"
- \clef bass
- <<
-   \Bass
- >>
-}
-
 % ------ Drums ------
+jazzHats = \drummode { hh4 hh8 hh hh4 hh8 hh }
+jazzRide = \drummode { cymr4 cymr8 cymr cymr4 cymr8 cymr }
 up = \drummode {
- hh4 <hh sn>4 hh <hh sn> hh <hh sn>4
- hh4 <hh sn>4
- hh4 <hh sn>4
- hh4 <hh sn>4
+ hh4 hh hh hh8 sn
+ sn4 cymc r hh
+ hh4 hh hh sn
+ hh4 hh hh sn
+ hh4 hh hh hh8 sn
+ sn4 cymc r8 sn sn4
+
+ % A
+ \repeat unfold 7 { \jazzHats }
+ hh4 hh8 hh hh8 sn8 sn4
+
+ \repeat unfold 7 { \jazzHats }
+ hh4 hh8 hh hh8 sn8 hh8 hh 
+
+ \repeat unfold 4 { \jazzRide }
+ \repeat unfold 8 { \jazzHats }
 }
 
 down = \drummode {
- bd4 s bd s bd s bd s bd s bd s
+ s1 
+ s4 bd s2
+ s1 
+ s1 
+ s1 
+ s4 bd4 s2
+
+ % A
+ s1 * 5
+ s2 s4 s8 bd
+ r4 r8 bd r4 r8 bd
+ r4 r8 bd s2
+
+ s1 * 5
+ s2 s4 s8 bd
+ r4 r8 bd r4 r8 bd
+ r4 r8 bd s2
 }
 
 drumContents = {
@@ -284,17 +266,15 @@ drumContents = {
  <<
    \new StaffGroup = "horns" <<
      \new Staff = "trumpet" \trumpet
+     \new ChordNames = "altochords" \altoharmony
      \new Staff = "altosax" \altosax
-     \new ChordNames = "barichords" \bariharmony
-     \new Staff = "barisax" \barisax
-     \new Staff = "trombone" \trombone
+%     \new ChordNames = "barichords" \bariharmony
+%     \new Staff = "barisax" \barisax
    >>
 
    \new StaffGroup = "rhythm" <<
      \new ChordNames = "chords" \gtrharmony
      \new Staff = "guitar" \guitar
-     \new PianoStaff = "piano" \piano
-     \new Staff = "bass" \bass
      \new DrumStaff { \drumContents }
    >>
  >>
@@ -309,6 +289,11 @@ drumContents = {
    }
  }
 
- \midi { }
+ \midi {
+     \context {
+       \Score
+       tempoWholesPerMinute = #(ly:make-moment 220 4)
+     }
+ }
 }
 
