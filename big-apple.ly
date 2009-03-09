@@ -86,6 +86,76 @@ trpt = \transpose c d \relative c'' {
   bes4~ bes8 bes~ bes4 r |
 
   \bar "||"
+  % B
+  \repeat unfold 3 {
+    r2 bes'4 -. r4 |
+    r4 r8 bes8 -. r2 |
+    r8 bes8 -. r4 r2 |
+    bes4 -. r4 r4 bes -. |
+  }
+  r2 bes4 -. r4 |
+  r4 r8 bes8 -. r2 |
+  r8 bes8 -. r4 r2 |
+  bes4 -. r4 r2 |
+
+  \sl
+  a4^"Solo" a a a
+  a a a a
+  a a a a
+  a a a a
+  \nsl
+
+  \repeat unfold 1 {
+    r2 bes4 -. r4 |
+    r4 r8 bes8 -. r2 |
+    r8 bes8 -. r4 r2 |
+    bes4 -. r4 r4 bes -. |
+  }
+  r2 bes4 -. r4 |
+  r4 r8 bes8 -. r2 |
+  r8 bes8 -. r4 r2 |
+  bes4 -. r4 r2 |
+
+  \bar "||"
+
+  \repeat unfold 2 {
+    bes8 bes8 r4 r g8 bes
+    r8 g8 bes4 f( g8) r8
+    bes8 bes8 r4 r g8 bes
+    r8 g8 bes4 f( g8) r8
+    bes8 bes8 r4 r g8 bes
+    r8 g8 bes4 f( g8) bes8~ |
+    bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+    bes4~ bes8 bes~ bes4 r  |
+  }
+
+  R1*4
+  bes8 bes8 r4 r g8 bes
+  r8 g8 bes4 f( g8) r8
+  bes8 bes8 r4 r g8 bes
+  r8 g8 bes4 f( g8) r8
+  bes8 bes8 r4 r g8 bes
+  r8 g8 bes4 f( g8) bes8~ |
+  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+  bes4~ bes8 bes~ bes4 r  |
+
+  \sl
+  a4^"Solo" a a a
+  a a a a
+  a a a a
+  a a a a
+  \nsl
+
+  bes8 bes8 r4 r g8 bes
+  r8 g8 bes4 f( g8) r8
+  bes8 bes8 r4 r g8 bes
+  r8 g8 bes4 f( g8) r8
+  bes8 bes8 r4 r g8 bes
+  r8 g8 bes4 f( g8) bes8~ |
+  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+  bes4~ bes8 bes~ bes4 r  |
+
+  \bar "||"
 }
 trpharmony = \transpose c' d {
  \jzchords
@@ -135,6 +205,65 @@ alto = \transpose c a \relative c' {
  bes8 bes~ bes4 d8 f r8 bes,8~ |
  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
  bes4~ bes8 bes~ bes4 r  |
+
+ % B
+ \repeat unfold 3 {
+   d4( bes8) r d4( bes8) r |
+   d8 bes r g f4 g |
+ }
+ d'4( bes8) r d4. bes8~ |
+ bes2 r2 |
+ \repeat unfold 3 {
+   d4( bes8) r d4( bes8) r |
+   d8 bes r g f4 g |
+ }
+ d'4( bes8) r d4. bes8~ |
+ bes2 r2 |
+
+ R1*4
+ \repeat unfold 3 {
+   d4( bes8) r d4( bes8) r |
+   d8 bes r g f4 g |
+ }
+ d'4( bes8) r d4. bes8~ |
+ bes2 r2 |
+
+ % C
+ \repeat unfold 2 {
+   bes8 bes r bes d f g bes
+   r8 g8~ g4 f4( g8 -.) r8 |
+   bes,8 bes r bes d f g bes
+   r8 g8~ g4 f4( g8 -.) r8 |
+   bes,8 bes r bes d f g bes
+   r8 g8~ g4 f4( g8 -.) bes,8~ |
+   bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+   bes4~ bes8 bes~ bes4 r  |
+ }
+ \sl d^"Solo (Clarinet)" d d d
+ d d d d
+ d d d d
+ d d
+ \nsl
+ r2
+ bes8 bes r bes d f g bes
+ r8 g8~ g4 f4( g8 -.) r8 |
+ bes,8 bes r bes d f g bes
+ r8 g8~ g4 f4( g8 -.) r8 |
+ bes,8 bes r bes d f g bes
+ r8 g8~ g4 f4( g8 -.) bes,8~ |
+ bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+ bes4~ bes8 bes~ bes4 r  |
+
+ R1*4
+ bes8 bes r bes d f g bes
+ r8 g8~ g4 f4( g8 -.) r8 |
+ bes,8 bes r bes d f g bes
+ r8 g8~ g4 f4( g8 -.) r8 |
+ bes,8 bes r bes d f g bes
+ r8 g8~ g4 f4( g8 -.) bes,8~ |
+ bes4~ bes8 bes~ bes4~ bes8 bes8~ |
+ bes4~ bes8 bes~ bes4 r  |
+ 
 }
 altoharmony = \transpose c' a \chordmode {
  \jzchords
@@ -179,19 +308,35 @@ gtr = \relative c'' {
  R1 * 6
  \sl 
  % A
- \repeat unfold 64 { bes4 bes bes bes }
+ \repeat unfold 28 { bes4 bes bes bes }
+
+ % B
+ \repeat unfold 28 { bes4 bes bes bes }
+
+ % C
+ \repeat unfold 28 { bes4 bes bes bes }
+ \repeat unfold 12 { bes4 bes bes bes }
 }
 gtrharmony = \chordmode {
  \jzchords
  R1 * 6
- bes2 bes/g c:min7 f:7
- bes bes/g c:min7 f:7
- bes bes:7/d ees e:dim
- bes1/f s1
- bes2 bes/g c:min7 f:7
- bes bes/g c:min7 f:7
- bes bes:7/d ees e:dim
- bes1/f s1
+ \repeat unfold 3 {
+   bes2 bes/g c:min7 f:7
+   bes bes/g c:min7 f:7
+   bes bes:7/d ees e:dim
+   bes1/f s1
+   bes2 bes/g c:min7 f:7
+   bes bes/g c:min7 f:7
+   bes bes:7/d ees e:dim
+   bes1/f s1
+
+   bes1 bes/g c:min7 f:7
+
+   bes2 bes/g c:min7 f:7
+   bes bes/g c:min7 f:7
+   bes bes:7/d ees e:dim
+   bes1/f s1
+ }
 
  bes1 bes/g c:min7 f:7
 
@@ -229,6 +374,11 @@ up = \drummode {
 
  \repeat unfold 4 { \jazzRide }
  \repeat unfold 8 { \jazzHats }
+
+ \repeat unfold 28 { \jazzRide }
+
+ \repeat unfold 28 { \jazzHats }
+ \repeat unfold 12 { \jazzHats }
 }
 
 down = \drummode {
