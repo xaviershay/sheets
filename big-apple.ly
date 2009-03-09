@@ -1,10 +1,11 @@
 \version "2.10.10"
 \header {
- title = "Big Apple Contest"
+ title = "Big Apple Contest - Draft 1"
  composer = "Solomon Douglas"
  tagline = \markup {
    \column {
      "Transcribed by Xavier Shay"
+     "Creative Commons Attribution License"
      "Melbourne, 9th March 2009"
    }
  }
@@ -86,7 +87,9 @@ trpt = \transpose c d \relative c'' {
   bes4~ bes8 bes~ bes4 r |
 
   \bar "||"
+
   % B
+  \mark \markup { \musicglyph #"scripts.segno" }
   \repeat unfold 3 {
     r2 bes'4 -. r4 |
     r4 r8 bes8 -. r2 |
@@ -114,10 +117,14 @@ trpt = \transpose c d \relative c'' {
   r2 bes4 -. r4 |
   r4 r8 bes8 -. r2 |
   r8 bes8 -. r4 r2 |
+  \once \override Score.RehearsalMark #'font-size = #4
+  \mark \markup { \musicglyph #"scripts.coda" }
+  
   bes4 -. r4 r2 |
 
   \bar "||"
 
+  % C
   \repeat unfold 2 {
     bes8 bes8 r4 r g8 bes
     r8 g8 bes4 f( g8) r8
@@ -154,8 +161,32 @@ trpt = \transpose c d \relative c'' {
   r8 g8 bes4 f( g8) bes8~ |
   bes4~ bes8 bes~ bes4~ bes8 bes8~ |
   bes4~ bes8 bes~ bes4 r  |
-
   \bar "||"
+
+  \cadenzaOn 
+  \stopStaff
+     \once \override TextScript #'word-space = #1.5
+        \once \override TextScript #'X-offset = #8
+        \once \override TextScript #'Y-offset = #1.5
+        | s1*0^\markup { \center-column { "D.S. al Coda" \line { \musicglyph #"scripts.coda" \musicglyph #"scripts.tenuto" \musicglyph #"scripts.coda"} } }
+        
+        % Increasing the unfold counter will expand the staff-free space
+        \repeat unfold 4 {
+          s4 s4 s4 s4
+          \bar ""
+        }
+        % Resume bar count and show staff lines again
+     \startStaff
+   \cadenzaOff
+  
+  \break
+  \once \override Score.RehearsalMark #'extra-offset = #'( -8.42 . 1.75 )
+   
+ \once \override Score.RehearsalMark #'font-size = #5
+ \mark \markup { \musicglyph #"scripts.coda" }
+ bes8 -. r r bes -. r4 bes4~\fermata |
+ bes1
+ \bar "|."
 }
 trpharmony = \transpose c' d {
  \jzchords
@@ -225,7 +256,7 @@ alto = \transpose c a \relative c' {
    d4( bes8) r d4( bes8) r |
    d8 bes r g f4 g |
  }
- d'4( bes8) r d4. bes8~ |
+ d'4( bes8) r d2 |
  bes2 r2 |
 
  % C
@@ -263,7 +294,21 @@ alto = \transpose c a \relative c' {
  r8 g8~ g4 f4( g8 -.) bes,8~ |
  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
  bes4~ bes8 bes~ bes4 r  |
- 
+
+  \cadenzaOn 
+  \stopStaff
+     \once \override TextScript #'word-space = #1.5
+        % Increasing the unfold counter will expand the staff-free space
+        \repeat unfold 4 {
+          s4 s4 s4 s4
+          \bar ""
+        }
+     \startStaff
+   \cadenzaOff
+
+ % Coda
+ bes2 r4 bes4~\fermata |
+ bes1
 }
 altoharmony = \transpose c' a \chordmode {
  \jzchords
@@ -279,23 +324,6 @@ altosax = {
  \clef treble
  <<
    \alto
- >>
-}
-
-% ------ Baritone Saxophone ------
-bari = \transpose c a' \relative c {
- \Key
- c1 c \sl d4^"Solo" d d d \nsl
-}
-bariharmony = \transpose c' a \chordmode {
- \jzchords s1 s d2:maj e:m7
-}
-barisax = {
- \global
- \set Staff.instrumentName = #"Bari Sax"
- \clef treble
- <<
-   \bari
  >>
 }
 
@@ -316,6 +344,20 @@ gtr = \relative c'' {
  % C
  \repeat unfold 28 { bes4 bes bes bes }
  \repeat unfold 12 { bes4 bes bes bes }
+
+  \cadenzaOn 
+  \stopStaff
+     \once \override TextScript #'word-space = #1.5
+        % Increasing the unfold counter will expand the staff-free space
+        \repeat unfold 4 {
+          s4 s4 s4 s4
+          \bar ""
+        }
+     \startStaff
+   \cadenzaOff
+
+ bes8 r r bes r4 \nsl bes,4~\fermata |
+ bes1
 }
 gtrharmony = \chordmode {
  \jzchords
@@ -344,6 +386,13 @@ gtrharmony = \chordmode {
  bes bes/g c:min7 f:7
  bes bes:7/d ees e:dim
  bes1/f s1
+
+  \repeat unfold 4 {
+    s4 s4 s4 s4
+    \bar ""
+  }
+
+ bes1 s1
 }
 guitar = {
  \global
@@ -379,6 +428,19 @@ up = \drummode {
 
  \repeat unfold 28 { \jazzHats }
  \repeat unfold 12 { \jazzHats }
+
+  \stopStaff
+     \once \override TextScript #'word-space = #1.5
+        % Increasing the unfold counter will expand the staff-free space
+        \repeat unfold 4 {
+          s4 s4 s4 s4
+          \bar ""
+        }
+     \startStaff
+   \cadenzaOff
+
+ <hh sn>8 r hh <hh sn> r4 <sn cymc~>\fermata |
+ cymc1
 }
 
 down = \drummode {
