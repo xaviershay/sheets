@@ -47,6 +47,7 @@ trpt = \transpose c d \relative c'' {
  \Key
   \set Score.skipBars = ##t
 
+  \tempo 4 = 208
   bes8 bes r bes bes bes r bes 
   bes4 bes,2. 
   bes'8 bes r bes bes4 r |
@@ -74,7 +75,7 @@ trpt = \transpose c d \relative c'' {
   bes4~ bes8 bes~ bes4~ bes8 bes8~ |
   bes4~ bes8 bes~ bes4 r |
 
-  R1*3
+  R1*7
   r2 r8 bes'~ bes bes~ |
 
   bes8 bes~ bes4 a8 bes r4 |
@@ -103,6 +104,10 @@ trpt = \transpose c d \relative c'' {
 
   \sl
   a4^"Solo" a a a
+  a a a a
+  a a a a
+  a a a a
+  a a a a
   a a a a
   a a a a
   a a a a
@@ -136,7 +141,7 @@ trpt = \transpose c d \relative c'' {
     bes4~ bes8 bes~ bes4 r  |
   }
 
-  R1*4
+  R1*8
   bes8 bes8 r4 r g8 bes
   r8 g8 bes4 f( g8) r8
   bes8 bes8 r4 r g8 bes
@@ -151,13 +156,17 @@ trpt = \transpose c d \relative c'' {
   a a a a
   a a a a
   a a a a
+  a a a a
+  a a a a
+  a a a a
+  a a a a |
   \nsl
 
-  bes8 bes8 r4 r g8 bes
-  r8 g8 bes4 f( g8) r8
-  bes8 bes8 r4 r g8 bes
-  r8 g8 bes4 f( g8) r8
-  bes8 bes8 r4 r g8 bes
+  bes8 bes8 r4 r g8 bes |
+  r8 g8 bes4 f( g8) r8 |
+  bes8 bes8 r4 r g8 bes |
+  r8 g8 bes4 f( g8) r8 |
+  bes8 bes8 r4 r g8 bes |
   r8 g8 bes4 f( g8) bes8~ |
   bes4~ bes8 bes~ bes4~ bes8 bes8~ |
   bes4~ bes8 bes~ bes4 r  |
@@ -224,6 +233,10 @@ alto = \transpose c a \relative c' {
  \sl d'^"Solo" d d d
  d d d d
  d d d d
+ d d d d
+ d d d d
+ d d d d
+ d d d d
  d d
  \nsl
  r2
@@ -251,7 +264,7 @@ alto = \transpose c a \relative c' {
  d'4( bes8) r d4. bes8~ |
  bes2 r2 |
 
- R1*4
+ R1*8
  \repeat unfold 3 {
    d4( bes8) r d4( bes8) r |
    d8 bes r g f4 g |
@@ -268,14 +281,20 @@ alto = \transpose c a \relative c' {
    bes,8 bes r bes d f g bes
    r8 g8~ g4 f4( g8 -.) bes,8~ |
    bes4~ bes8 bes~ bes4~ bes8 bes8~ |
-   bes4~ bes8 bes~ bes4 r  |
  }
- \sl d^"Solo (Clarinet)" d d d
- d d d d
- d d d d
- d d
- \nsl
- r2
+ \alternative {
+   { bes4~ bes8 bes~ bes4 r  | }
+   { bes4~ bes8 bes~ bes4 d4~  | }
+ }
+ d2.^"Solo (Clarinet)" c4
+ b a g fis8 f~ |
+ f4 f8 g a f e d |
+ e f e d g f e d |
+ c d e g c4 c |
+ c c c8 c r8 f,~ |
+ f4 r8 f8~ f4 r8 f8~ |
+ f4 r8 f8~ f4 r4 |
+
  bes8 bes r bes d f g bes
  r8 g8~ g4 f4( g8 -.) r8 |
  bes,8 bes r bes d f g bes
@@ -285,7 +304,7 @@ alto = \transpose c a \relative c' {
  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
  bes4~ bes8 bes~ bes4 r  |
 
- R1*4
+ R1*8
  bes8 bes r bes d f g bes
  r8 g8~ g4 f4( g8 -.) r8 |
  bes,8 bes r bes d f g bes
@@ -312,11 +331,6 @@ alto = \transpose c a \relative c' {
 }
 altoharmony = \transpose c' a \chordmode {
  \jzchords
- s1 * 6
- s1 * 8
- bes1 bes/g c:min7 f:7
-
-
 }
 altosax = {
  \global
@@ -336,14 +350,14 @@ gtr = \relative c'' {
  R1 * 6
  \sl 
  % A
- \repeat unfold 28 { bes4 bes bes bes }
+ \repeat unfold 32 { bes4 bes bes bes }
 
  % B
- \repeat unfold 28 { bes4 bes bes bes }
+ \repeat unfold 32 { bes4 bes bes bes }
 
  % C
- \repeat unfold 28 { bes4 bes bes bes }
- \repeat unfold 12 { bes4 bes bes bes }
+ \repeat unfold 32 { bes4 bes bes bes }
+ \repeat unfold 16 { bes4 bes bes bes }
 
   \cadenzaOn 
   \stopStaff
@@ -372,7 +386,7 @@ gtrharmony = \chordmode {
    bes bes:7/d ees e:dim
    bes1/f s1
 
-   bes1 bes/g c:min7 f:7
+   d:7 s1 g:7 s1 c:7 s1 f:7 s1
 
    bes2 bes/g c:min7 f:7
    bes bes/g c:min7 f:7
@@ -380,7 +394,7 @@ gtrharmony = \chordmode {
    bes1/f s1
  }
 
- bes1 bes/g c:min7 f:7
+ d:7 s1 g:7 s1 c:7 s1 f:7 s1
 
  bes2 bes/g c:min7 f:7
  bes bes/g c:min7 f:7
@@ -421,13 +435,13 @@ up = \drummode {
  \repeat unfold 7 { \jazzHats }
  hh4 hh8 hh hh8 sn8 hh8 hh 
 
- \repeat unfold 4 { \jazzRide }
+ \repeat unfold 8 { \jazzRide }
  \repeat unfold 8 { \jazzHats }
 
- \repeat unfold 28 { \jazzRide }
+ \repeat unfold 32 { \jazzRide }
 
- \repeat unfold 28 { \jazzHats }
- \repeat unfold 12 { \jazzHats }
+ \repeat unfold 32 { \jazzHats }
+ \repeat unfold 16 { \jazzHats }
 
   \stopStaff
      \once \override TextScript #'word-space = #1.5
