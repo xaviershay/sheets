@@ -151,6 +151,7 @@ trpt = \transpose c d \relative c'' {
   bes4~ bes8 bes~ bes4~ bes8 bes8~ |
   bes4~ bes8 bes~ bes4 r  |
 
+  \tiny
   a8^"Solo" fis g a~ a2 |
   r8 fis g a~ a2 |
   f8 d e f~ f d e f~ |
@@ -159,6 +160,7 @@ trpt = \transpose c d \relative c'' {
   d c bes a \times 2/3 { d ees d } c4 |
   r4 r8 bes' des bes des bes |
   des4. bes8~ bes4 r4 |
+  \normalsize
 
   bes8 bes8 r4 r g8 bes |
   r8 g8 bes4 f( g8) r8 |
@@ -284,6 +286,7 @@ alto = \transpose c a \relative c' {
    { bes4~ bes8 bes~ bes4 r  | }
    { bes4~ bes8 bes~ bes4 d4~  | }
  }
+ \tiny
  d2.^"Solo (Clarinet)" c4
  b a g fis8 f~ |
  f4 f8 g a f e d |
@@ -292,6 +295,7 @@ alto = \transpose c a \relative c' {
  c c c8 c r8 f,~ |
  f4 r8 f8~ f4 r8 f8~ |
  f4 r8 f8~ f4 r4 |
+ \normalsize
 
  bes8 bes r bes d f g bes
  r8 g8~ g4 f4( g8 -.) r8 |
