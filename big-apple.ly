@@ -378,18 +378,18 @@ gtrharmony = \chordmode {
    bes2 bes/g c:min7 f:7
    bes bes/g c:min7 f:7
    bes bes:7/d ees e:dim
-   bes1/f s1
+   f1:7 bes
    bes2 bes/g c:min7 f:7
    bes bes/g c:min7 f:7
    bes bes:7/d ees e:dim
-   bes1/f s1
+   f1:7 bes
 
    d:7 s1 g:7 s1 c:7 s1 f:7 s1
 
    bes2 bes/g c:min7 f:7
    bes bes/g c:min7 f:7
    bes bes:7/d ees e:dim
-   bes1/f s1
+   f1:7 bes
  }
 
  d:7 s1 g:7 s1 c:7 s1 f:7 s1
@@ -397,7 +397,7 @@ gtrharmony = \chordmode {
  bes2 bes/g c:min7 f:7
  bes bes/g c:min7 f:7
  bes bes:7/d ees e:dim
- bes1/f s1
+ f1:7 bes
 
   \repeat unfold 4 {
     s4 s4 s4 s4
