@@ -151,16 +151,14 @@ trpt = \transpose c d \relative c'' {
   bes4~ bes8 bes~ bes4~ bes8 bes8~ |
   bes4~ bes8 bes~ bes4 r  |
 
-  \sl
-  a4^"Solo" a a a
-  a a a a
-  a a a a
-  a a a a
-  a a a a
-  a a a a
-  a a a a
-  a a a a |
-  \nsl
+  a8^"Solo" fis g a~ a2 |
+  r8 fis g a~ a2 |
+  f8 d e f~ f d e f~ |
+  f2 r |
+  e'8 d c bes a g f ees |
+  d c bes a \times 2/3 { d ees d } c4 |
+  r4 r8 bes' des bes des bes |
+  des4. bes8~ bes4 r4 |
 
   bes8 bes8 r4 r g8 bes |
   r8 g8 bes4 f( g8) r8 |
