@@ -1,6 +1,8 @@
+#(set-global-staff-size 22.45) 
+
 \header {
   title = "I Let A Song Go Out Of My Heart"
-  subtitle = "Down a 4th from original key"
+  composer = "Duke Ellington"
   arranger = "Arranged by Xavier Shay"
   piece = \piece
   tagline = \markup { \column { "" } }
@@ -9,7 +11,6 @@
 \score {
   <<
     \context ChordNames {
-      \set chordChanges = ##t
       \chordsTransposed
     }
     \new Staff = "upper" {
