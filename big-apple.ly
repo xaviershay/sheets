@@ -1,16 +1,14 @@
 \version "2.10.10"
 \header {
- title = "Big Apple Contest - Draft 1"
+ title = "Big Apple Contest - Draft 2"
  composer = "Solomon Douglas"
  tagline = \markup {
    \column {
      "Transcribed by Xavier Shay"
      "Creative Commons Attribution License"
-     "Melbourne, 9th March 2009"
+     "Melbourne, 10th March 2009"
    }
  }
- texidoc = "Jazz tune for combo
-            (horns, guitar, piano, bass, drums)."
 }
 
 #(set-global-staff-size 16)
@@ -62,37 +60,37 @@ trpt = \transpose c d \relative c'' {
   bes bes~ bes4 a8 bes r4 |
   r2 r8 bes8~ bes bes~ |
   bes bes~ bes4 a8 bes r4 |
-  r2 r4 r8 bes,8~ |
-  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
-  bes4~ bes8 bes~ bes8 bes'~ bes bes~ |
+  r2 r8 bes8~ bes bes8~ |
+  bes8 bes~ bes bes~ bes bes~ bes bes~ |
+  bes8 bes~ bes bes~ bes bes~ bes bes~ |
 
   bes8 bes~ bes4 a8 bes r4 |
   r2 r8 bes8~ bes bes~ |
   bes bes~ bes4 a8 bes r4 |
   r2 r8 bes8~ bes bes~ |
   bes bes~ bes4 a8 bes r4 |
-  r2 r4 r8 bes,8~ |
-  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
-  bes4~ bes8 bes~ bes4 r |
+  r2 r8 bes8~ bes bes8~ |
+  bes8 bes~ bes bes~ bes bes~ bes bes~ |
+  bes8 bes~ bes bes~ bes4 r4 |
 
   R1*7
-  r2 r8 bes'~ bes bes~ |
+  r2 r8 bes~ bes bes~ |
 
   bes8 bes~ bes4 a8 bes r4 |
   r2 r8 bes8~ bes bes~ |
   bes bes~ bes4 a8 bes r4 |
   r2 r8 bes8~ bes bes~ |
   bes bes~ bes4 a8 bes r4 |
-  r2 r4 r8 bes,8~ |
-  bes4~ bes8 bes~ bes4~ bes8 bes8~ |
-  bes4~ bes8 bes~ bes4 r |
+  r2 r8 bes8~ bes bes8~ |
+  bes8 bes~ bes bes~ bes bes~ bes bes~ |
+  bes8 bes~ bes bes~ bes4 r4 |
 
   \bar "||"
 
   % B
   \mark \markup { \musicglyph #"scripts.segno" }
   \repeat unfold 3 {
-    r2 bes'4 -. r4 |
+    r2 bes4 -. r4 |
     r4 r8 bes8 -. r2 |
     r8 bes8 -. r4 r2 |
     bes4 -. r4 r4 bes -. |
@@ -221,7 +219,7 @@ alto = \transpose c a \relative c' {
 
  % A
  \repeat unfold 2 {
-   r2 r4 r8 bes8~ |
+   r2 r4 r8 bes'8~ |
    bes8 bes~ bes4 d8 f r4 |
    r2 r4 r8 bes,8~ |
    bes8 bes~ bes4 g8 f r4 |
@@ -230,7 +228,7 @@ alto = \transpose c a \relative c' {
    bes4~ bes8 bes~ bes4~ bes8 bes8~ |
    bes4~ bes8 bes~ bes4 r  |
  }
- \sl d'^"Solo" d d d
+ \sl d^"Solo" d d d
  d d d d
  d d d d
  d d d d
@@ -292,9 +290,9 @@ alto = \transpose c a \relative c' {
  f4 f8 g a f e d |
  e f e d g f e d |
  c d e g c4 c |
- c c c8 c r8 f,~ |
- f4 r8 f8~ f4 r8 f8~ |
- f4 r8 f8~ f4 r4 |
+ c c c8 c r8 f,~\mordent |
+ f4 r8 f8~\mordent f4 r8 f8~\mordent |
+ f4 r8 f8~\mordent f4 r4 |
  \normalsize
 
  bes8 bes r bes d f g bes
@@ -520,7 +518,7 @@ drumContents = {
  \midi {
      \context {
        \Score
-       tempoWholesPerMinute = #(ly:make-moment 220 4)
+       tempoWholesPerMinute = #(ly:make-moment 208 4)
      }
  }
 }
