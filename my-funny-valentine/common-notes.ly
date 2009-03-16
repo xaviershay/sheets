@@ -28,19 +28,21 @@ harmonies = \chordmode {
     ees2 bes4:7sus4 bes:7
     ees2 bes4:7sus4 bes:7
     ees2 bes4:7sus4 bes:7
-    g2:maj7 g4:7+5 g:7
-    c1:min aes2:maj7 aes:6 aes:7 g:7
+    g2 g:aug
+    c1:min aes2 aes aes:7 g:7
 
     c1:min c2:min7/bes c:min6/a
     c1:min c2:min7/bes c:min6/a
     aes1 d2:7^5 g:7 c1:min ees:7
-    aes2 aes:maj7 f:min7 bes:7
+    aes2 aes f:min7 bes:7
     ees1 s
   }
 
 }
 
 melody = \transpose c g' {
+  \set Score.markFormatter = #format-mark-box-letters 
+  \mark \default
   \relative c {
   \key c \minor
   c2 d4 ees d4. ees8 d2 
@@ -52,8 +54,10 @@ melody = \transpose c g' {
   ees2 f4 g f4. g8 f2
   ees2 f4 g d'4. c8 bes4. a8
   aes1~ aes2 g4 f |
+  \break
   
   \bar "||"
+  \mark \default
 
   bes4 r8 ees,8 ees4 d
   ees2 ees4 d |
@@ -61,7 +65,9 @@ melody = \transpose c g' {
   ees2 ees4 d d' r8 ees,8 ees4 d |
   ees2 f4 g c1~ c2 d, |
 
+  \break
   \bar "||"
+  \mark \default
 
   c2 d4 ees d4. ees8 d2 
   ees2 f4 g f4. g8 f2

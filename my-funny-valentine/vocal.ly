@@ -2,7 +2,7 @@
 
 \include "common-notes.ly"
 
-piece = "Vocal/Lead Sheet"
+piece = "C/Vocal"
 chordsTransposed = {
   \harmonies
 }

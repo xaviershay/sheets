@@ -6,7 +6,7 @@ piece = "Trumpet"
 chordsTransposed = \transpose c d {
   \harmonies
 }
-melodyTransposed = \transpose c d {
+melodyTransposed = \transpose c d, {
   \melody
 }
 

@@ -1,6 +1,8 @@
+#(set-global-staff-size 22.45) 
+
 \header {
   title = "My Funny Valentine"
-  subtitle = "Down a 4th from original key"
+  composer = "Richard Rogers"
   arranger = "Arranged by Xavier Shay"
   piece = \piece
   tagline = \markup { \column { "" } }
