@@ -1,12 +1,12 @@
 \version "2.10.10"
 \header {
- title = "Big Apple Contest - Draft 2"
- composer = "Solomon Douglas"
+ title = "Big Apple Contest"
+ arranger = "Arranged by Solomon Douglas"
  tagline = \markup {
    \column {
      "Transcribed by Xavier Shay"
      "Creative Commons Attribution License"
-     "Melbourne, 10th March 2009"
+     "Melbourne, 16th March 2009"
    }
  }
 }
@@ -250,24 +250,24 @@ alto = \transpose c a \relative c' {
 
  % B
  \repeat unfold 3 {
-   d4( bes8) r d4( bes8) r |
-   d8 bes r g f4 g |
+   des4( bes8) r des4( bes8) r |
+   des8 bes r g f4 g |
  }
- d'4( bes8) r d4. bes8~ |
+ des'4( bes8) r des4. bes8~ |
  bes2 r2 |
  \repeat unfold 3 {
-   d4( bes8) r d4( bes8) r |
-   d8 bes r g f4 g |
+   des4( bes8) r des4( bes8) r |
+   des8 bes r g f4 g |
  }
- d'4( bes8) r d4. bes8~ |
+ des'4( bes8) r des4. bes8~ |
  bes2 r2 |
 
  R1*8
  \repeat unfold 3 {
-   d4( bes8) r d4( bes8) r |
-   d8 bes r g f4 g |
+   des4( bes8) r des4( bes8) r |
+   des8 bes r g f4 g |
  }
- d'4( bes8) r d2 |
+ des'4( bes8) r des2 |
  bes2 r2 |
 
  % C
@@ -282,17 +282,22 @@ alto = \transpose c a \relative c' {
  }
  \alternative {
    { bes4~ bes8 bes~ bes4 r  | }
-   { bes4~ bes8 bes~ bes4 d4~  | }
+   { bes4~ bes8 bes~ bes4 r  | }
  }
  \tiny
- d2.^"Solo (Clarinet)" c4
- b a g fis8 f~ |
- f4 f8 g a f e d |
- e f e d g f e d |
- c d e g c4 c |
- c c c8 c r8 f,~\mordent |
- f4 r8 f8~\mordent f4 r8 f8~\mordent |
- f4 r8 f8~\mordent f4 r4 |
+ \transpose a d \relative c'' {
+  \key bes \major
+   d2.^"Solo (Clarinet)" c4
+   b a g fis8 f~ |
+   f4 f8 g a f e d |
+   e f e d g f e d |
+   c d e g c4 c |
+   c c c8 c r8 f,~\mordent |
+   f4 r8 f8~\mordent f4 r8 f8~\mordent |
+   f4 r8 f8~\mordent f4 r4 |
+ }
+
+ \key bes \major
  \normalsize
 
  bes8 bes r bes d f g bes
@@ -369,8 +374,9 @@ gtr = \relative c'' {
         }
      \startStaff
    \cadenzaOff
-
- bes8 r r bes r4 \nsl bes,4~\fermata |
+ \nsl
+ \override Staff.NoteHead #'style = #'slash
+ bes8 r r bes r4 bes4~\fermata |
  bes1
 }
 gtrharmony = \chordmode {
