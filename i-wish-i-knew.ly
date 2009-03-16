@@ -2,6 +2,7 @@
 \header {
   title = "I Wish I Knew How It Would Feel To Be Free"
   composer = "Billy Taylor"
+  tagline = \markup { \column { "" } }
 }
 
 harmonies = \chordmode {

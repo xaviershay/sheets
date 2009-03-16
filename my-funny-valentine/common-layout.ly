@@ -3,6 +3,7 @@
   subtitle = "Down a 4th from original key"
   arranger = "Arranged by Xavier Shay"
   piece = \piece
+  tagline = \markup { \column { "" } }
 }
 
 \score {
