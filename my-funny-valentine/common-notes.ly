@@ -1,6 +1,19 @@
+% Exception music is chords with markups 
+chExceptionMusic = { 
+<c e g b d'>1-\markup { \super "maj9" } 
+<c e g a d'>1-\markup { \super "6(add9)" } 
+<c e bes>1-\markup { \super "7-5" } 
+<c f g bes>1-\markup { \super "7sus" } 
+} 
+% Convert music to list and prepend to existing exceptions. 
+chExceptions = #( append 
+( sequential-music-to-chord-exceptions chExceptionMusic #t) 
+ignatzekExceptions) 
+
 harmonies = \chordmode {
   \override ChordName #'font-size = #0.3
   \transpose c g' {
+    \set chordNameExceptions = #chExceptions 
     c1:min c2:min7/bes c:min6/a
     c1:min c2:min7/bes c:min6/a
 
@@ -11,16 +24,16 @@ harmonies = \chordmode {
 
     aes1 f:min7 aes:min bes:7
 
-    ees2 bes4:sus bes:7
-    ees2 bes4:sus bes:7
-    ees2 bes4:sus bes:7
-    ees2 bes4:sus bes:7
+    ees2 bes4:7sus4 bes:7
+    ees2 bes4:7sus4 bes:7
+    ees2 bes4:7sus4 bes:7
+    ees2 bes4:7sus4 bes:7
     g2:maj7 g4:7+5 g:7
     c1:min aes2:maj7 aes:6 aes:7 g:7
 
     c1:min c2:min7/bes c:min6/a
     c1:min c2:min7/bes c:min6/a
-    aes1 d2:7-5 g:7 c1:min ees:7
+    aes1 d2:7^5 g:7 c1:min ees:7
     aes2 aes:maj7 f:min7 bes:7
     ees1 s
   }
