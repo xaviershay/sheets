@@ -10,7 +10,7 @@ chExceptions = #( append
 ( sequential-music-to-chord-exceptions chExceptionMusic #t) 
 ignatzekExceptions) 
 
-harmonies = \chordmode {
+harmonies = \transpose c g, \chordmode {
   \override ChordName #'font-size = #0.3
   \set chordNameExceptions = #chExceptions 
   
@@ -23,9 +23,12 @@ harmonies = \chordmode {
   ees:9 s2 f:7 bes1 f1:7
   c2:7 f:7 bes1 s1
   \bar "||"
+
+  ees1:9 ees2.:min6 f4:7 |
+  des1:7 c2:aug c:7 |
 }
 
-melody = {
+melody = \transpose c g {
   \set Score.markFormatter = #format-mark-box-letters 
   \mark \default
   \relative c' {
@@ -47,6 +50,7 @@ melody = {
   }
   
   \relative c'' {
+    \mark \default
     d4. f8 d bes g f |
     des'4. f8 des bes g f |
     cis' d4.~ d4. f,8 |
@@ -57,6 +61,10 @@ melody = {
     \times 2/3 { e' f f, } e'8 f~ f4. f,8 |
     \times 2/3 { des' c des } bes8 bes \times 2/3 { aes g aes } f8 f |
     a bes~ bes2~ \times 2/3 { bes8 g f } |
-    bes,1 |
+    bes,2~ bes8 f' g bes |
+    c4. bes8 c4. bes8 |
+    ees4. des8 ees des ees f |
+    bes,4. aes8 bes4. aes8 |
+    des1 |
   }
 }
