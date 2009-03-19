@@ -19,6 +19,7 @@ chordsTransposed = \transpose c a {
   \gtrharmony
 }
 
+#(set-global-staff-size 16)
 \score {
   <<
     \context ChordNames {
