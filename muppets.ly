@@ -151,7 +151,9 @@ dynamics = {
   s1 *5
   s4 s4\sf s2
 
+  \override DynamicText #'self-alignment-X = #-1.0
   s1\f
+  \override DynamicText #'self-alignment-X = #0.0
   s1 * 4
   s2 s4 s8 s8\mp \< |
   s1 * 3 |
