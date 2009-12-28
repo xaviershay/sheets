@@ -52,7 +52,13 @@ upper = \relative c''' {
   g16 bes a c bes d f f g bes a c bes d f, f |
   <bes, e>8 <a ees'> <bes d> <a c> bes16 d f aes, g ees' f, d' |
 
-  <g, bes ees>8
+  <g, bes ees>8 ees ees bes'16 aes g bes ees d ees f g aes |
+  bes8 aes~ aes g16 f g ees f d ees c d b |
+  c g aes f g es f d g ees f d ees d ees fis |
+  g fis' g d ees c a d bes bes g d bes8 g''16 aes |
+  bes16 des bes g e des c bes aes c f e f c aes' g |
+  fis16 a fis ees d c bes a bes d g f g d bes' d, |
+  des bes' a c, ces aes' g bes, a g' f aes, g f' ees a, |
 }
 
 lower = \relative c' {
