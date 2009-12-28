@@ -55,8 +55,8 @@ upper = \relative c''' {
   <g, bes ees>8
 }
 
-lower = \relative c {
-  \clef bass
+lower = \relative c' {
+  \clef treble
   \key bes \major
   \time 4/4
 
@@ -64,10 +64,11 @@ lower = \relative c {
   ees-4 g-2 f-3 a-1 g-4 bes-2 a-3 c-1 bes a g8 f-1 e |
   f8 bes, c f16 e f8 f, f c'16 bes |
   a16 c f e f a g f e g f ees d e f d |
-  e8 f~ f e f a, bes c |
-  d8 f,16 a g bes a c bes8 ees, f f, |
+  e8 f~ f e f a, bes c | 
+  \clef bass
+  d8 f,16 a g bes a c  bes8 ees, f f, |
   bes4. bes'16-3 a bes8 d16-1 c d8 bes-2 |
-  a16 c f, a g bes a c bes8 c d-4 g16-1 fis |
+  a16 c f, a g bes a c bes8 c d g,16 fis |
   g8 g, g d'16-2 c bes d g-1 fis-4 g-3 bes-1 a g |
   fis a g bes-1 e, g-1 f a g8 c, d d, |
   g16-5 bes a c bes d g, bes c8 c, c8 c'16-1 bes-3 |
