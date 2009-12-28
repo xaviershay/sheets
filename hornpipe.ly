@@ -2,7 +2,7 @@
 \header {
   title = "Bach Before The Mast - Part 2"
   subtitle = "As played by Keith Emerson"
-  arranger = "Typeset by Xavier Shay"
+  arranger = "Transcribed by Ken Taylor, typeset by Xavier Shay"
   tagline = \markup { \column { "" } }
 }
 upper = \relative c''' {
@@ -41,6 +41,18 @@ upper = \relative c''' {
   bes c a' g a, c g' f g, bes f' e f8 g16 a |
   bes8 aes r16 c bes aes g8 f r16 aes g f |
   ees16 g f ees d f ees d ees d c bes bes a g f |
+  g16 bes a c bes d c es d f ees g f8 ees16 d |
+  ees8 ees' c, c' bes bes, bes bes16 a |
+  bes4 r16 c, d es f g aes c bes aes g aes |
+  g bes ees g, f aes ees' d ees8 ees,16 d ees f c' b |
+  c8 c,16 ees g aes bes c des c bes aes' g e c bes' |
+  aes c, bes g' aes, f' g, ees' f4 r8 g16 a |
+  bes8 aes8 \turn aes16 c bes aes g8 f \turn f16 aes g f |
+  ees16 d ees c' d, c d bes' g ees c bes a c f, f |
+  g16 bes a c bes d f f g bes a c bes d f, f |
+  <bes, e>8 <a ees'> <bes d> <a c> bes16 d f aes, g ees' f, d' |
+
+  <g, bes ees>8
 }
 
 lower = \relative c {
@@ -80,6 +92,20 @@ lower = \relative c {
   c8 ees f a,16 bes c8 c, f f'16 ees |
   d16 f bes, d c ees d f ees g g, b a c bes d |
   c bes a c bes8 d, ees e f ees16 d |
+
+  ees16 c f ees d bes a c bes d c ees d bes c d |
+  ees d ees c f ees f f, bes8 bes' bes4 |
+  r8 bes aes g f ees d bes | 
+  ees c aes' bes ees,4 r8 ees'16 d |
+  c8 c, c' bes16 aes g aes g f e g c g |
+  f8 bes c c, f f'16 e f g f ees |
+  d16 f bes, d c ees d f ees g g, b a c b d |
+  c bes c a bes a bes d ees d ees e f4 |
+  f8 ees d bes ees16 c f ees d bes f f |
+  g bes a c bes d c ees d8 bes bes bes, |
+
+
+  <ees g bes>4.
 }
 
 \score {
