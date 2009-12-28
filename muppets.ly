@@ -31,7 +31,11 @@ upper = \relative c' {
   c g r c |
   d c b d |
   \override Glissando #'style = #'zigzag
-  c2\glissando c'4 c, |
+  c2\glissando 
+  #(set-octavation 1)
+  c''4
+  #(set-octavation 0)
+  c,, |
   d c b d |
   e g, r g |
   a a8 b~ b c d4 |
@@ -63,7 +67,9 @@ upper = \relative c' {
     s4. b'''8\rest
   } >>
   r2
-  \acciaccatura { g'16[ a b] } c4
+  #(set-octavation 1)
+  \acciaccatura { g''16[ a b] } c4
+  #(set-octavation 0)
   r4
   \bar "|."
   
