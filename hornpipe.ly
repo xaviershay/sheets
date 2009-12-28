@@ -24,6 +24,23 @@ upper = \relative c''' {
   f8 f, f16 g' f ees d-2 f-5 a,-1 c-3 bes-2 d-1 bes' aes |
   g16 bes d,-1 f-3 ees g b,-1 d-3 c ees g bes, a c f ees |
   g,16 bes a c bes-3 d-5 c-1 ees d fis g bes, a g' a, f' |
+
+  g16 d c bes ees c bes a d bes c a bes4 |
+  c16 bes a g a ees c ees a ees d8 d e16 fis |
+  g16 f ees d ees d c bes c bes a g g fis e d |
+  g''='' f ees d ees d c bes c bes a g g fis e d |
+  r8 aes'' g f ees cis d bes |
+  c a bes fis g16 bes a c bes g' d fis |
+  e8 aes g f ees16 d c bes c d ees c |
+  f8 g f ees d16 \prall c bes a bes c bes aes |
+  g f' ees g, f ees' d f, ees d' c ees, d c' bes aes |
+  g aes g f ees d c bes a bes a g f8 bes'16 a |
+  bes8 bes, bes f'16 ees d f bes a bes8 f'16 f |
+  ees f' d c d, f c' bes c, ees bes' a bes8 bes,16 a |
+  bes8 bes, bes f'16 ees d f bes a bes8 d16 c |
+  bes c a' g a, c g' f g, bes f' e f8 g16 a |
+  bes8 aes r16 c bes aes g8 f r16 aes g f |
+  ees16 g f ees d f ees d ees d c bes bes a g f |
 }
 
 lower = \relative c {
@@ -45,6 +62,24 @@ lower = \relative c {
   a16-5 c-4 f a g-4 bes-2 a-3 c-1 bes-3 d-1 c-4 ees-2 d-1 bes c d |
   ees-3 d-4 ees f g f ees d ees c-5 d-4 ees-3 f-1 ees d c |
   bes d c ees d f ees c d-1 c bes g d'8 d, |
+
+  g8 g, g d'16 c bes d g fis g bes a g |
+  a8 a, a a'16 g fis a fis ees d8 c16 bes |
+  a8 bes c d ees c d4 |
+  ees16 g a bes c bes c d ees8 c d4 |
+  g16 f ees d ees d c bes c bes a g g f ees d |
+  ees g fis a g bes a c bes d c ees d8 d, |
+  g8 g16 bes a c bes d c8 d ees16 d c bes |
+  a16 c f, a g bes a c bes8 c d bes |
+  ees8 d a bes g a bes16 aes g f |
+
+  ees16 f ees d c d ees bes a8 f f'16 ees d c |
+  bes4. f'16 ees d f bes a bes c d ees |
+  \clef treble f8 a bes f ees a bes bes,16 a \clef bass |
+  bes8 bes, bes f'16 ees d f bes a bes g f bes |
+  c8 ees f a,16 bes c8 c, f f'16 ees |
+  d16 f bes, d c ees d f ees g g, b a c bes d |
+  c bes a c bes8 d, ees e f ees16 d |
 }
 
 \score {
