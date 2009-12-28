@@ -1,6 +1,6 @@
 \version "2.13.9"
 \header {
-  title = "The Sailor's Hornpipe"
+  title = "Bach Before The Mast - Part 2"
   subtitle = "As played by Keith Emerson"
   arranger = "Typeset by Xavier Shay"
   tagline = \markup { \column { "" } }
