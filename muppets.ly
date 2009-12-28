@@ -31,6 +31,7 @@ upper = \relative c' {
   d c b d | 
   c g r c |
   d c b d |
+  \override Glissando #'style = #'zigzag
   c2\glissando c'4 c, |
   d c b d |
   e g, r g |
@@ -52,14 +53,17 @@ upper = \relative c' {
   <c f a c> <\parenthesize c f a d> |
   <f a e'> <f a e'> |
   <f a e'> <f a e'> |
-  \repeat tremolo 8 { <c' e g>16 <g a>  } |
+  \repeat tremolo 4 { <c' e g>16 <g a>  } 
   << {
-    g2\glissando 
+    \override Glissando #'style = #'zigzag
+    g4.\glissando 
     \change Staff = "lower" 
-    g,,,4
+    g,,,8
   } \\ {
-    s2 r2
+    \change Staff = "upper" 
+    s4. b'''8\rest
   } >>
+  R1
   \bar "|."
   
 }
@@ -116,8 +120,10 @@ lower = \relative c' {
   <d d'> <d d'>~ <d d'> <d d'>~ |
   <d d'> <g, g'>~ <g g'> <g g'> |
   \set tieWaitForNote = ##t
-  \repeat tremolo 8 { c16~ c'~ } |
-  <c, c'>2 s4 c, 
+  \repeat tremolo 4 { c16~ c'~ } 
+  <c, c'>4. s8 |
+  
+  c,4 r r2  
   \bar "|."
 
 
