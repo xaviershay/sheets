@@ -40,9 +40,9 @@ upper = \relative c' {
   e g, r g |
   a a8 b~ b c d4 |
   r4 \acciaccatura fis,16 g4 r4 \clef bass \acciaccatura fis,16 g4 |
-  \clef treble
+  \clef "treble_8"
 
-  r4 c'' c a |
+  r4 c' c a |
   b8 ais b ais b8 g~ g4 |
   r4 c c a |
   b8 bes a aes g2 |
