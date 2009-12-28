@@ -8,7 +8,8 @@
 upper = \relative c' {
   \clef "treble_8"
   \key c \major
-  \time 4/4
+  \time 2/2
+  \tempo "Presto"
 
   \repeat volta 2 {
     r4 c c a |
@@ -39,7 +40,7 @@ upper = \relative c' {
   d c b d |
   e g, r g |
   a a8 b~ b c d4 |
-  r4 \acciaccatura fis,16 g4 r4 \clef bass \acciaccatura fis,16 g4 |
+  r4 \acciaccatura fis,16 g4-. r4 \clef bass \acciaccatura fis,16 g4-- |
   \clef "treble_8"
 
   r4 c' c a |
@@ -77,7 +78,7 @@ upper = \relative c' {
 
 lower = \relative c {
   \key c \major
-  \time 4/4
+  \time 2/2
 
   \repeat volta 2 {
     \clef bass
@@ -107,14 +108,14 @@ lower = \relative c {
   <f'' a c>4 r <e gis c> r |
   <e g c> 
   \clef bass 
-  g,,4 c, r4 |
+  g,,4-> c,-> r4 |
   \clef treble
   <f'' a c>4 r <e gis c> r |
   <e g c> r4 r2 |
   <f a c>4 r <e gis c> r |
   <e g c> r4 r2 |
   <f a c>8 r r <fis a c> r4 <g b>4 |
-  r2 \acciaccatura fis,16 g4 r |
+  r2 \acciaccatura fis,16 g4-. r |
 
   \clef bass
   c,4 <e g> ees <ges a> |
@@ -133,9 +134,9 @@ lower = \relative c {
   r4 <d, d'>~ <d d'> <d d'>~ |
   <d d'> <d d'>~ <d d'> <d d'>~ |
   <d d'> <d d'>~ <d d'> <d d'>~ |
-  <d d'> <g, g'>~ <g g'> <g g'> |
+  <d d'> <g g'>~ <g g'> <g g'> |
   \set tieWaitForNote = ##t
-  \repeat tremolo 4 { c16~ c'~ } 
+  \repeat tremolo 4 { c,16~ c'~ } 
   <c, c'>4. s8 |
   
   c4 r r2  
@@ -176,7 +177,7 @@ dynamics = {
 }
 
 \markup {
-  \tiny { % \teeny \tiny \small \normalsize \large \huge
+  \normalsize { % \teeny \tiny \small \normalsize \large \huge
            % are all viable options here, with \normalsize
            % the default. Pick whatever looks good.
     \fill-line { % This centers the words, which looks nicer
