@@ -1,8 +1,3 @@
-%{
-	babyonboard.ly
-
-%}
-
 \version "2.10.0"
 \include "english.ly"
 
