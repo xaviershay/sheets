@@ -27,7 +27,7 @@ melody = \relative c' {
   d4. e8 d4 c8 b~ |
   b2 r8 e8 f c'~ |
   c2 r8 d,8 e b'~ |
-  b2~ r8 d, \grace dis( e8) g\staccato |
+  b2 r8 d, \grace dis( e8) g\staccato |
   r4 <des' g>2~ <des g>8 g, |
   <c g'>8 g r <bes g'> r4 <g, bes c e>8 <f a b d>~ |
 
@@ -40,7 +40,7 @@ melody = \relative c' {
   d4. e8 d4 c8 b~ |
   b2 r8 e8 f c'~ |
   c2 r4 \grace d,8 e b'~ |
-  b2~ r8 d, e8 g\staccato |
+  b2 r8 d, e8 g\staccato |
 
 
   r4 \times 2/3 { <des' g>8. des16 c g } \times 2/3 { <c g'>8 g <bes g'> } r8 <d, g>~ |
@@ -53,17 +53,20 @@ melody = \relative c' {
   fis g g g \times 2/3 {f8. g16 f d } f8 g~ |
   \times 2/3 { g8 f d } f8 g \times 2/3 { r8 a4~ } a8 g |
   \times 2/3 { a8. g16 e g } a8 bes~ \times 2/3 {bes4 a32 g e g } a8 bes~ |
-  \times 2/3 {bes4 a32 g e g } a8 bes~ \times 2/3 {bes4 a32 g e g } a8 bes~ |
+  \times 2/3 {bes4 a32 g e g } a8 bes~ \times 2/3 {bes4 a32 g e g } a8 bes |
   \grace ais( b4) <g g'> <g g'>8 b c cis |
 
   \grace cis( d4) b8 d r f e c |
   ees4 ees16 c cis d f g bes g aes bes g aes |
   bes des a bes \times 4/5 { aes16 g ges f e } \times 2/3 {ees8 c cis } d8 g, |
   <bes g'>8 <b g'>~ \times 2/3 {<b g'>8. d16 b g } <c g'>8 <c g'>~ \times 2/3 {<c g'>8. d16 c g } |
-  <cis g'>8 <cis g'>4. \grace cis8( <d g>) g, a e' |
-  d
+  <cis g'>8 <cis g'>4. \grace cis8( <d g>) e, \grace ais( b) e |
+  \bar "||" % 1min 10s
+  d b~ \times 2/3 { b g d } f g r a~ a \grace { f16 ees c } ees8 f r8 r2
+  
 
 }
+% showLastLength = R1*5
 \score {
   <<
     \context ChordNames {
