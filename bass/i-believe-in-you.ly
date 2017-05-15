@@ -2,7 +2,7 @@
 \header {
   title = "I Believe In You"
   composer = "As played by Larry Graham"
-  tagline = \markup { \column { "LilyPond source at https://github.com/xaviershay/sheets/blob/master/i-believe-in-you.ly" } }
+  tagline = \markup { \column { "LilyPond source at https://xaviershay.com/sheets" } }
 }
 
 % Props to https://www.youtube.com/watch?v=kVmP_3aeeKg - didn't agree with
