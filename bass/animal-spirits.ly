@@ -178,9 +178,9 @@ song = {
   des4 c8 f, bes4 ees8. aes,16 |
   r8. aes16~ aes8. aes16~ aes16 aes8 \deadNote aes16 aes8. des16~ |
   des4 c8 f, bes4 ees8. aes,16~ |
-
+  aes4
   \set TabStaff.minimumFret = #6
-  aes4 r16 ees'16 aes16\glissando bes16\glissando aes8. \deadNote ees16
+  r16 ees'16 aes16\glissando bes16\glissando aes8. \deadNote ees16
   \set TabStaff.minimumFret = #1
   aes,16 bes des8~ |
   des4 c8 f, bes4 ees8. aes,16 |
@@ -206,19 +206,27 @@ song = {
   }
 }
 
-<<
-  \new Voice = "main" {
-    \key des \major
-    \clef "bass_8"
-    \song
+\score {
+  \new Staff <<
+    \set Staff.midiInstrument = #"electric bass (finger)"
+    \new Voice = "main" {
+      \key des \major
+      \clef "bass_8"
+      \song
+    }
+    \new TabStaff \with {
+      stringTunings = #bass-tuning
+    } {
+      \override Glissando.minimum-length = #3
+      \override Glissando.springs-and-rods =
+                          #ly:spanner::set-spacing-rods
+      \override Glissando.thickness = #2
+      \song
+    }
+  >>
+
+  \midi {
+    \tempo 4 = 100
   }
-  \new TabStaff \with {
-    stringTunings = #bass-tuning
-  } {
-    \override Glissando.minimum-length = #3
-    \override Glissando.springs-and-rods =
-                        #ly:spanner::set-spacing-rods
-    \override Glissando.thickness = #2
-    \song
-  }
->>
+}
+
