@@ -4,7 +4,7 @@
   composer = "Vulfpeck"
   arranger = "Transcribed by Xavier Shay"
   piece = "Electric Bass"
-  tagline = \markup { \column { "LilyPond source at https://github.com/xaviershay/sheets" } }
+  tagline = \markup { \column { "LilyPond source at https://xaviershay.com/sheets" } }
 }
 
 global = {
