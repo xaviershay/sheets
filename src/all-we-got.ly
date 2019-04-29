@@ -151,7 +151,7 @@ bassWords = \lyricmode
 	\midi{ }
 }
 
-\score { \tenorMusic \midi{ } }
-\score { \leadMusic \midi{ } }
-\score { \baritoneMusic \midi{ } }
-\score { \bassMusic \midi{ } }
+% \score { \tenorMusic \midi{ } }
+% \score { \leadMusic \midi{ } }
+% \score { \baritoneMusic \midi{ } }
+% \score { \bassMusic \midi{ } }

@@ -1,7 +1,7 @@
 \version "2.18.2"
 \header {
   title = "I Believe In You"
-  composer = "As played by Larry Graham"
+  composer = "Larry Graham"
   tagline = \markup { \column { "LilyPond source at https://xaviershay.com/sheets" } }
 }
 
@@ -230,44 +230,51 @@ coda = {
   }
 }
 
-<<
-  \new Voice = "main" {
-    \clef "bass_8"
-    \key a \major
-    \repeat percent 4 {
-      <<
-        { \voiceOne \grace e,,16_( e,,1) }
-        \new Voice { \voiceTwo
-          \introMelody
-        } \oneVoice
-      >>
-    }
-    \introTwoMelody
-    \mainRiff
-    \bridge
+\score {
+  \new Staff {
+    \set Staff.midiInstrument = #"electric bass (finger)"
+    <<
+      \new Voice = "main" {
+        \clef "bass_8"
+        \key a \major
+        \repeat percent 4 {
+          <<
+            { \voiceOne \grace e,,16_( e,,1) }
+            \new Voice { \voiceTwo
+              \introMelody
+            } \oneVoice
+          >>
+        }
+        \introTwoMelody
+        \mainRiff
+        \bridge
 
-    s4^"D.S. al Coda"
-  }
-  \new TabStaff \with {
-    stringTunings = #bass-tuning
-  } {
-    \repeat percent 4 { \grace e,,16 \introMelody }
-    \introTwoMelody
-    \mainRiff
-    \bridge
-    s4
-  }
->>
+        s4^"D.S. al Coda"
+      }
+      \new TabStaff \with {
+        stringTunings = #bass-tuning
+      } {
+        \repeat percent 4 { \grace e,,16 \introMelody }
+        \introTwoMelody
+        \mainRiff
+        \bridge
+        s4
+      }
+    >>
 
-<<
-  \new Voice = "main" {
-    \clef "bass_8"
-    \key a \major
-    \coda
+    <<
+      \new Voice = "main" {
+        \clef "bass_8"
+        \key a \major
+        \coda
+      }
+      \new TabStaff \with {
+        stringTunings = #bass-tuning
+      } {
+        \coda
+      }
+    >>
   }
-  \new TabStaff \with {
-    stringTunings = #bass-tuning
-  } {
-    \coda
-  }
->>
+  \layout { }
+  \midi { \tempo 4 = 90 }
+}

@@ -2,8 +2,7 @@
 \header {
   title = "Animal Spirits"
   composer = "Vulfpeck"
-  arranger = "Transcribed by Xavier Shay"
-  piece = "Electric Bass"
+  piece = "Fender Bass"
   tagline = \markup { \column { "LilyPond source at https://xaviershay.com/sheets" } }
 }
 
@@ -225,6 +224,7 @@ song = {
     }
   >>
 
+  \layout {}
   \midi {
     \tempo 4 = 100
   }

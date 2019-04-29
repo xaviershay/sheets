@@ -27,7 +27,7 @@ melody = \relative c' {
   d4. e8 d4 c8 b~ |
   b2 r8 e8 f c'~ |
   c2 r8 d,8 e b'~ |
-  b2~ r8 d, \grace dis( e8) g\staccato |
+  b2 r8 d, \grace dis( e8) g\staccato |
   r4 <des' g>2~ <des g>8 g, |
   <c g'>8 g r <bes g'> r4 <g, bes c e>8 <f a b d>~ |
 
@@ -40,7 +40,7 @@ melody = \relative c' {
   d4. e8 d4 c8 b~ |
   b2 r8 e8 f c'~ |
   c2 r4 \grace d,8 e b'~ |
-  b2~ r8 d, e8 g\staccato |
+  b2 r8 d, e8 g\staccato |
 
 
   r4 \times 2/3 { <des' g>8. des16 c g } \times 2/3 { <c g'>8 g <bes g'> } r8 <d, g>~ |
@@ -53,7 +53,7 @@ melody = \relative c' {
   fis g g g \times 2/3 {f8. g16 f d } f8 g~ |
   \times 2/3 { g8 f d } f8 g \times 2/3 { r8 a4~ } a8 g |
   \times 2/3 { a8. g16 e g } a8 bes~ \times 2/3 {bes4 a32 g e g } a8 bes~ |
-  \times 2/3 {bes4 a32 g e g } a8 bes~ \times 2/3 {bes4 a32 g e g } a8 bes~ |
+  \times 2/3 {bes4 a32 g e g } a8 bes~ \times 2/3 {bes4 a32 g e g } a8 bes |
   \grace ais( b4) <g g'> <g g'>8 b c cis |
 
   \grace cis( d4) b8 d r f e c |
@@ -76,5 +76,8 @@ melody = \relative c' {
   >>
   \layout { 
     indent = #0
+  }
+  \midi {
+    \tempo 4 = 120
   }
 }
