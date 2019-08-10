@@ -1,6 +1,6 @@
 \version "2.19.80"
 \header {
-  title = "Muppet Show Theme"
+  title = "The Muppet Show Theme"
   arranger = "Arranged by Xavier Shay"
   tagline = \markup { \column { "" } }
 }
