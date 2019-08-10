@@ -1,11 +1,27 @@
-\version "2.18.2"
+\version "2.19.83"
+
+\paper {
+   #(define fonts
+     (set-global-fonts
+     #:sans "Super Mario Maker Extended"
+   ))
+}
 
 \header {
   % TODO: https://fontmeme.com/fonts/super-mario-extended-font/
-  title = "Snow Theme (Night), Super Mario World"
-  subtitle = "Super Mario Maker 2"
+  title = \markup {
+    \override #'(font-family . sans)
+    "SMW Night Snow Theme"
+  }
+  subtitle = \markup {
+    \override #'(font-family . sans)
+    "Super Mario Maker 2"
+  }
   arranger = "Transcribed by Xavier Shay"
-  tagline = \markup { \column { "LilyPond source at https://xaviershay.com/sheets" } }
+  tagline = \markup { \column {
+    \override #'(font-family . typewriter)
+    "https://xaviershay.com/sheets"
+  } }
 }
 segno   = \mark \markup { \musicglyph #"scripts.segno" }
 dsh   = \mark \markup{ \bold   "D.S."}
@@ -13,7 +29,7 @@ upper = \relative c''' {
   \clef treble
   \key f \major
   \time 4/4
-
+  \tempo 4 = 132
 
   d4 bes8. f16 e8. f16 g4 \bar "||"
 
@@ -52,8 +68,8 @@ upper = \relative c''' {
   \dsh
 }
 
-lower = \relative c'' {
-  \clef "treble^8"
+lower = \relative c' {
+  \clef treble
   \key f \major
   \time 4/4
 
@@ -71,19 +87,19 @@ lower = \relative c'' {
 
   bes,8 b c d
   c a f a |
-  aes b d f
-  g f e c |
+  aes-4 b-3 d-2 f-1
+  g-2 f-1 e c |
   bes a bes d
   f e c a |
   b d f b
   bes d c e |
   f4 f ees es |
   d d des des |
-  c r4 r4 d8 e |
+  c r4 r4 d,8 e |
   f4 c f f |
 
   \repeat volta 2 {
-    bes,8 a bes b r4 b4 |
+    bes8 a bes b r4 b4 |
     a8 c a g fis a d, fis |
     g8 a bes b c e, c' bes |
   }
