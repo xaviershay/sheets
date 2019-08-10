@@ -1,3 +1,6 @@
 #!/bin/bash
 
-exec aws s3 sync www s3://sheets.xaviershay.com
+set -ex
+
+aws s3 sync www s3://sheets.xaviershay.com
+aws cloudfront create-invalidation --distribution-id E1R4CKHHDJY89N --paths '/*'
