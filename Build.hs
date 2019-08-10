@@ -3,8 +3,6 @@ import Development.Shake.Command
 import Development.Shake.FilePath
 import Development.Shake.Util
 
-import Debug.Trace
-
 dest = "www/static"
 
 main :: IO ()
