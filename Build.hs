@@ -6,24 +6,23 @@ import Development.Shake.Util
 import Debug.Trace
 
 dest = "www/static"
-targets =
-  [ "hornpipe"
-  , "all-we-got"
-  ]
 
 main :: IO ()
 main = shakeArgs shakeOptions{shakeFiles="_build"} $ do
-  want $ [
-    dest </> target <.> extension |
-      target <- targets,
-      extension <- ["pdf", "midi"]
-    ]
+  want ["www/index.html"]
 
   phony "clean" $ do
     putNormal "Cleaning files"
     removeFilesAfter dest ["//*"]
 
-  [dest <> "//*.pdf", dest <> "//*.midi"] &%> \[outp, outm] -> do
-    let c = "src" </> (dropDirectory1 . dropDirectory1 $ outp -<.> "ly")
+  "www/index.html" %> \out -> do
+    fs <- getDirectoryFiles "src/lilypond" ["*.ly"]
+    let pdfs = ["www/static" </> (takeBaseName sourceFile) -<.> "pdf" | sourceFile <- fs]
+    need pdfs
+
+    cmd_ "cp" "src/www/index.html" "www/index.html"
+
+  dest <> "//*.pdf" %> \outp -> do
+    let c = "src/lilypond" </> (dropDirectory1 . dropDirectory1 $ outp -<.> "ly")
     let o = dropExtension outp
     cmd_ "lilypond" "-o" [o] [c]

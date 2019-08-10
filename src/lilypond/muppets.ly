@@ -1,4 +1,4 @@
-\version "2.13.9"
+\version "2.19.80"
 \header {
   title = "Muppet Show Theme"
   arranger = "Arranged by Xavier Shay"
@@ -25,17 +25,17 @@ upper = \relative c' {
   } {
     e4 <c e>8 <b d>~ <b d> <b d> c4 |
   }}
-  
-  r2 \acciaccatura { g''16[a b] } c4 c, | 
+
+  r2 \acciaccatura { g''16[a b] } c4 c, |
   \bar "||"
-  d c b d | 
+  d c b d |
   c g r c |
   d c b d |
-  \override Glissando #'style = #'zigzag
-  c2\glissando 
-  #(set-octavation 1)
+  \override Glissando.style = #'zigzag
+  c2\glissando
+  \ottava #1
   c''4
-  #(set-octavation 0)
+  \ottava #0
   c,, |
   d c b d |
   e g, r g |
@@ -57,23 +57,23 @@ upper = \relative c' {
   <c f a c> <\parenthesize c f a d> |
   <f a e'> <f a e'> |
   <f b e> <f b e> |
-  \repeat tremolo 4 { <c' e g>16 <g a>  } 
+  \repeat tremolo 4 { <c' e g>16 <g a>  }
   << {
-    \override Glissando #'style = #'zigzag
-    g4.\glissando 
-    \change Staff = "lower" 
+    \override Glissando.style = #'zigzag
+    g4.\glissando
+    \change Staff = "lower"
     g,,,8
   } \\ {
-    \change Staff = "upper" 
+    \change Staff = "upper"
     s4. b'''8\rest
   } >>
   r2
-  #(set-octavation 1)
+  \ottava #1
   \acciaccatura { g''16[ a b] } c4
-  #(set-octavation 0)
+  \ottava #0
   r4
   \bar "|."
-  
+
 }
 
 lower = \relative c {
@@ -106,8 +106,8 @@ lower = \relative c {
   \bar "||"
   \clef treble
   <f'' a c>4 r <e gis c> r |
-  <e g c> 
-  \clef bass 
+  <e g c>
+  \clef bass
   g,,4-> c,-> r4 |
   \clef treble
   <f'' a c>4 r <e gis c> r |
@@ -128,7 +128,7 @@ lower = \relative c {
   <fis c' fis>8 r r <fis c' fis>~ <fis c' fis>2 |
   <f a e'>8 r r <f a e'>~ <f a e'>2 |
   <d f d'>8 r r <d f d'>~ <d f d'>2 |
-  
+
   \clef "bass_8"
 
   r4 <d, d'>~ <d d'> <d d'>~ |
@@ -136,10 +136,10 @@ lower = \relative c {
   <d d'> <d d'>~ <d d'> <d d'>~ |
   <d d'> <g g'>~ <g g'> <g g'> |
   \set tieWaitForNote = ##t
-  \repeat tremolo 4 { c,16~ c'~ } 
+  \repeat tremolo 4 { c,16~ c'~ }
   <c, c'>4. s8 |
-  
-  c4 r r2  
+
+  c4 r r2
   \bar "|."
 }
 
@@ -152,9 +152,9 @@ dynamics = {
   s1 *5
   s4 s4\sf s2
 
-  \override DynamicText #'self-alignment-X = #-1.0
+  \override DynamicText.self-alignment-X = #-1.0
   s1\f
-  \override DynamicText #'self-alignment-X = #0.0
+  \override DynamicText.self-alignment-X = #0.0
   s1 * 4
   s2 s4 s8 s8\mp \< |
   s1 * 3 |

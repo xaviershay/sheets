@@ -30,7 +30,7 @@ upper = \relative c'' {
   b a e
   b a e
   r8  |
-  
+
   r8.
   e16 a b
   e a b
