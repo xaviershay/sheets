@@ -3,3 +3,8 @@
 *.ps
 *.midi
 *.mid
+.stack-work
+_build
+sheets-emporium.cabal
+_build
+.stack-work

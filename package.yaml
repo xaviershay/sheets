@@ -1,0 +1,26 @@
+name:                sheets-emporium
+version:             0.1.0.0
+github:              "xaviershay/sheets"
+license:             GPL-3
+author:              "Xavier Shay"
+maintainer:          "contact@xaviershay.com"
+copyright:           "2019 Xavier Shay"
+
+extra-source-files: []
+description:         Please see the README on GitHub at <https://github.com/xaviershay/sheets#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+executables:
+  shake-build:
+    main:                Build.hs
+    source-dirs:         .
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -O2
+dependencies:
+  - base
+  - shake
