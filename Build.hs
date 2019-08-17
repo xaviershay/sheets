@@ -23,4 +23,5 @@ main = shakeArgs shakeOptions{shakeFiles="_build"} $ do
   dest <> "//*.pdf" %> \outp -> do
     let c = "src/lilypond" </> (dropDirectory1 . dropDirectory1 $ outp -<.> "ly")
     let o = dropExtension outp
+    need [c]
     cmd_ "lilypond" "-o" [o] [c]
