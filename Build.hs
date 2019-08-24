@@ -18,6 +18,7 @@ main = shakeArgs shakeOptions{shakeFiles="_build"} $ do
     let pdfs = ["www/static" </> (takeBaseName sourceFile) -<.> "pdf" | sourceFile <- fs]
     need pdfs
 
+    need ["src/www/index.html"]
     cmd_ "cp" "src/www/index.html" "www/index.html"
 
   dest <> "//*.pdf" %> \outp -> do
