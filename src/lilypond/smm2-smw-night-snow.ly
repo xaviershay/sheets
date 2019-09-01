@@ -31,7 +31,7 @@ upper = \relative c''' {
   \time 4/4
   \tempo 4 = 132
 
-  d4 bes8. f16 e8. f16 g4 \bar "||"
+  d4 bes8. f16 e8 f16 g16~ g4 \bar "||"
 
   \segno
 
@@ -73,7 +73,7 @@ lower = \relative c' {
   \key f \major
   \time 4/4
 
-  bes'4 f8. d16 c8. d16 e4 |
+  bes'4-1 f8.-2 d16-3 c8-4 d16 e16~ e4 |
 
   f4 d g c, |
   f d g8 ges4. |
@@ -85,16 +85,17 @@ lower = \relative c' {
     c8 c, d g f c f4 |
   }
 
-  bes,8 b c d
+  bes,8-4 b c d
   c a f a |
   aes-4 b-3 d-2 f-1
-  g-2 f-1 e c |
+  g-2 f-1 e-2 c-3 |
   bes a bes d
-  f e c a |
-  b d f b
+  f e c a-5 |
+  b-4 d-3 f-2 b-1
   bes d c e |
-  f4 f ees es |
-  d d des des |
+
+  f4 \parenthesize f ees es |
+  d \parenthesize d des des |
   c r4 r4 d,8 e |
   f4 c f f |
 
