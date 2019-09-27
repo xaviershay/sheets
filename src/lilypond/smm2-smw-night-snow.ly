@@ -41,7 +41,7 @@ upper = \relative c''' {
   \repeat volta 2 {
     a4 f d16 f8 f16( f4) |
     c8 f f bes a4 g |
-    a4 f d16 f8. f4 |
+    a4 f d16 f8 f16( f4) |
     c8 f bes16 a g8 f2
   }
 
