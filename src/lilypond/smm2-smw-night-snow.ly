@@ -40,7 +40,7 @@ upper = \relative c''' {
 
   \repeat volta 2 {
     a4 f d16 f8 f16( f4) |
-    c8 f f bes a4 g |
+    c8 f f c a4 g |
     a4 f d16 f8 f16( f4) |
     c8 f bes16 a g8 f2
   }
@@ -80,9 +80,9 @@ lower = \relative c' {
 
   \repeat volta 2 {
     f4 a bes b
-    a g f8 c d e |
+    a aes g8 c d e |
     f4 a bes b |
-    c8 c, d g f c f4 |
+    c8 c, e g f c f4 |
   }
 
   bes,8-4 b c d
