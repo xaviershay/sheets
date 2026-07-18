@@ -1,4 +1,4 @@
-\version "2.10.10"
+\version "2.24.0"
 \header {
  title = "Big Apple Contest"
  arranger = "Arranged by Solomon Douglas"
@@ -16,15 +16,15 @@
 %%%%%%%%%%%% Some macros %%%%%%%%%%%%%%%%%%%
 
 sl = {
- \override NoteHead #'style = #'slash
- \override Stem #'transparent = ##t
+ \override NoteHead.style = #'slash
+ \override Stem.transparent = ##t
 }
 nsl = {
- \revert NoteHead #'style
- \revert Stem #'transparent
+ \revert NoteHead.style
+ \revert Stem.transparent
 }
-cr = \override NoteHead #'style = #'cross
-ncr = \revert NoteHead #'style
+cr = \override NoteHead.style = #'cross
+ncr = \revert NoteHead.style
 
 %% insert chord name style stuff here.
 
@@ -88,7 +88,7 @@ trpt = \transpose c d \relative c'' {
   \bar "||"
 
   % B
-  \mark \markup { \musicglyph #"scripts.segno" }
+  \mark \markup { \musicglyph "scripts.segno" }
   \repeat unfold 3 {
     r2 bes4 -. r4 |
     r4 r8 bes8 -. r2 |
@@ -120,8 +120,8 @@ trpt = \transpose c d \relative c'' {
   r2 bes4 -. r4 |
   r4 r8 bes8 -. r2 |
   r8 bes8 -. r4 r2 |
-  \once \override Score.RehearsalMark #'font-size = #4
-  \mark \markup { \musicglyph #"scripts.coda" }
+  \once \override Score.RehearsalMark.font-size = #4
+  \mark \markup { \musicglyph "scripts.coda" }
   
   bes4 -. r4 r2 |
 
@@ -155,7 +155,7 @@ trpt = \transpose c d \relative c'' {
   f8 d e f~ f d e f~ |
   f2 r |
   e'8 d c bes a g f ees |
-  d c bes a \times 2/3 { d ees d } c4 |
+  d c bes a \tuplet 3/2 { d ees d } c4 |
   r4 r8 bes' des bes des bes |
   des4. bes8~ bes4 r4 |
   \normalsize
@@ -172,10 +172,10 @@ trpt = \transpose c d \relative c'' {
 
   \cadenzaOn 
   \stopStaff
-     \once \override TextScript #'word-space = #1.5
-        \once \override TextScript #'X-offset = #8
-        \once \override TextScript #'Y-offset = #1.5
-        | s1*0^\markup { \center-column { "D.S. al Coda" \line { \musicglyph #"scripts.coda" \musicglyph #"scripts.tenuto" \musicglyph #"scripts.coda"} } }
+     \once \override TextScript.word-space = #1.5
+        \once \override TextScript.X-offset = #8
+        \once \override TextScript.Y-offset = #1.5
+        | s1*0^\markup { \center-column { "D.S. al Coda" \line { \musicglyph "scripts.coda" \musicglyph "scripts.tenuto" \musicglyph "scripts.coda"} } }
         
         % Increasing the unfold counter will expand the staff-free space
         \repeat unfold 4 {
@@ -187,10 +187,10 @@ trpt = \transpose c d \relative c'' {
    \cadenzaOff
   
   \break
-  \once \override Score.RehearsalMark #'extra-offset = #'( -8.42 . 1.75 )
+  \once \override Score.RehearsalMark.extra-offset = #'( -8.42 . 1.75 )
    
- \once \override Score.RehearsalMark #'font-size = #5
- \mark \markup { \musicglyph #"scripts.coda" }
+ \once \override Score.RehearsalMark.font-size = #5
+ \mark \markup { \musicglyph "scripts.coda" }
  bes8 -. r r bes -. r4 bes4~\fermata |
  bes1
  \bar "|."
@@ -321,7 +321,7 @@ alto = \transpose c a \relative c' {
 
   \cadenzaOn 
   \stopStaff
-     \once \override TextScript #'word-space = #1.5
+     \once \override TextScript.word-space = #1.5
         % Increasing the unfold counter will expand the staff-free space
         \repeat unfold 4 {
           s4 s4 s4 s4
@@ -366,7 +366,7 @@ gtr = \relative c'' {
 
   \cadenzaOn 
   \stopStaff
-     \once \override TextScript #'word-space = #1.5
+     \once \override TextScript.word-space = #1.5
         % Increasing the unfold counter will expand the staff-free space
         \repeat unfold 4 {
           s4 s4 s4 s4
@@ -375,7 +375,7 @@ gtr = \relative c'' {
      \startStaff
    \cadenzaOff
  \nsl
- \override Staff.NoteHead #'style = #'slash
+ \override Staff.NoteHead.style = #'slash
  bes8 r r bes r4 bes4~\fermata |
  bes1
 }
@@ -450,7 +450,7 @@ up = \drummode {
  \repeat unfold 16 { \jazzHats }
 
   \stopStaff
-     \once \override TextScript #'word-space = #1.5
+     \once \override TextScript.word-space = #1.5
         % Increasing the unfold counter will expand the staff-free space
         \repeat unfold 4 {
           s4 s4 s4 s4
@@ -512,20 +512,17 @@ drumContents = {
  >>
 
  \layout {
-   \context { \RemoveEmptyStaffContext }
+   \context { \Staff \RemoveEmptyStaves }
    \context {
      \Score
-     \override BarNumber #'padding = #3
-     \override RehearsalMark #'padding = #2
+     \override BarNumber.padding = #3
+     \override RehearsalMark.padding = #2
      skipBars = ##t
    }
  }
 
  \midi {
-     \context {
-       \Score
-       tempoWholesPerMinute = #(ly:make-moment 208 4)
-     }
+     \tempo 4 = 208
  }
 }
 

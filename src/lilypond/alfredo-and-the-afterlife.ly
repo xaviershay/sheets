@@ -1,4 +1,4 @@
-\version "2.26.0"
+\version "2.24.4"
 
 % By ear from original and this how to:
 % https://www.youtube.com/watch?v=1LnSctS9iVY
@@ -6,6 +6,8 @@
 \header {
   title = "Alfredo and the Afterlife (Intro)"
   composer = "Moron Police"
+  arranger = "Transcribed by Xavier Shay"
+  tagline = \markup { \column { "" } }
 }
 
 drh = \drummode {
@@ -56,6 +58,7 @@ drl = \drummode {
 \score {
 \new StaffGroup <<
   \new Staff \relative c' {
+    \tempo 4 = 168
     c8 c8 e16 f16 g16 bes16~ bes16 f8 a16~ a16 bes16 a8
     g8 c,8 e16 f16 g16 f16~ f16 c8 des16~ des16 f16 des8
     c8 c8 e16 g16 bes16 c16 e16 c16 e16 f16 e16 c16 bes8

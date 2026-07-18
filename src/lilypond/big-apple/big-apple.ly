@@ -1,4 +1,4 @@
-\version "2.10.10"
+\version "2.24.0"
 \header {
  title = "Big Apple Contest"
  arranger = "Arranged by Solomon Douglas"
@@ -66,7 +66,7 @@ gtr = \relative c'' {
 
   \cadenzaOn 
   \stopStaff
-     \once \override TextScript #'word-space = #1.5
+     \once \override TextScript.word-space = #1.5
         % Increasing the unfold counter will expand the staff-free space
         \repeat unfold 4 {
           s4 s4 s4 s4
@@ -75,7 +75,7 @@ gtr = \relative c'' {
      \startStaff
    \cadenzaOff
  \nsl
- \override Staff.NoteHead #'style = #'slash
+ \override Staff.NoteHead.style = #'slash
  bes8 r r bes r4 bes4~\fermata |
  bes1
 }
@@ -150,7 +150,7 @@ up = \drummode {
  \repeat unfold 16 { \jazzHats }
 
   \stopStaff
-     \once \override TextScript #'word-space = #1.5
+     \once \override TextScript.word-space = #1.5
         % Increasing the unfold counter will expand the staff-free space
         \repeat unfold 4 {
           s4 s4 s4 s4
@@ -212,20 +212,17 @@ drumContents = {
  >>
 
  \layout {
-   \context { \RemoveEmptyStaffContext }
+   \context { \Staff \RemoveEmptyStaves }
    \context {
      \Score
-     \override BarNumber #'padding = #3
-     \override RehearsalMark #'padding = #2
+     \override BarNumber.padding = #3
+     \override RehearsalMark.padding = #2
      skipBars = ##t
    }
  }
 
  \midi {
-     \context {
-       \Score
-       tempoWholesPerMinute = #(ly:make-moment 208 4)
-     }
+     \tempo 4 = 208
  }
 }
 

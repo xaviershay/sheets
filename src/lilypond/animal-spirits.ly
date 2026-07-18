@@ -1,4 +1,4 @@
-\version "2.18.2"
+\version "2.24.0"
 \header {
   title = "Animal Spirits"
   composer = "Vulfpeck"
@@ -123,7 +123,7 @@ song = {
   ees4 f ges bes | aes16 aes8 aes16 r16 aes8 aes16 aes4-. r4 |
   \bar "||"
 
-  \compressFullBarRests
+  \compressEmptyMeasures
   R1*4
   %\clef "bass"
   \ottava #1
