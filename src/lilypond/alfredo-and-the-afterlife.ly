@@ -4,7 +4,7 @@
 % https://www.youtube.com/watch?v=1LnSctS9iVY
 
 \header {
-  title = "Alfredo and the Afterlife (Intro)"
+  title = "ALFREDO AND THE AFTERLIFE (INTRO)"
   composer = "Moron Police"
   arranger = "Transcribed by Xavier Shay"
   tagline = \markup { \column { "" } }
