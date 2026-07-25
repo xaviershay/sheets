@@ -33,6 +33,12 @@ const PAGE_HTML = `<!doctype html>
 </head>
 <body>
 <embed id="pdf" src="/out.pdf" type="application/pdf">
+<script>
+  const es = new EventSource('/events');
+  es.addEventListener('reload', () => {
+    document.getElementById('pdf').src = '/out.pdf?t=' + Date.now();
+  });
+</script>
 </body>
 </html>`;
 
