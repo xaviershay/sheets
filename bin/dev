@@ -19,6 +19,8 @@ const targetAbs = path.resolve(target);
 const targetDir = path.dirname(targetAbs);
 const targetBase = path.basename(targetAbs);
 const outPdf = path.join(os.tmpdir(), 'bin-dev-out.pdf');
+const vendorPdfJs = path.join(__dirname, '..', 'vendor', 'pdfjs', 'pdf.min.mjs');
+const vendorPdfWorker = path.join(__dirname, '..', 'vendor', 'pdfjs', 'pdf.worker.min.mjs');
 
 let sseClients = [];
 
@@ -96,6 +98,12 @@ const server = http.createServer((req, res) => {
     }
     res.writeHead(200, { 'Content-Type': 'application/pdf' });
     fs.createReadStream(outPdf).pipe(res);
+  } else if (req.url === '/vendor/pdf.min.mjs') {
+    res.writeHead(200, { 'Content-Type': 'text/javascript' });
+    fs.createReadStream(vendorPdfJs).pipe(res);
+  } else if (req.url === '/vendor/pdf.worker.min.mjs') {
+    res.writeHead(200, { 'Content-Type': 'text/javascript' });
+    fs.createReadStream(vendorPdfWorker).pipe(res);
   } else if (req.url === '/events') {
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
