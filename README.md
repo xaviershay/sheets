@@ -17,5 +17,5 @@ Assorted lilypond scores and a pretty webpage to host them: https://sheets.xavie
 
 Publishing requires `aws-cli` configured with `aws configure`.
 
-    stack build && stack exec shake-build
+    bin/compile
     bin/publish
