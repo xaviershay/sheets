@@ -5,4 +5,4 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-exec ly -i reformat "$@"
+exec ly -d backup-suffix= -i reformat "$@"
