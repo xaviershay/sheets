@@ -5,6 +5,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { spawn } = require('child_process');
 
 const PORT = 8001;
 
@@ -29,6 +30,23 @@ const PAGE_HTML = `<!doctype html>
 </body>
 </html>`;
 
+function compile() {
+  const tmpOutDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bin-dev-'));
+  const outBase = path.join(tmpOutDir, path.basename(targetBase, '.ly'));
+  const proc = spawn('lilypond', ['-o', outBase, targetAbs]);
+  let stderr = '';
+  proc.stderr.on('data', (d) => { stderr += d; });
+  proc.on('close', (code) => {
+    if (code === 0) {
+      fs.copyFileSync(outBase + '.pdf', outPdf);
+      console.log('compiled ok');
+    } else {
+      console.error('lilypond failed:\n' + stderr);
+    }
+    fs.rmSync(tmpOutDir, { recursive: true, force: true });
+  });
+}
+
 const server = http.createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -49,4 +67,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`serving http://localhost:${PORT}  (watching ${targetDir} for ${targetBase})`);
+  compile();
 });
