@@ -6,9 +6,61 @@
 \header {
   title = "ALFREDO AND THE AFTERLIFE (INTRO)"
   composer = "Moron Police"
-  arranger = "Transcribed by Xavier Shay"
+  poet = \markup { \italic "Transcribed by Xavier Shay" }
   tagline = \markup { \column { "" } }
 }
+
+\paper {
+  bookTitleMarkup = \markup {
+    \override #'(baseline-skip . 3.5)
+    \column {
+      \fill-line { \fromproperty #'header:dedication }
+      \override #'(baseline-skip . 3.5)
+      \column {
+        \fill-line {
+          \huge \larger \larger \bold
+          \fromproperty #'header:title
+        }
+        \fill-line {
+          \large \bold
+          \fromproperty #'header:subtitle
+        }
+        \fill-line {
+          \smaller \bold
+          \fromproperty #'header:subsubtitle
+        }
+        \fill-line {
+          \null
+          \fromproperty #'header:composer
+          \fromproperty #'header:poet
+        }
+        \fill-line {
+          \fromproperty #'header:meter
+          \fromproperty #'header:arranger
+        }
+      }
+    }
+  }
+}
+
+myTabclef =
+  #(define-music-function () ()
+   #{
+      \override Staff.Clef.stencil = #ly:text-interface::print
+      \override Staff.Clef.text = \markup {
+        \vcenter
+          \fontsize #-4
+          \override #'(baseline-skip . 1.5)
+          \center-column
+          \sans \bold \whiteout { E C G C G C }
+
+        % Select classic or modern TAB; comment out the one you don't
+        % want to use.
+
+        % music glyph version
+        \vcenter \musicglyph "clefs.tab"
+     }
+   #})
 
 drh = \drummode {
   cymc4 hh hh hh hh hh hh hh
@@ -55,27 +107,58 @@ drl = \drummode {
 
 }
 
-\score {
-  \new StaffGroup <<
-    \new Staff \relative c' {
-      \tempo 4 = 168
-      c8 c8 e16 f16 g16 bes16~ bes16 f8 a16~ a16 bes16 a8
-      g8 c,8 e16 f16 g16 f16~ f16 c8 des16~ des16 f16 des8
-      c8 c8 e16 g16 bes16 c16 e16 c16 e16 f16 e16 c16 bes8
+minFret =
+#(define-music-function (fret music) (integer? ly:music?)
+   #{
+     \set TabStaff.minimumFret = #fret
+     #music
+     \set TabStaff.minimumFret = #0
+   #})
+
+guitarNotes = {
+  \set TabStaff.restrainOpenStrings = ##t
+      c8 -\tag #'tab ^\markup { "Capo 5" } c8 e16 f16 g16 bes16~ bes16 f8 a16~ a16 bes16 a8 |
+      \minFret #5 { g8 } c,8
+
+      \minFret #4 { e16 f16 g16 f16~ f16 }
+
+      c8 des16~ des16
+      \minFret #4 { f16 }
+      des8 |
+
+      c8 c8 \minFret #3 { e16 g16 bes16 c16 e16 c16 e16 f16 e16 c16 bes8 }
       f16 g gis a c d dis e~ e f, bes f e' c bes8
 
 
       c,8 c8 e16 f16 g16 bes16~ bes16 f8 a16~ a16 bes16 a8
-      g8 c,8 e16 f16 g16 f16~ f16 c8 des16~ des16 f16 des8
+      \minFret #7 { g8 } c,8 \minFret #3 { e16 f16 g16 f16~ f16 } c8 des16~ des16 \minFret #4 { f16 } des8
       c8 c8 g'16 f e aes~ aes e8 aes,16~ aes e'16 fis gis |
       \time 4,3 7/16
-      a8 a, a16 a' b | c8 b a b16 | f8 f a16 c d | e8 e e f16 |
-      c8 c e16 f g | aes8 g f g16 | e8 c8 e16 f fis | fis'8 e c d16 |
-      g,8 g f16 g gis | d'8 c bes c16 | f,8 f  aes16 f c |
-      aes8 bes c d16 | ees8 f g bes16 | c4~ c8. | d4~ d8. |
+      a8 a, a16 a' b | \minFret #5 { c8 } b a b16 | f8 f a16 c d | e8 e e f16 |
+      c8 c e16 f g | aes8 g f g16 | e8 c8 \minFret #4 { e16 f fis } | \minFret #7 { fis'8 e c d16 } |
+      \minFret #5 { g,8 g f16 g gis | d'8 c bes c16 | f,8 f } aes16 f c |
+      aes8 bes \minFret #5 { c } d16 | ees8 \minFret #4 { f g bes16 | c4~ c8. } | \minFret #9 { d4~ d8. |}
       \bar "||"
+      }
+\score {
+<<
+    \new StaffGroup \with { instrumentName = "Lead" } <<
+    \new Staff \relative c' {
+      \tempo 4 = 168
+      \removeWithTag #'tab \guitarNotes
     }
-    \new DrumStaff {
+    \new TabStaff \with {
+      \myTabclef
+      stringTunings = \stringTuning <c, g, c g c' e'>
+      \revert TextScript.stencil
+    } {
+      \transpose c g,,
+      \relative c' {
+        \guitarNotes
+      }
+    }
+    >>
+    \new DrumStaff \with { instrumentName = "Drums" } {
       <<
         \new DrumVoice { \stemUp \drh }
         \new DrumVoice { \stemDown \drl }
