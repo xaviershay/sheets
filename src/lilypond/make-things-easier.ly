@@ -7,6 +7,7 @@
   tagline = \markup { \column { "" } }
 }
 
+
 violin = \new Staff \with { instrumentName = "Violin" } {
   \tempo 4 = 96
   \new Voice = "intro" {
@@ -75,7 +76,7 @@ vocals = \new Staff \with { instrumentName = "Vocals" } {
       \bar "||"
 
       \sectionLabel "Verse 2"
-      ^\(a'4. a8 a g fis g |
+      a'4.^\( a8 a g fis g |
       a d,~ d8 d b d e fis~ |
       fis g fis e~ e d~ d a~ |
       a2\) r4. a8^\( |

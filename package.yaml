@@ -10,7 +10,8 @@ extra-source-files: []
 description:         Please see the README on GitHub at <https://github.com/xaviershay/sheets#readme>
 
 dependencies:
-- base >= 4.7 && < 5
+- base
+- shake
 
 executables:
   shake-build:
@@ -21,6 +22,3 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     - -O2
-dependencies:
-  - base
-  - shake
