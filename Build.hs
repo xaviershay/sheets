@@ -25,4 +25,4 @@ main = shakeArgs shakeOptions{shakeFiles="_build"} $ do
     let c = "src/lilypond" </> (dropDirectory1 . dropDirectory1 $ outp -<.> "ly")
     let o = dropExtension outp
     need [c]
-    cmd_ "lilypond" "-o" [o] [c]
+    cmd_ "lilypond" "-dno-point-and-click" "-o" [o] [c]
