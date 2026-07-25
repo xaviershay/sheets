@@ -20,6 +20,12 @@ const targetDir = path.dirname(targetAbs);
 const targetBase = path.basename(targetAbs);
 const outPdf = path.join(os.tmpdir(), 'bin-dev-out.pdf');
 
+let sseClients = [];
+
+function pushReload() {
+  for (const res of sseClients) res.write('event: reload\ndata: {}\n\n');
+}
+
 const PAGE_HTML = `<!doctype html>
 <html>
 <head><meta charset="utf-8"><title>dev: ${targetBase}</title>
@@ -49,6 +55,7 @@ function compile() {
     if (code === 0) {
       fs.copyFileSync(outBase + '.pdf', outPdf);
       console.log('compiled ok');
+      pushReload();
     } else {
       console.error('lilypond failed:\n' + stderr);
     }
@@ -83,6 +90,17 @@ const server = http.createServer((req, res) => {
     }
     res.writeHead(200, { 'Content-Type': 'application/pdf' });
     fs.createReadStream(outPdf).pipe(res);
+  } else if (req.url === '/events') {
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      Connection: 'keep-alive',
+    });
+    res.write('\n');
+    sseClients.push(res);
+    req.on('close', () => {
+      sseClients = sseClients.filter((c) => c !== res);
+    });
   } else {
     res.writeHead(404);
     res.end();
