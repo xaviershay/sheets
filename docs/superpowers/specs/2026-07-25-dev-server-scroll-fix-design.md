@@ -60,7 +60,9 @@ imports pdf.js from `/vendor/pdf.min.mjs`, points
 `pdfjsLib.GlobalWorkerOptions.workerSrc` at `/vendor/pdf.worker.min.mjs`,
 and defines a `renderPdf(url)` function:
 
-1. Load the document via `pdfjsLib.getDocument(url).promise`.
+1. Load the document via `pdfjsLib.getDocument({ url }).promise` (pdf.js
+   6.x's `getDocument` requires the params-object form; a bare string
+   argument throws "expected either `data`, `range`, or `url` parameter").
 2. Reconcile the number of `<canvas>` children in `#pdf-pages` with
    `pdf.numPages` (append/remove canvases at the end as needed — existing
    canvases for unchanged pages are left in place, not recreated).

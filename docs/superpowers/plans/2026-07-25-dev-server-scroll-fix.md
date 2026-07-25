@@ -131,7 +131,7 @@ const PAGE_HTML = `<!doctype html>
   const container = document.getElementById('pdf-pages');
 
   async function renderPdf(url) {
-    const pdf = await pdfjsLib.getDocument(url).promise;
+    const pdf = await pdfjsLib.getDocument({ url }).promise;
     while (container.children.length < pdf.numPages) container.appendChild(document.createElement('canvas'));
     while (container.children.length > pdf.numPages) container.lastChild.remove();
     for (let i = 1; i <= pdf.numPages; i++) {

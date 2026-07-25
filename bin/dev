@@ -31,14 +31,41 @@ function pushReload() {
 const PAGE_HTML = `<!doctype html>
 <html>
 <head><meta charset="utf-8"><title>dev: ${targetBase}</title>
-<style>html,body{margin:0;height:100%} embed{width:100%;height:100%;border:0}</style>
+<style>
+  html,body{margin:0;height:100%}
+  #pdf-pages{width:100%;height:100%;overflow:auto;background:#525659}
+  #pdf-pages canvas{display:block;margin:0 auto 8px;box-shadow:0 0 4px rgba(0,0,0,0.5)}
+</style>
 </head>
 <body>
-<embed id="pdf" src="/out.pdf" type="application/pdf">
-<script>
+<div id="pdf-pages"></div>
+<script type="module">
+  import * as pdfjsLib from '/vendor/pdf.min.mjs';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '/vendor/pdf.worker.min.mjs';
+
+  const container = document.getElementById('pdf-pages');
+
+  async function renderPdf(url) {
+    const pdf = await pdfjsLib.getDocument({ url }).promise;
+    while (container.children.length < pdf.numPages) container.appendChild(document.createElement('canvas'));
+    while (container.children.length > pdf.numPages) container.lastChild.remove();
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({ scale: 2 });
+      const canvas = container.children[i - 1];
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      canvas.style.width = '100%';
+      const ctx = canvas.getContext('2d');
+      await page.render({ canvasContext: ctx, viewport }).promise;
+    }
+  }
+
+  renderPdf('/out.pdf').catch(() => {});
+
   const es = new EventSource('/events');
   es.addEventListener('reload', () => {
-    document.getElementById('pdf').src = '/out.pdf?t=' + Date.now();
+    renderPdf('/out.pdf?t=' + Date.now());
   });
 </script>
 </body>
