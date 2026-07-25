@@ -4,12 +4,14 @@ Assorted lilypond scores and a pretty webpage to host them: https://sheets.xavie
 
 ## Requirements
 
-Uses nightly lilypond (2.19.83), get it from
-http://lilypond.org/downloads/binaries/linux-64/
+    sudo apt install lilypond # 2.24.4 at time of writing
+    sudo apt install python-ly # Only required for bin/format
 
-## Compiling individual pieces
+## Development
 
-    lilypond src/whatever.ly
+    bin/dev src/lilypond/whatever.ly    # Dev server at :8001
+    bin/format src/lilypond/whatever.ly # Auto-formatter
+    bin/compile && bin/serve            # Website at :8000
 
 ## Building and Publishing Website
 
