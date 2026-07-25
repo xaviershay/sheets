@@ -1,4 +1,4 @@
-# Lilypond dev server: auto-compile + no-flicker browser reload
+# Lilypond dev server: auto-compile + browser reload
 
 ## Problem
 
@@ -7,20 +7,15 @@ manually reloading the PDF in a viewer to see changes. Want a watch-and-serve
 loop like Hacklily's online editor, but with a local editor of choice instead
 of a browser-based text editor.
 
-A naive "recompile on save, always reload" loop flickers: every save
-re-triggers a browser refresh even when the compiled PDF is byte-identical in
-substance (e.g. a comment-only edit, or a save that doesn't change engraved
-output). Lilypond also embeds a fresh `/CreationDate`, `/ModDate`, an XMP
-`DocumentID` UUID, and a `/ID` trailer in every compile, so two compiles of
-the *same* source are never byte-identical even though the rendered content
-is unchanged — confirmed by compiling `chameleon.ly` twice: 147929 bytes both
-times, differing in exactly 8 small byte ranges corresponding to those four
-fields. A hash comparison must strip those fields before comparing, or every
-save would appear "changed."
+Reload must be push-based (server notifies browser on actual file-save +
+recompile), not a polling loop re-checking on a timer — a timer-driven poll
+would refresh/flicker on its own schedule regardless of whether anything
+happened. Reloading every time a save actually produces a new compile is
+fine and expected.
 
 ## Scope
 
-One new script: `bin/dev-serve <file.ly>`. Not part of the `Build.hs`/Shake
+One new script: `bin/dev <file.ly>`. Not part of the `Build.hs`/Shake
 site-build pipeline — this is a standalone local dev tool for iterating on a
 single piece.
 
@@ -30,10 +25,9 @@ integrating into `bin/serve` or the publish flow.
 ## Architecture
 
 Single Node.js script, no npm dependencies (uses only Node built-ins: `http`,
-`fs`, `child_process`, `crypto`). Node is already available on the dev
-machine.
+`fs`, `child_process`). Node is already available on the dev machine.
 
-Run as: `bin/dev-serve src/lilypond/chameleon.ly`
+Run as: `bin/dev src/lilypond/chameleon.ly`
 
 Listens on a fixed port, `8001` (existing `bin/serve` uses `8000`, so this
 stays out of its way if both run at once).
@@ -52,7 +46,7 @@ The server:
    the same directory — editing `common.ly` should also trigger a recompile
    of the target piece.
 
-## Compile + change-detection flow
+## Compile flow
 
 On a watched-file change event:
 
@@ -60,20 +54,10 @@ On a watched-file change event:
    behavior).
 2. Run `lilypond -o <tmpdir> <file.ly>`.
 3. On non-zero exit: print lilypond's stderr to the terminal running
-   `bin/dev-serve`. Do not touch the served PDF. Do not push a reload event.
+   `bin/dev`. Do not touch the served PDF. Do not push a reload event.
    The last good PDF keeps being served.
-4. On success: read the compiled PDF bytes, canonicalize by stripping the
-   volatile fields before hashing:
-   - `/CreationDate(D:...)`
-   - `/ModDate(D:...)`
-   - XMP `xmpMM:DocumentID='uuid:...'`
-   - `/ID [<...><...>]` trailer
-   via regex over the raw bytes, then SHA-256 the result.
-5. Compare to the hash of the currently-served PDF.
-   - Same hash: no-op. This is the no-flicker case — no reload event is
-     pushed to the browser.
-   - Different hash: copy the new PDF to become the served `/out.pdf`, push
-     an SSE `reload` event to connected clients.
+4. On success: copy the compiled PDF to become the served `/out.pdf`, push
+   an SSE `reload` event to connected clients.
 
 ## Client behavior
 
@@ -95,12 +79,11 @@ cache.
 
 ## Testing (manual)
 
-Run `bin/dev-serve src/lilypond/chameleon.ly`, open the served page, then:
+Run `bin/dev src/lilypond/chameleon.ly`, open the served page, then:
 
 1. Edit a note, save → confirm the PDF reloads with the change visible.
-2. Save the file with no substantive change (e.g. `touch` it, or save
-   without editing) → confirm no reload fires (check terminal shows a
-   compile ran but no "pushed reload" log line).
-3. Introduce a syntax error, save → confirm the old PDF stays displayed and
+2. Introduce a syntax error, save → confirm the old PDF stays displayed and
    the terminal prints lilypond's error.
-4. Fix the error, save → confirm reload resumes.
+3. Fix the error, save → confirm reload resumes.
+4. Leave the page open, idle, untouched → confirm no reload ever fires
+   without a save (rules out an accidental polling loop).
