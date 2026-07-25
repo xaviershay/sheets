@@ -30,13 +30,22 @@ const PAGE_HTML = `<!doctype html>
 </body>
 </html>`;
 
+let compiling = false;
+let pending = false;
+
 function compile() {
+  if (compiling) {
+    pending = true;
+    return;
+  }
+  compiling = true;
   const tmpOutDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bin-dev-'));
   const outBase = path.join(tmpOutDir, path.basename(targetBase, '.ly'));
   const proc = spawn('lilypond', ['-o', outBase, targetAbs]);
   let stderr = '';
   proc.stderr.on('data', (d) => { stderr += d; });
   proc.on('close', (code) => {
+    compiling = false;
     if (code === 0) {
       fs.copyFileSync(outBase + '.pdf', outPdf);
       console.log('compiled ok');
@@ -44,8 +53,23 @@ function compile() {
       console.error('lilypond failed:\n' + stderr);
     }
     fs.rmSync(tmpOutDir, { recursive: true, force: true });
+    if (pending) {
+      pending = false;
+      compile();
+    }
   });
 }
+
+let debounceTimer = null;
+
+function scheduleCompile() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(compile, 300);
+}
+
+fs.watch(targetDir, (eventType, filename) => {
+  if (filename && filename.endsWith('.ly')) scheduleCompile();
+});
 
 const server = http.createServer((req, res) => {
   if (req.url === '/') {
