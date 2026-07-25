@@ -28,6 +28,10 @@ function pushReload() {
   for (const res of sseClients) res.write('event: reload\ndata: {}\n\n');
 }
 
+function pushError(message) {
+  for (const res of sseClients) res.write('event: error\ndata: ' + JSON.stringify(message) + '\n\n');
+}
+
 const PAGE_HTML = `<!doctype html>
 <html>
 <head><meta charset="utf-8"><title>dev: ${targetBase}</title>
@@ -93,6 +97,7 @@ function compile() {
       pushReload();
     } else {
       console.error('lilypond failed:\n' + stderr);
+      pushError(stderr);
     }
     fs.rmSync(tmpOutDir, { recursive: true, force: true });
     if (pending) {
