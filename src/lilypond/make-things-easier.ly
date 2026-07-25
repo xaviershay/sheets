@@ -7,10 +7,7 @@
   tagline = \markup { \column { "" } }
 }
 
-\score {
-  \new StaffGroup {
-  <<
-    \new Staff \with { instrumentName = "Violin" } {
+    violin = \new Staff \with { instrumentName = "Violin" } {
         \tempo 4 = 96
         \new Voice = "intro" {
             \relative c'' {
@@ -20,12 +17,27 @@
                 a'4 d, e d b d e d8 e |
                 fis8 g fis d b4 d8 b g4 d' e a,|
                 \bar "||"
+                R1*42
+                \relative c' {
+                g'8 a b cis d e fis g |
+                a4. a8 a8. g16 fis8 g |
+                \acciaccatura g( a8) d,~ d4 b8 d e fis~ |
+                fis g fis e~ e d~ d4 |
+                a1 |
+
+                d4. cis16 d e4. d16 e |
+                fis8 \grace g16( \grace fis e8) d g8~ g fis e4 |
+                r8 d d d, d' d d8. d16 |
+                fis8 g fis e~ \fermata e2 |
+                \bar "|."
+                }
             }
         }
     }
-    \new Staff \with { instrumentName = "Vocals" } {
+    vocals = \new Staff \with { instrumentName = "Vocals" } {
         \new Voice = "lead" {
             \relative c'' {
+                \key d \major
                 R1*8
                 %% Verse 1
 
@@ -81,25 +93,6 @@
                 e fis~ fis4~ fis4. d8~ |
                 d2. r8 d8 |
 
-                <<
-                \new Staff \with { instrumentName = "Violin" } {
-                \key d \major
-                R1*5
-                \relative c' {
-                g'8 a b cis d e fis g |
-                a4. a8 a8. g16 fis8 g |
-                \acciaccatura g( a8) d,~ d4 b8 d e fis~ |
-                fis g fis e~ e d~ d4 |
-                a1 |
-
-                d4. cis16 d e4. d16 e |
-                fis8 \grace g16( \grace fis e8) d g8~ g fis e4 |
-                r8 d d d, d' d d8. d16 |
-                fis8 g fis e~ \fermata e2 |
-                \bar "|."
-                }
-                }
-                \relative c' {
                 b'4. a8 a cis~ cis d~ |
                 d fis, e d~ d b d e~ |
                 e fis~ fis4~ fis4. d8~ |
@@ -107,12 +100,11 @@
                 d bes~ bes bes~ bes4 a8 g8~ |
                 g4 r2.
                 \bar "||"
-                }
-                >>
+                R1*8
             }
         }
     }
-    \new Lyrics \lyricsto "lead" {
+    words = \new Lyrics \lyricsto "lead" {
       All the things that I re -- mem -- ber
       ta -- king me far from this time and space.
       I knew as a boy that part of me lived in that place
@@ -141,6 +133,12 @@
       And hide your -- self from all that you are, it could take you far.
       It could make things ea -- si -- er.
     }
+\score {
+  \new StaffGroup {
+  <<
+    \vocals
+    \words
+    \violin
   >>
   }
 
