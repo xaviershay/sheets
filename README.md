@@ -10,9 +10,13 @@ Assorted lilypond scores and a pretty webpage to host them: https://sheets.xavie
 
 ## Development
 
+    bin/setup                           # Once, after cloning: installs git hooks
     bin/dev src/lilypond/whatever.ly    # Dev server at :8001
     bin/format src/lilypond/whatever.ly # Auto-formatter
     bin/compile && bin/serve            # Website at :8000
+
+A pre-commit hook auto-formats staged `.ly` files (via `bin/format`) before
+they're committed.
 
 ## Building and Publishing Website
 

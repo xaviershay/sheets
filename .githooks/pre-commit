@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+staged_ly=$(mktemp)
+git diff --cached --name-only --diff-filter=ACM -z -- '*.ly' > "$staged_ly"
+
+xargs -0 -r bin/format < "$staged_ly"
+xargs -0 -r git add < "$staged_ly"
+
+rm -f "$staged_ly"
