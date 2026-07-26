@@ -72,40 +72,44 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
   \new Staff = "up" {
     R1 * 4
 
-    \relative c''' {
-      \grace g16( \grace c16 \makeOctaves #-1 {
-        e8.() c16 g4) d'8( c d e |
+    \repeat volta 2 {
+      \relative c''' {
+        \slashedGrace {g16^( c16} <e) e,>8.( \makeOctaves #-1 {
+          c16 g4) d'8( c d e |
 
-        \tuplet 3/2 { d4 c8 }
-        \tuplet 3/2 { c4) \ottava #1 aes'8(  }
-        \tuplet 3/2 { aes4 g8 }
-        g8 f8 |
+          \tuplet 3/2 { d4 c8 }
+          \tuplet 3/2 { c4) \ottava #1 aes'8(  }
+          \tuplet 3/2 { aes4 g8 }
+          g8 f8 |
 
-        e8.)( f16 g8. a16 b8 c d e | d8. c16 c4) \ottava #0 r2
-      } |
-      e,,8. c16 g4 d'8 c d e | g8. e16 e4 r2 |
-      e8. f16 g8. a16 b8 c d e d16. c8 c4 \fermata r2 |
+          e8.)( f16 g8. a16 b8 c d e | d8. c16 c4) \ottava #0 r2
+        } |
+      }
     }
   }
-  \new Staff = "down" {
+  \new Staff = "down" \with {
+  } {
     \clef bass
     R1 * 4
-    \relative c {
-      % TODO: Place note in top staff and slur to it: https://music.stackexchange.com/questions/63372/how-can-i-change-slur-from-above-to-below-notes-when-switching-staff-in-lilypond
-      c16( g' c e
-      g4)
-      d,16( fis a c d4)
-      \tuplet 3/2 { f,8 ( aes c } f4)
-      \tuplet 3/2 { f8 ( c aes } g8 f )
-    }
-    \relative c' {
-      c,16( g' c e)
-      d,16( f a d)
-      e,16( b' c8~ c4)
-      \ottava #1
-      a16( e' b' c~ c4)
-      \ottava #0
-      r2
+    \repeat volta 2 {
+      \relative c {
+        \grace s8 % HACK: Needed for correct rendering, known issue apparently.
+        % TODO: Place note in top staff and slur to it: https://music.stackexchange.com/questions/63372/how-can-i-change-slur-from-above-to-below-notes-when-switching-staff-in-lilypond
+        c16( g' c e
+        g4)
+        d,16( fis a c d4)
+        \tuplet 3/2 { f,8 ( aes c } f4)
+        \tuplet 3/2 { f8 ( c aes } g8 f )
+      }
+      \relative c' {
+        c,16( g' c e)
+        d,16( f a d)
+        e,16( b' c8~ c4)
+        \ottava #1
+        a16( e' b' c~ c4)
+        \ottava #0
+        r2
+      }
     }
   }
 >>
