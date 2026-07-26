@@ -1,3 +1,0 @@
-resolver: lts-13.29
-extra-deps:
-  - shake-0.18.3
