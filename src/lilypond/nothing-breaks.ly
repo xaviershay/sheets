@@ -47,6 +47,7 @@ leadLine =
                                                 (ly:music-property music 'elements) t)))
    music)
 pad = \new Staff \with { instrumentName = "Pad" } {
+  \tempo 4 = 60
   \relative c' {
     \leadLine { e2 d f d e d f d }
   }
@@ -62,9 +63,25 @@ padChords = \new ChordNames \chordmode {
 }
 synth = \new Staff {
   \relative c'' {
-    s1 * 8
+    R1*8
+    R1 \fermata
+    \bar "||"
 
-    f4 e8 d c4
+    f4 e8 d c2 |
+    r2 a4 c |
+    d4. e8 e2 |
+    g4 f8 ees c4. c8~ |
+    c2 c8 ees bes'4 |
+    bes a8 g a2 |
+    \time 6/4
+    a4. g8 e4. d8 |
+    c2
+    \time 4/4
+    c'4. b8 a4 g e4 g d8 e16 d c4
+    c8 a'~ a g e4 d8 c d c b c g2
+    c'4. b8 a4 g e4 g d8 e16 d c4
+    d2 e4 g d2 c2 |
+    c1
   }
 }
 
@@ -86,6 +103,7 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
         } |
       }
     }
+    R1
   }
   \new Staff = "down" \with {
   } {
@@ -111,14 +129,68 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
         r2
       }
     }
+    R1
   }
 >>
+
+drh = \drummode {
+  R1*8
+  s1
+  cymc1
+  s1
+  cymc1
+  r2 r4. cymc8
+  s1
+  cymc2
+  cymc2
+  cymc4
+  cymc4
+  cymc4
+  cymc4
+  cymc4
+  cymc4
+  cymc4
+}
+
+drl = \drummode {
+  R1*8
+  \tempo 4 = 160
+  r2 r8 \fermata bd8 \acciaccatura sn8 sn4
+  bd4 sn8 bd sn4
+  sn8 bd sn bd sn bd sn bd
+  \acciaccatura sn sn bd
+  bd4
+  \acciaccatura sn8 sn bd
+  bd4
+  sn8 bd
+  sn8 tomh16 tomh16 tommh tommh tommh8
+  tomml16 tomml16 bd bd
+  sn sn bd8
+  r8 bd sn4
+  bd16 sn bd8 sn bd
+  bd4 sn8 bd bd8 sn16 sn
+  toml toml bd bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  bd4
+}
 
 \score {
   <<
     \padChords
     \pad
     \piano
+    \synth
+    \new DrumStaff \with { instrumentName = "Drums" } {
+      <<
+        \new DrumVoice { \stemUp \drh }
+        \new DrumVoice { \stemDown \drl }
+      >>
+    }
   >>
 
   \layout {
