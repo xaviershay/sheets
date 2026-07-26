@@ -6,6 +6,7 @@ Assorted lilypond scores and a pretty webpage to host them: https://sheets.xavie
 
     sudo apt install lilypond # 2.24.4 at time of writing
     sudo apt install python-ly # Only required for bin/format
+    ruby # 3.x, stdlib only - no gems required
 
 ## Development
 

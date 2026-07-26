@@ -24,7 +24,9 @@ build_plan.load do
     pdf_files << pdf
     output_base = "www/static/#{name}"
 
-    grouped_file "Lilypond", pdf => ["www/static", ly_file] do
+    deps = ["www/static", ly_file] + Dir["src/lilypond/#{name}/**/*.ly"]
+
+    grouped_file "Lilypond", pdf => deps do
       system("lilypond", "-dno-point-and-click", "-o", output_base, ly_file) or
         raise "lilypond failed for #{ly_file}"
     end
