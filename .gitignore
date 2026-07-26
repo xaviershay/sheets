@@ -10,3 +10,4 @@ _build
 .stack-work
 www
 .env
+.worktrees
