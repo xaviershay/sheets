@@ -158,26 +158,26 @@ words = \new Lyrics \lyricsto "lead" {
 }
 
 verseChords = \chordmode {
-            d2 d/fis | gis:dim g:min/bes |
-            b:m e:7 | e:min7 a |
-            d2 d/fis | g g:min/bes |
-            b:m e:7 | e:min7 a |
-        }
+  d2 d/fis | gis:dim g:min/bes |
+  b:m e:7 | e:min7 a |
+  d2 d/fis | g g:min/bes |
+  b:m e:7 | e:min7 a |
+}
 
 chordtext = \new ChordNames {
-    \verseChords
-    \verseChords
-    \verseChords
-    \chordmode {
-          g2 a2 | g:min/bes b:min | e1:7 | e2:min7 a |
-          g2 a2 | g:min/bes b:min | e1:7/gis | s1 | g:min | s1 |
-        }
-    \verseChords
-    \chordmode {
-          g2 a2 | g:min/bes b:min | e1:7 | d/fis |
-          g2 a2 | g:min/bes b:min | e1:7/gis | s1 | g:min | s1 |
-          }
-    \verseChords
+  \verseChords
+  \verseChords
+  \verseChords
+  \chordmode {
+    g2 a2 | g:min/bes b:min | e1:7 | e2:min7 a |
+    g2 a2 | g:min/bes b:min | e1:7/gis | s1 | g:min | s1 |
+  }
+  \verseChords
+  \chordmode {
+    g2 a2 | g:min/bes b:min | e1:7 | d/fis |
+    g2 a2 | g:min/bes b:min | e1:7/gis | s1 | g:min | s1 |
+  }
+  \verseChords
 }
 
 \score {
