@@ -143,13 +143,14 @@ drh = \drummode {
   s1
   cymc2
   cymc2
+  r4
   cymc4
   cymc4
   cymc4
   cymc4
   cymc4
   cymc4
-  cymc4
+  r4. cymc8 r4
 }
 
 drl = \drummode {
@@ -176,7 +177,36 @@ drl = \drummode {
   sn8 bd16 bd
   sn8 bd16 bd
   sn8 bd16 bd
-  bd4
+  bd8 sn16 sn sn8 sn16 sn sn sn bd8 sn16 sn bd8
+  bd8. bd16 sn4
+  bd16 sn16 bd8
+  r16 bd sn8
+  bd8 bd8 r16 bd16 sn8
+  bd16 bd8 bd16 sn8. \parenthesize sn16
+  bd16 sn bd8 sn bd bd8. sn16 sn tomh tomh toml
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd16 bd
+  sn8 bd8
+  bd8 sn16 sn sn8 sn16 sn sn sn bd8
+  r16 bd sn8
+  bd8. bd16 sn4
+  bd8 bd
+  r16 bd sn sn
+
+  sn8 sn16 sn
+  bd8 sn16 sn
+  sn8 sn16 sn
+  bd8. bd16
+  sn8 sn8
+  r16 bd sn toml toml8.
+  bd16 sn sn sn8 r16 bd16 sn sn sn8.
+  bd16 sn tomh tommh toml toml8. toml16
+  bd8
 }
 
 \score {
