@@ -19,6 +19,7 @@ const targetAbs = path.resolve(target);
 const targetDir = path.dirname(targetAbs);
 const targetBase = path.basename(targetAbs);
 const outPdf = path.join(os.tmpdir(), 'bin-dev-out.pdf');
+const outMidi = path.join(os.tmpdir(), 'bin-dev-out.mid');
 const vendorPdfJs = path.join(__dirname, '..', 'vendor', 'pdfjs', 'pdf.min.mjs');
 const vendorPdfWorker = path.join(__dirname, '..', 'vendor', 'pdfjs', 'pdf.worker.min.mjs');
 
@@ -123,6 +124,11 @@ function compile() {
     compiling = false;
     if (code === 0) {
       fs.copyFileSync(outBase + '.pdf', outPdf);
+      if (fs.existsSync(outBase + '.midi')) {
+        fs.copyFileSync(outBase + '.midi', outMidi);
+      } else if (fs.existsSync(outMidi)) {
+        fs.rmSync(outMidi);
+      }
       const warnings = extractWarnings(stderr);
       if (warnings) {
         console.warn('compiled with warnings:\n' + warnings);
@@ -165,6 +171,14 @@ const server = http.createServer((req, res) => {
     }
     res.writeHead(200, { 'Content-Type': 'application/pdf' });
     fs.createReadStream(outPdf).pipe(res);
+  } else if (req.url.startsWith('/out.mid')) {
+    if (!fs.existsSync(outMidi)) {
+      res.writeHead(404);
+      res.end();
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'audio/midi' });
+    fs.createReadStream(outMidi).pipe(res);
   } else if (req.url === '/vendor/pdf.min.mjs') {
     res.writeHead(200, { 'Content-Type': 'text/javascript' });
     fs.createReadStream(vendorPdfJs).pipe(res);
