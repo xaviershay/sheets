@@ -75,8 +75,19 @@ const PAGE_HTML = `<!doctype html>
       return;
     }
     midiBar.innerHTML = '<midi-player id="midi-player" sound-font></midi-player>';
+    refreshMidiSrc();
   };
   document.head.appendChild(midiScript);
+
+  function refreshMidiSrc() {
+    const player = document.getElementById('midi-player');
+    if (!player) return;
+    player.stop();
+    fetch('/out.mid', { method: 'HEAD' }).then((res) => {
+      player.style.display = res.ok ? '' : 'none';
+      if (res.ok) player.src = '/out.mid?t=' + Date.now();
+    });
+  }
 
   const container = document.getElementById('pdf-pages');
 
@@ -112,6 +123,7 @@ const PAGE_HTML = `<!doctype html>
       warningBanner.style.display = 'none';
     }
     renderPdf('/out.pdf?t=' + Date.now());
+    refreshMidiSrc();
   });
   es.addEventListener('error', (e) => {
     warningBanner.style.display = 'none';
