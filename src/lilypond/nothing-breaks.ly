@@ -74,14 +74,17 @@ synth = \new Staff {
     c2 c8 ees bes'4 |
     bes a8 g a2 |
     \time 6/4
-    a4. g8 e4. d8 |
-    c2
+    a4. g8 e4. d8  c2 |
     \time 4/4
     c'4. b8 a4 g e4 g d8 e16 d c4
     c8 a'~ a g e4 d8 c d c b c g2
     c'4. b8 a4 g e4 g d8 e16 d c4
     d2 e4 g d2 c2 |
-    c1
+    c4
+    r4
+    c4
+    r4
+    c1~ c1
   }
 }
 
@@ -133,79 +136,66 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
   }
 >>
 
+% Crash 2: same notehead as crashcymbal, one step higher so it's
+% visually distinct on the staff (default table puts both at same position).
+drumStyleTable = #(alist->hash-table
+                   (cons '(crashcymbalb xcircle #f 7)
+                         (hash-table->alist drums-style)))
+
 drh = \drummode {
-  R1*8
-  s1
-  cymc1
-  s1
-  cymc1
-  r2 r4. cymc8
-  s1
-  cymc2
-  cymc2
-  r4
+  R1*8 |
+  s1 |
+  \bar "||"
+  cymc4 cymc4 cymc4 cymc4 |
+  cymc4 cymc4 cymc4 cymc4 |
+  cymcb2 cymc2 |
+  s2 s4. cymcb8 |
+  s2 s16 cymc8. s4 |
+  cymc2 cymc2 |
+  \time 6/4
+  s4 cymc4 cymc4 cymc4  cymc4 cymc4 |
+  \time 4/4
+  cymc2 s8 cymcb8 s4 |
+  cymc2 s2 |
+  s2. cymcb4 |
+  s2 cymc2 |
+  cymc2 cymc4 cymc4 |
+  cymc4 cymc4 cymc4 cymc4 |
+  cymc2 s8 cymcb8 s4 |
+  s4 cymcb4 cymc8 cymc8 s4 |
+  s4 cymc4 s4 cymc4 |
+  s1*2 |
+  \bar "||"
   cymc4
-  cymc4
-  cymc4
-  cymc4
-  cymc4
-  cymc4
-  r4. cymc8 r4
+
 }
 
 drl = \drummode {
   R1*8
   \tempo 4 = 160
-  r2 r8 \fermata bd8 \acciaccatura sn8 sn4
-  bd4 sn8 bd sn4
-  sn8 bd sn bd sn bd sn bd
-  \acciaccatura sn sn bd
-  bd4
-  \acciaccatura sn8 sn bd
-  bd4
-  sn8 bd
-  sn8 tomh16 tomh16 tommh tommh tommh8
-  tomml16 tomml16 bd bd
-  sn sn bd8
-  r8 bd sn4
-  bd16 sn bd8 sn bd
-  bd4 sn8 bd bd8 sn16 sn
-  toml toml bd bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  bd8 sn16 sn sn8 sn16 sn sn sn bd8 sn16 sn bd8
-  bd8. bd16 sn4
-  bd16 sn16 bd8
-  r16 bd sn8
-  bd8 bd8 r16 bd16 sn8
-  bd16 bd8 bd16 sn8. \parenthesize sn16
-  bd16 sn bd8 sn bd bd8. sn16 sn tomh tomh toml
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd16 bd
-  sn8 bd8
-  bd8 sn16 sn sn8 sn16 sn sn sn bd8
-  r16 bd sn8
-  bd8. bd16 sn4
-  bd8 bd
-  r16 bd sn sn
-
-  sn8 sn16 sn
-  bd8 sn16 sn
-  sn8 sn16 sn
-  bd8. bd16
-  sn8 sn8
-  r16 bd sn toml toml8.
-  bd16 sn sn sn8 r16 bd16 sn sn sn8.
-  bd16 sn tomh tommh toml toml8. toml16
+  r2 r8 \fermata bd8 \acciaccatura sn8 sn4 |
+  \bar "||"
+  bd4 sn8 bd sn4 sn8 bd |
+  sn bd sn bd sn bd  \acciaccatura sn sn bd |
+  bd4 \acciaccatura sn8 sn bd bd4 sn8 bd |
+  sn8 tomh16 tomh16 tommh tommh tommh8 tomml16 tomml16 bd bd sn sn bd8 |
+  r8 bd sn4 bd16 sn bd8 sn bd |
+  bd4 sn8 bd bd8 sn16 sn toml toml bd bd |
+  \time 6/4
+  sn8 bd16 bd sn8 bd16 bd sn8 bd16 bd sn8 bd16 bd sn8 bd16 bd sn8 bd16 bd |
+  \time 4/4
+  bd8 sn16 sn sn8 sn16 sn sn sn bd8 sn16 sn bd8 |
+  bd8. bd16 sn4 bd16 sn16 bd8 r16 bd sn8 |
+  bd8 bd8 r16 bd16 sn8 bd16 bd8 bd16 sn8. \parenthesize sn16 |
+  bd16 sn bd8 sn bd bd8. sn16 sn tomh tomh toml |
+  sn8 bd16 bd sn8 bd16 bd sn8 bd16 bd sn8 bd16 bd |
+  sn8 bd16 bd sn8 bd16 bd sn8 bd16 bd sn8 bd8 |
+  bd8 sn16 sn sn8 sn16 sn sn sn bd8 r16 bd sn8 |
+  bd8. bd16 sn4 bd8 bd r16 bd sn sn |
+  sn8 sn16 sn bd8 sn16 sn sn8 sn16 sn bd8. bd16 |
+  sn8 sn8 r16 bd sn toml toml8. bd16 sn sn sn8 |
+  r16 bd16 sn sn sn8. bd16 sn tomh tommh toml toml8. toml16 |
+  \bar "||"
   bd8
 }
 
@@ -215,7 +205,7 @@ drl = \drummode {
     \pad
     \piano
     \synth
-    \new DrumStaff \with { instrumentName = "Drums" } {
+    \new DrumStaff \with { instrumentName = "Drums" drumStyleTable = #drumStyleTable } {
       <<
         \new DrumVoice { \stemUp \drh }
         \new DrumVoice { \stemDown \drl }
