@@ -41,21 +41,42 @@ const PAGE_HTML = `<!doctype html>
   html,body{margin:0;height:100%}
   #pdf-pages{width:100%;height:100%;overflow:auto;background:#525659}
   #pdf-pages canvas{display:block;margin:0 auto 8px;box-shadow:0 0 4px rgba(0,0,0,0.5)}
-  #error-banner{display:none;position:fixed;top:0;left:0;right:0;max-height:40%;overflow:auto;
+  #midi-bar{position:fixed;top:0;left:0;right:0;height:40px;display:flex;align-items:center;
+    padding:0 12px;background:#222;color:#aaa;font:13px/1 monospace;box-shadow:0 2px 6px rgba(0,0,0,0.6);z-index:2}
+  #error-banner{display:none;position:fixed;top:40px;left:0;right:0;max-height:40%;overflow:auto;
     margin:0;padding:12px;background:#3a0d0d;color:#ffffff;font:15px/1.5 monospace;
     white-space:pre-wrap;box-shadow:0 2px 6px rgba(0,0,0,0.6);z-index:1}
-  #warning-banner{display:none;position:fixed;top:0;left:0;right:0;max-height:40%;overflow:auto;
+  #warning-banner{display:none;position:fixed;top:40px;left:0;right:0;max-height:40%;overflow:auto;
     margin:0;padding:12px;background:#4a3a0d;color:#ffffff;font:15px/1.5 monospace;
     white-space:pre-wrap;box-shadow:0 2px 6px rgba(0,0,0,0.6);z-index:1}
 </style>
 </head>
 <body>
+<div id="midi-bar">loading player…</div>
 <pre id="error-banner"></pre>
 <pre id="warning-banner"></pre>
 <div id="pdf-pages"></div>
 <script type="module">
   import * as pdfjsLib from '/vendor/pdf.min.mjs';
   pdfjsLib.GlobalWorkerOptions.workerSrc = '/vendor/pdf.worker.min.mjs';
+
+  const midiBar = document.getElementById('midi-bar');
+
+  function midiPlayerUnavailable() {
+    midiBar.textContent = 'MIDI unavailable (offline)';
+  }
+
+  const midiScript = document.createElement('script');
+  midiScript.src = 'https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/html-midi-player@1.5.0';
+  midiScript.onerror = midiPlayerUnavailable;
+  midiScript.onload = () => {
+    if (!customElements.get('midi-player')) {
+      midiPlayerUnavailable();
+      return;
+    }
+    midiBar.innerHTML = '<midi-player id="midi-player" sound-font></midi-player>';
+  };
+  document.head.appendChild(midiScript);
 
   const container = document.getElementById('pdf-pages');
 
