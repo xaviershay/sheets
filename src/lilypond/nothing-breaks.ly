@@ -46,22 +46,23 @@ leadLine =
        (ly:music-set-property! music 'elements (octavize-chord
                                                 (ly:music-property music 'elements) t)))
    music)
-pad = \new Staff \with { instrumentName = "Pad" } {
+pad = \new Staff \with { instrumentName = "Pad" midiInstrument = "pad 2 (warm)" } {
   \tempo 4 = 60
   \relative c' {
-    \leadLine { e2 d f d e d f d }
+    \leadLine { e2 d f d e d f d c }
   }
 }
 
 makeOctaves = #(define-music-function (arg mus) (integer? ly:music?)
                  (music-map (lambda (x) (octavize x arg)) (event-chord-wrap! mus)))
 
-padChords = \new ChordNames \chordmode {
+padChords = \new ChordNames \with { midiInstrument = "pad 2 (warm)" } \chordmode {
   c2 g:sus4/c f/c g:sus4/c
   c2 g:sus4/c f/c g:sus4/c
-
+  c
 }
-synth = \new Staff {
+
+synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (sawtooth)" } {
   \relative c'' {
     R1*8
     R1 \fermata
