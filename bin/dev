@@ -43,6 +43,8 @@ const PAGE_HTML = `<!doctype html>
   #pdf-pages canvas{display:block;margin:0 auto 8px;box-shadow:0 0 4px rgba(0,0,0,0.5)}
   #midi-bar{position:fixed;top:0;left:0;right:0;height:40px;display:flex;align-items:center;
     padding:0 12px;background:#222;color:#aaa;font:13px/1 monospace;box-shadow:0 2px 6px rgba(0,0,0,0.6);z-index:2}
+  #midi-bar midi-player{flex:1;width:100%;min-width:0}
+  #midi-note{flex:none;margin-left:8px;white-space:nowrap}
   #error-banner{display:none;position:fixed;top:40px;left:0;right:0;max-height:40%;overflow:auto;
     margin:0;padding:12px;background:#3a0d0d;color:#ffffff;font:15px/1.5 monospace;
     white-space:pre-wrap;box-shadow:0 2px 6px rgba(0,0,0,0.6);z-index:1}
@@ -128,6 +130,7 @@ const PAGE_HTML = `<!doctype html>
     refreshMidiSrc();
   });
   es.addEventListener('error', (e) => {
+    if (!e.data) return; // native EventSource connection error, not a server-pushed error event
     warningBanner.style.display = 'none';
     errorBanner.textContent = JSON.parse(e.data);
     errorBanner.style.display = 'block';
