@@ -24,8 +24,9 @@ const vendorPdfWorker = path.join(__dirname, '..', 'vendor', 'pdfjs', 'pdf.worke
 
 let sseClients = [];
 
-function pushReload() {
-  for (const res of sseClients) res.write('event: reload\ndata: {}\n\n');
+function pushReload(warning) {
+  const data = JSON.stringify({ warning: warning || null });
+  for (const res of sseClients) res.write('event: reload\ndata: ' + data + '\n\n');
 }
 
 function pushError(message) {
@@ -42,10 +43,14 @@ const PAGE_HTML = `<!doctype html>
   #error-banner{display:none;position:fixed;top:0;left:0;right:0;max-height:40%;overflow:auto;
     margin:0;padding:12px;background:#3a0d0d;color:#ffffff;font:15px/1.5 monospace;
     white-space:pre-wrap;box-shadow:0 2px 6px rgba(0,0,0,0.6);z-index:1}
+  #warning-banner{display:none;position:fixed;top:0;left:0;right:0;max-height:40%;overflow:auto;
+    margin:0;padding:12px;background:#4a3a0d;color:#ffffff;font:15px/1.5 monospace;
+    white-space:pre-wrap;box-shadow:0 2px 6px rgba(0,0,0,0.6);z-index:1}
 </style>
 </head>
 <body>
 <pre id="error-banner"></pre>
+<pre id="warning-banner"></pre>
 <div id="pdf-pages"></div>
 <script type="module">
   import * as pdfjsLib from '/vendor/pdf.min.mjs';
@@ -72,19 +77,33 @@ const PAGE_HTML = `<!doctype html>
   renderPdf('/out.pdf').catch(() => {});
 
   const errorBanner = document.getElementById('error-banner');
+  const warningBanner = document.getElementById('warning-banner');
 
   const es = new EventSource('/events');
-  es.addEventListener('reload', () => {
+  es.addEventListener('reload', (e) => {
     errorBanner.style.display = 'none';
+    const { warning } = JSON.parse(e.data);
+    if (warning) {
+      warningBanner.textContent = warning;
+      warningBanner.style.display = 'block';
+    } else {
+      warningBanner.style.display = 'none';
+    }
     renderPdf('/out.pdf?t=' + Date.now());
   });
   es.addEventListener('error', (e) => {
+    warningBanner.style.display = 'none';
     errorBanner.textContent = JSON.parse(e.data);
     errorBanner.style.display = 'block';
   });
 </script>
 </body>
 </html>`;
+
+function extractWarnings(stderr) {
+  const lines = stderr.split('\n').filter((line) => /\bwarning:/i.test(line));
+  return [...new Set(lines)].join('\n');
+}
 
 let compiling = false;
 let pending = false;
@@ -104,8 +123,13 @@ function compile() {
     compiling = false;
     if (code === 0) {
       fs.copyFileSync(outBase + '.pdf', outPdf);
-      console.log('compiled ok');
-      pushReload();
+      const warnings = extractWarnings(stderr);
+      if (warnings) {
+        console.warn('compiled with warnings:\n' + warnings);
+      } else {
+        console.log('compiled ok');
+      }
+      pushReload(warnings);
     } else {
       console.error('lilypond failed:\n' + stderr);
       pushError(stderr);
