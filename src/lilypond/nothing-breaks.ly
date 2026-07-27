@@ -22,6 +22,11 @@ leadLine =
      \revert Stem.stencil
    #})
 
+instrumentLabel =
+#(define-markup-command (instrumentLabel layout props text) (markup?)
+   (interpret-markup layout props
+                     (markup #:italic #:fontsize -3 text)))
+
 % https://wiki.lilypond.community/wiki/Adding_automatic_octaves_to_a_melody
 #(define (octave-up m t)
    (let* ((octave (1- t))
@@ -49,7 +54,12 @@ leadLine =
 pad = \new Staff \with { instrumentName = "Pad" midiInstrument = "pad 2 (warm)" } {
   \tempo 4 = 60
   \relative c' {
-    \leadLine { e2 d f d e d f d c }
+    \leadLine { e2^\markup \instrumentLabel "Vox & Strings" d f d e d f d }
+
+    \repeat volta 2 {
+      \grace s8 % HACK: Needed for correct rendering, known issue apparently.
+      c2^\markup \instrumentLabel "Strings" d f1 c4 d e2 a,1
+    }
   }
 }
 
