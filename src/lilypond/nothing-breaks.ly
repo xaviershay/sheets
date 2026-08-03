@@ -96,6 +96,21 @@ synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (saw
     c4
     r4
     c1~ c1
+
+    g8 c e d~ d2 |
+    a8 d fis e~ e2 |
+    \hide NoteHead
+    % I don't have this bit yet
+    c8 c c c~ c2 |
+    \undo \hide NoteHead
+    R1 |
+    g8 c e d~ d2 |
+    a8 d fis e~ e2 |
+    f8. g aes8 c8. aes c8 |
+    f8. c aes8 g4 f |
+
+    \bar "||"
+
   }
 }
 
@@ -177,7 +192,15 @@ drh = \drummode {
   s4 cymc4 s4 cymc4 |
   s1*2 |
   \bar "||"
-  cymc4
+  cymc4. hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  \bar "||"
 
 }
 
@@ -207,11 +230,57 @@ drl = \drummode {
   sn8 sn8 r16 bd sn toml toml8. bd16 sn sn sn8 |
   r16 bd16 sn sn sn8. bd16 sn tomh tommh toml toml8. toml16 |
   \bar "||"
-  bd8
+  bd8 bd sn bd s4 sn4 |
+  s4 sn4 s4 sn4 |
+  s4 sn4 s4 sn4 |
+  s4 sn4 s4 sn4 |
+  bd4 sn4 s4 sn4 |
+  s4 sn4 s4 sn4 |
+  bd8. bd16 sn8 bd8  bd8. bd16 sn8 bd8 |
+  bd8. bd16 sn8 bd8  bd8 bd sn4 |
+  \bar "||"
+}
+
+leadVocals = \new Staff \with { instrumentName = "Vocals" } {
+  \new Voice = "lead" {
+    s1*35 s2
+    \relative c'' {
+      c4 c8 c8~ c2 |
+      c4 c8 c8~ c2 |
+      c4 aes8 aes~ aes g~ g \appoggiatura f g~ g4. f8 f f~ f e8~ e2 r4. e8 |
+      \appoggiatura bes' c2. d8 c8~ |
+      c2 r2 |
+      R1 |
+      c8 c~ c c~ c4. c8 |
+      d4 d8 d8~ d4. d8 |
+      aes'4 g8 f d f8~ f4~ |
+      f2 r2 |
+      r4 bes,8 c r c~ c8 d8~ |
+      d2. c8 c8~ |
+      c2 r2 |
+      r2 r4. r8 |
+      \bar "||"
+
+    }
+  }
+}
+
+leadWords = \new Lyrics \lyricsto "lead" {
+  Wa -- king up, feel the wind suf -- fo -- cate my throat for what I am
+  A -- live a -- gain
+  When it hurts, I shut it off
+  Through suf -- fe -- ring and pain I lost my spark a -- gain
+
+  But no -- thing breaks like a man that's gi -- ven ev -- ry -- thing
+  He does -- n't need to walk, he does -- n't need to see things your way
+  No -- thing breaks like a wave that knows the wait -- ing shore
+  It's all the things I know I should have said before
 }
 
 \score {
   <<
+    \leadVocals
+    \leadWords
     \padChords
     \pad
     \piano
