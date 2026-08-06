@@ -192,6 +192,7 @@ drh = \drummode {
   s4 cymc4 s4 cymc4 |
   s1*2 |
   \bar "||"
+  % TODO: This voice group sucks, too much clutter
   cymc4. hh8 r8 hh8 r8 hh8 |
   r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
   r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
@@ -201,6 +202,14 @@ drh = \drummode {
   r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
   r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
   \bar "||"
+  cymc8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh16 hh |
+  hh8 hh s4 s2
 
 }
 
@@ -239,6 +248,15 @@ drl = \drummode {
   bd8. bd16 sn8 bd8  bd8. bd16 sn8 bd8 |
   bd8. bd16 sn8 bd8  bd8 bd sn4 |
   \bar "||"
+
+  bd4 sn8 bd8 s4 sn4
+  bd4 sn8 bd8 s4 sn4
+  bd4 sn8 \parenthesize bd8 s4 sn4
+  bd4 sn8 bd8 s4 sn8 tomml16 toml
+  bd4 sn8 bd8 s4 sn4
+  bd4 sn8 bd8 s4 sn4
+  bd4 sn8 bd8 s4 sn4
+  r8 bd8 sn8 tomh tommh toml sn bd
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
@@ -258,8 +276,41 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       r4 bes,8 c r c~ c8 d8~ |
       d2. c8 c8~ |
       c2 r2 |
-      r2 r4. r8 |
+      r2 r4. c8 |
       \bar "||"
+
+      <<
+        {
+          \voiceOne
+          e8 e~ e e~ e d c d~ |
+          d4 c d e |
+          d c8 c~ c2
+          r2 r8 e8 e e
+          e4 e8 g~ g e d c |
+          d4 c8 c~ c a~ a c~ |
+          c4. aes8( g2) |
+          R1 | e'8 e~ e e~ e d c d~ |
+          d4 c d e |
+          d4. c c4~ |
+          c2 r4. d,8 |
+          e4. f8 g4. a8 |
+          b4 c d e |
+          d4. c8~ c c8~ c4 |
+        }
+        \new Voice = "backup" {
+          \voiceTwo \relative c' {
+            \teeny
+            s1*2
+            f8 f~ f f~ f f~ f f | f4 e d c d4. e8 e2
+            s1 r2 c'4 c |
+            c aes g f e4. e8~ e2
+           fis8 fis~ fis fis~ fis fis~ fis fis |
+           c'8 c~ c c~ c c~ c c |
+           c,8 c~ c c~ c c~ c c |
+          }
+        }
+      >> |
+
 
     }
   }
@@ -269,18 +320,27 @@ leadWords = \new Lyrics \lyricsto "lead" {
   Wa -- king up, feel the wind suf -- fo -- cate my throat for what I am
   A -- live a -- gain
   When it hurts, I shut it off
-  Through suf -- fe -- ring and pain I lost my spark a -- gain
+  through suf -- fe -- ring and pain I lost my spark a -- gain
 
-  But no -- thing breaks like a man that's gi -- ven ev -- ry -- thing
+  But no -- thing breaks like a man that's gi -- ven ev -- ery -- thing
   He does -- n't need to walk, he does -- n't need to see things your way
   No -- thing breaks like a wave that knows the wait -- ing shore
   It's all the things I know I should have said before
+}
+
+backupWords = \new Lyrics \lyricsto "backup" {
+  \teeny No -- thing breaks like a man that's gi -- ven ev -- ery thing
+  does -- n't need to see things your way
+  No -- thing breaks like a
+  No -- thing breaks like a
+  No -- thing breaks like a
 }
 
 \score {
   <<
     \leadVocals
     \leadWords
+    \backupWords
     \padChords
     \pad
     \piano
