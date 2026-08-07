@@ -72,6 +72,19 @@ padChords = \new ChordNames \with { midiInstrument = "pad 2 (warm)" } \chordmode
   c
 }
 
+guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \chordmode {
+  s1*9 |
+  bes1 | s1
+  g2 c2 |
+  c1:m |
+  aes1 |
+  bes/f |
+  \time 6/4
+  f1 s2 |
+  \time 4/4
+  a1:m c f g a:m c f g c
+}
+
 synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (sawtooth)" } {
   \relative c'' {
     R1*8
@@ -169,10 +182,11 @@ drumStyleTable = #(alist->hash-table
                          (hash-table->alist drums-style)))
 
 drh = \drummode {
-  \voiceOne
   R1*8 |
   s1 |
   \bar "||"
+  \barNumberCheck #10
+  \voiceOne
   cymc4 cymc4 cymc4 cymc4 |
   cymc4 cymc4 cymc4 cymc4 |
   cymcb2 cymc2 |
@@ -238,11 +252,13 @@ drh = \drummode {
 }
 
 drl = \drummode {
-  \voiceTwo
   R1*8
   \tempo 4 = 160
-  r2 r8 \fermata bd8 \acciaccatura sn8 sn4 |
+  r2 r8 \fermata
+  \voiceTwo
+  bd8 \acciaccatura sn8 sn4 |
   \bar "||"
+  \barNumberCheck #10
   bd4 sn8 bd sn4 sn8 bd |
   sn bd sn bd sn bd  \acciaccatura sn sn bd |
   bd4 \acciaccatura sn8 sn bd bd4 sn8 bd |
@@ -440,6 +456,7 @@ backupWords = \new Lyrics \lyricsto "backup" {
     \padChords
     \pad
     \piano
+    \guitarChords
     \synth
     \new DrumStaff \with { instrumentName = "Drums" drumStyleTable = #drumStyleTable } {
       <<
