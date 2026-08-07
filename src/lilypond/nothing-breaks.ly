@@ -169,6 +169,7 @@ drumStyleTable = #(alist->hash-table
                          (hash-table->alist drums-style)))
 
 drh = \drummode {
+  \voiceOne
   R1*8 |
   s1 |
   \bar "||"
@@ -211,9 +212,19 @@ drh = \drummode {
   r8 hh8 r8 hh8 r8 hh8 r8 hh16 hh |
   hh8 hh s4 s2
 
+  cymc8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
+  r8 hh8 r8 hh8 r8 hh8 s4
+  s1
+
 }
 
 drl = \drummode {
+  \voiceTwo
   R1*8
   \tempo 4 = 160
   r2 r8 \fermata bd8 \acciaccatura sn8 sn4 |
@@ -239,24 +250,33 @@ drl = \drummode {
   sn8 sn8 r16 bd sn toml toml8. bd16 sn sn sn8 |
   r16 bd16 sn sn sn8. bd16 sn tomh tommh toml toml8. toml16 |
   \bar "||"
-  bd8 bd sn bd s4 sn4 |
-  s4 sn4 s4 sn4 |
-  s4 sn4 s4 sn4 |
-  s4 sn4 s4 sn4 |
-  bd4 sn4 s4 sn4 |
-  s4 sn4 s4 sn4 |
+  bd8 bd sn bd r4 sn4 |
+  r4 sn4 r4 sn4 |
+  r4 sn4 r4 sn4 |
+  r4 sn4 r4 sn4 |
+  bd4 sn4 r4 sn4 |
+  r4 sn4 r4 sn4 |
   bd8. bd16 sn8 bd8  bd8. bd16 sn8 bd8 |
   bd8. bd16 sn8 bd8  bd8 bd sn4 |
   \bar "||"
 
-  bd4 sn8 bd8 s4 sn4
-  bd4 sn8 bd8 s4 sn4
-  bd4 sn8 \parenthesize bd8 s4 sn4
-  bd4 sn8 bd8 s4 sn8 tomml16 toml
-  bd4 sn8 bd8 s4 sn4
-  bd4 sn8 bd8 s4 sn4
-  bd4 sn8 bd8 s4 sn4
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 \parenthesize bd8 r4 sn4
+  bd4 sn8 bd8 r4 sn8 tomml16 toml
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 bd8 r4 sn4
   r8 bd8 sn8 tomh tommh toml sn bd
+
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 bd8 r4 sn8 tomml16 toml
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 bd8 r4 sn4
+  bd4 sn8 bd8 r8 bd8 sn8 tomh16 tomh
+  tomh8 bd8 sn8 tommh toml bd sn bd
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
