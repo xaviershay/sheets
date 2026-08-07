@@ -221,6 +221,20 @@ drh = \drummode {
   r8 hh8 r8 hh8 r8 hh8 s4
   s1
 
+  \bar "||"
+  \barNumberCheck #52
+  cymc4 hh hh hh |
+  \repeat unfold 7 { hh hh hh hh }
+  cymc4 hh hh hh |
+  \repeat unfold 2 { hh hh hh hh }
+  hh hh hh s |
+  cymc1 |
+  s1
+  cymc2 r8 cymcb8~ cymcb4 |
+
+  \bar "||"
+  \barNumberCheck #67
+  cymc4 s4 s2 |
 }
 
 drl = \drummode {
@@ -269,19 +283,32 @@ drl = \drummode {
   bd4 sn8 bd8 r4 sn4
   r8 bd8 sn8 tomh tommh toml sn bd
 
-  bd4 sn8 bd8 r4 sn4
-  bd4 sn8 bd8 r4 sn4
-  bd4 sn8 bd8 r4 sn4
-  bd4 sn8 bd8 r4 sn8 tomml16 toml
-  bd4 sn8 bd8 r4 sn4
-  bd4 sn8 bd8 r4 sn4
-  bd4 sn8 bd8 r8 bd8 sn8 tomh16 tomh
-  tomh8 bd8 sn8 tommh toml bd sn bd
+  bd4 sn8 bd8 r4 sn4 |
+  bd4 sn8 bd8 r4 sn4 |
+  bd4 sn8 bd8 r4 sn4 |
+  bd4 sn8 bd8 r4 sn8 tomml16 toml |
+  bd4 sn8 bd8 r4 sn4 |
+  bd4 sn8 bd8 r4 sn4 |
+  bd4 sn8 bd8 r8 bd8 sn8 tomh16 tomh |
+  tomh8 bd8 sn8 tommh toml bd sn bd |
+
+  \bar "||"
+  \barNumberCheck #52
+
+  \repeat unfold 7 { bd8 bd sn bd r bd sn4 | }
+  bd8 bd sn bd bd bd sn8 bd |
+  \repeat unfold 3 { bd8 bd sn bd r bd sn4 | }
+  bd8 bd sn bd bd bd sn16 sn sn sn |
+  bd8. bd16 sn8 sn r16 sn sn8 tomh8. bd16 |
+  bd16 toml toml8 r16 bd sn sn sn8. bd16 sn bd sn sn |
+  bd4 sn8 bd r bd16 bd sn8 bd |
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
   \new Voice = "lead" {
     s1*35 s2
+    \bar "||"
+    \barNumberCheck #36
     \relative c'' {
       c4 c8 c8~ c2 |
       c4 c8 c8~ c2 |
@@ -325,46 +352,46 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
             f8 f~ f f~ f f~ f f | f4 e d c d4. e8 e2
             s1 r2 c'4 c |
             c aes g f e4. e8~ e2
-           fis8 fis~ fis fis~ fis fis~ fis fis |
-           c'8 c~ c c~ c c~ c c |
-           c,8 c~ c c~ c c~ c c |
+            fis8 fis~ fis fis~ fis fis~ fis fis |
+            c'8 c~ c c~ c c~ c c |
+            c,8 c~ c c~ c c~ c c |
           }
         }
       >> |
 
 
       \oneVoice
-    e2~ e8 f e d8~ | d2. r4 |
-    d2~ d8 e d c8~ | c2. r4 |
-    e2~ e8 f e d8~ | d2. r8 d |
-    e c r g8~ g8 b8~ b a~ |
-    a8 c~ c d~ d c~ c c |
-    b4 g8 g~ g4 e8 a8~ |
-    a1 |
-    R1 |
-    b2~ b8 a b c~ |
-    c4. e8~ e d c b |
-    a4 g g e8 g~ |
-    g2 r2 |
-    b2~ b8 a b c~ |
-    c2 a8 c8~ c4 |
-    d2. e8 c8~ |
-    c2 r4. e,8 |
-    b'2~ b8 a b c~ |
-    c4 c8 e8~ e d c b |
-    a4 g g e8 g~ |
-    g2 r4. e8 |
-    b'2~ b8 a b c~ |
-    c2 a8 c8~ c4 |
-    d2. e8 c8~ |
-    c2 r2 |
-    r4. f,8 g g'~ g f~ |
-    \time 5/4
-    f e~ e d~ d c~ c2 |
-    \bar "||"
-    \time 4/4
-    c1~ |
-    c1
+      e2~ e8 f e d8~ | d2. r4 |
+      d2~ d8 e d c8~ | c2. r4 |
+      e2~ e8 f e d8~ | d2. r8 d |
+      e c r g8~ g8 b8~ b a~ |
+      a8 c~ c d~ d c~ c c |
+      b4 g8 g~ g4 e8 a8~ |
+      a1 |
+      R1 |
+      b2~ b8 a b c~ |
+      c4. e8~ e d c b |
+      a4 g g e8 g~ |
+      g2 r2 |
+      b2~ b8 a b c~ |
+      c2 a8 c8~ c4 |
+      d2. e8 c8~ |
+      c2 r4. e,8 |
+      b'2~ b8 a b c~ |
+      c4 c8 e8~ e d c b |
+      a4 g g e8 g~ |
+      g2 r4. e8 |
+      b'2~ b8 a b c~ |
+      c2 a8 c8~ c4 |
+      d2. e8 c8~ |
+      c2 r2 |
+      r4. f,8 g g'~ g f~ |
+      \time 5/4
+      f e~ e d~ d c~ c2 |
+      \bar "||"
+      \time 4/4
+      c1~ |
+      c1
 
     }
   }
