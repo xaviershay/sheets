@@ -316,6 +316,7 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
           e4. f8 g4. a8 |
           b4 c d e |
           d4. c8~ c c8~ c4 |
+          \bar "||"
         }
         \new Voice = "backup" {
           \voiceTwo \relative c' {
@@ -332,6 +333,39 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       >> |
 
 
+      \oneVoice
+    e2~ e8 f e d8~ | d2. r4 |
+    d2~ d8 e d c8~ | c2. r4 |
+    e2~ e8 f e d8~ | d2. r8 d |
+    e c r g8~ g8 b8~ b a~ |
+    a8 c~ c d~ d c~ c c |
+    b4 g8 g~ g4 e8 a8~ |
+    a1 |
+    R1 |
+    b2~ b8 a b c~ |
+    c4. e8~ e d c b |
+    a4 g g e8 g~ |
+    g2 r2 |
+    b2~ b8 a b c~ |
+    c2 a8 c8~ c4 |
+    d2. e8 c8~ |
+    c2 r4. e,8 |
+    b'2~ b8 a b c~ |
+    c4 c8 e8~ e d c b |
+    a4 g g e8 g~ |
+    g2 r4. e8 |
+    b'2~ b8 a b c~ |
+    c2 a8 c8~ c4 |
+    d2. e8 c8~ |
+    c2 r2 |
+    r4. f,8 g g'~ g f~ |
+    \time 5/4
+    f e~ e d~ d c~ c2 |
+    \bar "||"
+    \time 4/4
+    c1~ |
+    c1
+
     }
   }
 }
@@ -345,7 +379,22 @@ leadWords = \new Lyrics \lyricsto "lead" {
   But no -- thing breaks like a man that's gi -- ven ev -- ery -- thing
   He does -- n't need to walk, he does -- n't need to see things your way
   No -- thing breaks like a wave that knows the wait -- ing shore
-  It's all the things I know I should have said before
+  It's all the things I know I should have said be -- fore
+
+  Know what you do
+  Hold what you can
+  Live for a while
+
+  And wear your heart up -- on your sleeve
+  when your boat be -- comes the shore
+
+  Rest for a while, all the lit -- tle
+  life -- times trapped in -- side
+  Speak them by name I will soon be gone
+  To where I be -- long
+  A ghost can live a life -- time trapped in song
+  They're shout -- ing my name from a thou -- sand stars
+  I know ex -- act -- ly where they are
 }
 
 backupWords = \new Lyrics \lyricsto "backup" {
