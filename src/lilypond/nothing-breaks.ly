@@ -69,7 +69,6 @@ makeOctaves = #(define-music-function (arg mus) (integer? ly:music?)
 padChords = \new ChordNames \with { midiInstrument = "pad 2 (warm)" } \chordmode {
   c2 g:sus4/c f/c g:sus4/c
   c2 g:sus4/c f/c g:sus4/c
-  c
 }
 
 guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \chordmode {
@@ -83,6 +82,23 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   f1 s2 |
   \time 4/4
   a1:m c f g a:m c f g c
+  s1 s1 |
+  \barNumberCheck #28
+  \repeat unfold 5 { c d/c f:m/c s1 }
+  c d f:m/c s1
+  \barNumberCheck #52
+  \repeat unfold 3 { c d/c f:m/c s1 }
+  c e a:m
+  \barNumberCheck #67
+  f g e:m c f g a:m
+  f e:m f:maj7 s1
+  g a:m f g
+  g a:m bes f
+  g a:m f g
+  g a:m bes f
+  aes bes s4
+  c1
+  \barNumberCheck #97
 }
 
 synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (sawtooth)" } {
