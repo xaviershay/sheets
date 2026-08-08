@@ -264,7 +264,34 @@ drh = \drummode {
 
   \bar "||"
   \barNumberCheck #67
-  cymc4 s4 s2 |
+  cymc8 cymr16 cymr cymr8 cymr8 cymr cymr16 cymr cymr8 cymr8 |
+  \repeat unfold 2 { cymr8 cymr16 cymr cymr8 cymr8 cymr cymr16 cymr cymr8 cymr8 | }
+  cymc2. cymc4 |
+  cymc8 cymr16 cymr cymr8 cymr8 cymr cymr16 cymr cymr8 cymr8 |
+  cymr8 cymr16 cymr cymr8 cymr8 cymr cymr16 cymr cymr8 cymr8 |
+  cymc4. cymc4. cymc4 |
+  r4. cymc8~ cymc2 |
+  s1 |
+  cymc2~ cymc4. \tuplet 3/2 { cymr16_( cymr cymr } |
+  cymr4) \oneVoice r4 r2 \voiceOne
+  \bar "||"
+  \barNumberCheck #78
+
+  \repeat unfold 5 { \repeat unfold 8 { hh8 } }
+  hh hh hho4 s2 |
+  cymc1 | s1 |
+  \repeat unfold 5 { \repeat unfold 8 { hh8 } }
+  hh hh hho4 s2 |
+  cymc4 hhho4 s4. cymc8~ | cymc4 hhho4 s2 |
+  cymc4 hhho4 s4. hhho8 \staccato |
+  \oneVoice r8 \voiceOne hhho8 \staccato
+  r8 hhho8 \staccato s2 s4
+
+  \bar "||"
+  \barNumberCheck #96
+
+  cymc4 hh8 hh hh hh hh hh
+  hh8 hh hh hh hh hh hh hh
 }
 
 drl = \drummode {
@@ -334,6 +361,44 @@ drl = \drummode {
   bd8. bd16 sn8 sn r16 sn sn8 tomh8. bd16 |
   bd16 toml toml8 r16 bd sn sn sn8. bd16 sn bd sn sn |
   bd4 sn8 bd r bd16 bd sn8 bd |
+
+  \bar "||"
+  \barNumberCheck #67
+  \repeat unfold 3 { bd4 sn8 bd r bd sn4 | }
+  bd8. bd16 sn16 bd sn8 r bd16 bd sn bd tomml toml |
+  \repeat unfold 1 { bd4 sn8 bd r bd sn4 | }
+  bd4 sn8 bd r bd sn16 sn bd8 |
+  bd8. sn16 sn8 bd r bd sn bd |
+  r bd sn16 sn16 bd8 r bd sn4 |
+  sn8 bd bd tomh~ tomh tomml toml4 |
+  bd4 r4 r2 | s1
+
+  \bar "||"
+  \barNumberCheck #78
+
+  ss4 ss ss ss
+  ss ss ss8 bd ss bd16 bd |
+  <<bd4 ss4>> <<bd4 ss4>> ss ss |
+  ss8 bd ss16 bd bd8 ss8 bd ss16 bd bd8 |
+  ss4 ss ss8 bd ss bd |
+  ss4 ss8 bd tomh16 tomh bd bd sn sn sn sn |
+  bd8. bd16 sn4 bd8 bd r16 bd sn8 |
+  r8 bd sn bd sn16 sn bd bd sn4 |
+  ss ss ss ss |
+  ss ss8 bd ss bd ss16 bd bd8 |
+  <<bd4 ss4>> <<bd4 ss4>> ss ss |
+  ss8 bd ss16 bd bd8 ss8 bd ss16 bd bd8 |
+  ss4 ss ss8 bd ss bd |
+  ss4 ss8 bd tomh16 tomh bd bd sn sn sn sn |
+  bd4 sn8 bd tomh16 tomh toml toml sn sn bd8 |
+  r bd sn bd tomml16 tomml toml toml sn bd sn sn |
+  bd4 sn8 bd sn16 sn bd bd sn8 bd |
+  s8 bd sn bd sn16 sn bd bd sn bd sn sn \oneVoice r4 \voiceTwo |
+
+  \bar "||"
+  \barNumberCheck #96
+  bd4 sn8 bd bd bd sn bd
+  bd bd sn bd bd bd sn bd
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
@@ -392,11 +457,12 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       >> |
 
 
+      \barNumberCheck #67
       \oneVoice
       e2~ e8 f e d8~ | d2. r4 |
       d2~ d8 e d c8~ | c2. r4 |
       e2~ e8 f e d8~ | d2. r8 d |
-      e c r g8~ g8 b8~ b a~ |
+      e8. c16~ c8 g8~ g8 b8~ b a~ |
       a8 c~ c d~ d c~ c c |
       b4 g8 g~ g4 e8 a8~ |
       a1 |
