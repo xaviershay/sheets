@@ -97,8 +97,27 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   g a:m f g
   g a:m bes f
   aes bes s4
-  c1
-  \barNumberCheck #97
+  \barNumberCheck #96
+  c1 d/c f:m s
+  c1 d/c f:m s
+
+  \barNumberCheck #104
+
+}
+
+guitarLeadNotes = {
+    \relative c'' {
+        e4. c8 g2 |
+        d'4 c d e |
+        d4. c8 c4. aes8 |
+        aes4. g8 g4 f |
+        e'4. c8 g2 |
+        d'4 c d e |
+        g4 \staccato r8 g8 \staccato r4 g4 \staccato
+        r8 g8 \staccato r4 g4 \staccato g~ |
+        \bar "||"
+        g1 |
+    }
 }
 
 synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (sawtooth)" } {
@@ -140,6 +159,10 @@ synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (saw
 
     \bar "||"
 
+    s1*60
+    s4
+    \barNumberCheck #96
+    \guitarLeadNotes
   }
 }
 
@@ -290,8 +313,12 @@ drh = \drummode {
   \bar "||"
   \barNumberCheck #96
 
-  cymc4 hh8 hh hh hh hh hh
-  hh8 hh hh hh hh hh hh hh
+  cymcb4 cymc cymc cymc
+  cymc cymc cymc cymc
+  cymc cymc cymc cymc
+  cymc cymc cymc2
+  cymcb4 cymc cymc cymc
+  cymc cymc cymc cymc
 }
 
 drl = \drummode {
@@ -399,6 +426,15 @@ drl = \drummode {
   \barNumberCheck #96
   bd4 sn8 bd bd bd sn bd
   bd bd sn bd bd bd sn bd
+  bd bd sn bd bd bd sn bd
+  bd bd sn bd bd sn sn4
+  bd4 sn8 bd bd bd sn bd
+  bd bd sn bd bd bd sn bd
+  bd16 bd toml toml toml toml bd bd sn sn bd bd tommh tommh toml toml |
+  bd bd sn sn sn sn bd bd sn sn bd bd sn tomh tommh toml |
+  \bar "||"
+  \barNumberCheck #104
+  bd4
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
