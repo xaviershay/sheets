@@ -112,18 +112,18 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
 }
 
 guitarLeadNotes = {
-    \relative c'' {
-        e4. c8 g2 |
-        d'4 c d e |
-        d4. c8 c4. aes8 |
-        aes4. g8 g4 f |
-        e'4. c8 g2 |
-        d'4 c d e |
-        g4 \staccato r8 g8 \staccato r4 g4 \staccato
-        r8 g8 \staccato r4 g4 \staccato g~ |
-        \bar "||"
-        g1 |
-    }
+  \relative c'' {
+    e4. c8 g2 |
+    d'4 c d e |
+    d4. c8 c4. aes8 |
+    aes4. g8 g4 f |
+    e'4. c8 g2 |
+    d'4 c d e |
+    g4 \staccato r8 g8 \staccato r4 g4 \staccato
+    r8 g8 \staccato r4 g4 \staccato g~ |
+    \bar "||"
+    g1 |
+  }
 }
 
 synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (sawtooth)" } {
@@ -470,7 +470,7 @@ drl = \drummode {
   }
   bd4 sn8 bd8 r8 bd16 bd sn bd sn8 |
   \repeat unfold 2 {
-      bd4 sn8 bd8 r8 bd8 sn4 |
+    bd4 sn8 bd8 r8 bd8 sn4 |
   }
   bd8. bd16 sn8 bd r16 sn bd8 sn8. sn16 |
   bd8. bd16~ bd8 bd 16 sn bd8. bd16 sn tomh tommh toml |
@@ -484,11 +484,11 @@ drl = \drummode {
   sn8 bd bd sn sn bd sn16 sn sn sn |
   bd4 sn8 bd r bd sn4 |
   \repeat unfold 3 {
-      bd4 sn8 bd r bd sn4 |
+    bd4 sn8 bd r bd sn4 |
   }
   bd8 bd sn bd r bd16 bd sn8 bd |
   \repeat unfold 3 {
-      bd8 bd sn8 bd r bd sn4 |
+    bd8 bd sn8 bd r bd sn4 |
   }
   bd8 bd sn bd bd sn16 sn sn sn8 sn16 |
 
