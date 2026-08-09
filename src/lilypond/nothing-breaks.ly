@@ -100,8 +100,10 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   \barNumberCheck #96
   c1 d/c f:m s
   c1 d/c f:m s
-
   \barNumberCheck #104
+  c1 d/c f:m s
+  c1 d/c f:m s
+  c1 d/c f:m s
 
 }
 
@@ -319,6 +321,22 @@ drh = \drummode {
   cymc cymc cymc2
   cymcb4 cymc cymc cymc
   cymc cymc cymc cymc
+  s1*2
+  \bar "||"
+  \barNumberCheck #104
+
+  cymc4 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
+  rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
+  rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
+  rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
+  cymc4 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
+  rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8 |
+  cymc4. cymc8~ cymc2 |
+  cymc8. cymc16~ cymc8 cymc8 cymc4 cymc4 |
+  cymc4 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
+  rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
+  rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
+  rb8 cymr16 cymr16 rb8 cymr8 cymc4 cymc4
 }
 
 drl = \drummode {
@@ -434,7 +452,19 @@ drl = \drummode {
   bd bd sn sn sn sn bd bd sn sn bd bd sn tomh tommh toml |
   \bar "||"
   \barNumberCheck #104
-  bd4
+  \repeat unfold 3 {
+    bd4 sn8 bd8 r8 bd8 sn4 |
+  }
+  bd4 sn8 bd8 r8 bd16 bd sn bd sn8 |
+  \repeat unfold 2 {
+      bd4 sn8 bd8 r8 bd8 sn4 |
+  }
+  bd8. bd16 sn8 bd r16 sn bd8 sn8. sn16 |
+  bd8. bd16~ bd8 bd 16 sn bd8. bd16 sn tomh tommh toml |
+  \repeat unfold 3 {
+    bd4 sn8 bd8 r8 bd8 sn4 |
+  }
+  bd8. bd16 sn bd sn8 r16 sn bd bd sn8 bd |
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
@@ -527,6 +557,22 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       c1~ |
       c1
 
+      r1*5
+      r2 r4 r8 c8
+      \bar "||"
+      \barNumberCheck #104
+      e8 e~ e e~ e d c d~ |
+      d4 c d e |
+      d4. c4. c4~ |
+      c2 r4 e8 e
+      e4 e8 g~ g g g a~ |
+      a g~ g e~ e f~ f4 |
+      e2~ e8 d c4 |
+      g2 r4. c8 |
+      e8 e~ e e~ e d c d~ |
+      d4 c d e |
+      d4. e4. c4~ |
+      c2 r2
     }
   }
 }
@@ -556,6 +602,38 @@ leadWords = \new Lyrics \lyricsto "lead" {
   A ghost can live a life -- time trapped in song
   They're shout -- ing my name from a thou -- sand stars
   I know ex -- act -- ly where they are
+
+  And no -- thing wakes like a man who's seen the o -- ther side
+  If the earth would shake, it would till the flow -- ing tide on its name
+  Yes, no -- thing breaks like a man who's seen the o -- ther side
+
+  I'm stuck in -- side a cage I can -- not leave behind
+  And here we go a -- gain
+
+  Won -- dering where the lights will go
+  as they roll me from the floor
+
+  I've gi -- ven up on all my dreams
+  I don't need them a -- ny -- more
+  Well, no -- thing rocked, and no -- thing rolled
+  in this god -- for -- sa -- ken town
+  I am lea -- ving you to be
+
+  See you a -- round
+
+  Love what you do
+  Cry if you can
+  Sing like you're damned
+  And wear your heart u -- pon your sleeve
+  when your boat be -- comes the shore
+  I ne -- ver said it would be hea -- ven in a nut -- shell
+  But more than this, I think
+  your soul will start to tire
+
+  All the little hopes and dreams you had ac -- quired,
+  they weigh you down
+
+  Now you're bur -- ning in the fire
 }
 
 backupWords = \new Lyrics \lyricsto "backup" {
