@@ -99,11 +99,15 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   aes bes s4
   \barNumberCheck #96
   c1 d/c f:m s
-  c1 d/c f:m s
+  c d/c f:m s
   \barNumberCheck #104
-  c1 d/c f:m s
-  c1 d/c f:m s
-  c1 d/c f:m s
+  c d/c f:m s
+  c d/c f:m s
+  c d/c f:m s
+  c e a:m
+  c f
+  d:m c f g
+  d:m c f g
 
 }
 
@@ -336,7 +340,16 @@ drh = \drummode {
   cymc4 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
   rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
   rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
-  rb8 cymr16 cymr16 rb8 cymr8 cymc4 cymc4
+  rb8 cymr16 cymr16 rb8 cymr8 cymc4 cymc4 |
+  cymc1 |
+  s1 |
+  cymc4. cymcb8~ cymcb2 |
+  cymc1 |
+  cymc4 hhho4 hhho hhho |
+  \repeat unfold 4 { hhho hhho hhho hhho | }
+  cymc4 hhho4 hhho hhho |
+  \repeat unfold 2 { hhho hhho hhho hhho | }
+  hhho4 hhho hhho s |
 }
 
 drl = \drummode {
@@ -465,6 +478,20 @@ drl = \drummode {
     bd4 sn8 bd8 r8 bd8 sn4 |
   }
   bd8. bd16 sn bd sn8 r16 sn bd bd sn8 bd |
+  bd4. bd8 sn16 sn bd bd tommh tommh tomml tomml |
+  toml toml bd bd sn sn bd8 sn16 bd sn bd sn bd sn sn |
+  bd4 sn8 bd r bd sn bd |
+  sn8 bd bd sn sn bd sn16 sn sn sn |
+  bd4 sn8 bd r bd sn4 |
+  \repeat unfold 3 {
+      bd4 sn8 bd r bd sn4 |
+  }
+  bd8 bd sn bd r bd16 bd sn8 bd |
+  \repeat unfold 3 {
+      bd8 bd sn8 bd r bd sn4 |
+  }
+  bd8 bd sn bd bd sn16 sn sn sn8 sn16 |
+
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
@@ -522,7 +549,6 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
         }
       >> |
 
-
       \barNumberCheck #67
       \oneVoice
       e2~ e8 f e d8~ | d2. r4 |
@@ -572,7 +598,21 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       e8 e~ e e~ e d c d~ |
       d4 c d e |
       d4. e4. c4~ |
-      c2 r2
+      c2 r4. d,8 |
+      e4. f8 g4. a8 |
+      b4 c d e |
+      d4. c8 c4. c8 |
+      a'4. g8 e4. d8 |
+      c2. r4 |
+      c4 b~ b8 a~ a g |
+      e4 g c, c8 c8 |
+      c'4 b~ b8 a~ a g |
+      d2. r8 c
+      c' b~ b8 a~ a g~ g4  |
+      e  g g g8 g |
+      a4. a8 a a g4~ |
+      g2 r2 |
+
     }
   }
 }
@@ -607,7 +647,7 @@ leadWords = \new Lyrics \lyricsto "lead" {
   If the earth would shake, it would till the flow -- ing tide on its name
   Yes, no -- thing breaks like a man who's seen the o -- ther side
 
-  I'm stuck in -- side a cage I can -- not leave behind
+  I'm stuck in -- side a cage I can -- not leave be -- hind
   And here we go a -- gain
 
   Won -- dering where the lights will go
