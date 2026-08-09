@@ -106,8 +106,8 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   c d/c f:m s
   c e a:m
   c f
-  d:m c f g
-  d:m c f g
+  \repeat unfold 4 { d:m c f g }
+  \barNumberCheck #137
 
 }
 
@@ -350,6 +350,14 @@ drh = \drummode {
   cymc4 hhho4 hhho hhho |
   \repeat unfold 2 { hhho hhho hhho hhho | }
   hhho4 hhho hhho s |
+
+  \bar "||"
+  \barNumberCheck #129
+
+  \repeat unfold 8 { cymc4. cymc8~ cymc4 cymc4 | }
+
+  \bar "||"
+  \barNumberCheck #137
 }
 
 drl = \drummode {
@@ -492,6 +500,21 @@ drl = \drummode {
   }
   bd8 bd sn bd bd sn16 sn sn sn8 sn16 |
 
+  \bar "||"
+  \barNumberCheck #129
+
+  bd8. bd16 sn8 bd r16 bd sn8 bd16 sn sn sn |
+  bd8. bd16 sn8 bd r16 bd sn8 bd16 tommh tomml toml |
+  bd8. bd16 sn8 bd r16 bd sn8 bd16 sn sn sn |
+  bd8. bd16 sn8 bd r16 bd sn8 bd16 tommh tomml toml |
+  bd8. bd16 sn8 bd r16 bd sn8 bd16 tommh tomml toml |
+  bd8. bd16 sn8 bd r16 bd sn8 bd16 sn sn sn |
+  bd8. bd16 sn8 bd r16 bd sn8 bd16 sn sn sn |
+  bd8. bd16 sn8 bd sn16 sn bd bd sn bd sn sn |
+
+
+  \bar "||"
+  \barNumberCheck #137
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
@@ -611,7 +634,19 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       c' b~ b8 a~ a g~ g4  |
       e  g g g8 g |
       a4. a8 a a g4~ |
-      g2 r2 |
+      g2 r4. g8 |
+
+      \barNumberCheck #129
+
+      e'8 e~ e e~ e4. e8 |
+      d8 c~ c c~ c4 c8 c |
+      c4 a8 c~ c c~ c d~ |
+      d2 d8 e~ e4 |
+      f2. e4 | d8( c4.~) c8 c~ c c~ |
+      c4. e8~ e d c d~ |
+      d2 r2 |
+
+      \barNumberCheck #137
 
     }
   }
