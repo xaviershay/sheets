@@ -108,6 +108,11 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   c f
   \repeat unfold 4 { d:m c f g }
   \barNumberCheck #137
+  f g e:m c f g a:m
+  f e:m f:maj7 s1
+
+  c e a:m bes
+  c e a:m bes
 
 }
 
@@ -293,11 +298,11 @@ drh = \drummode {
 
   \bar "||"
   \barNumberCheck #67
-  cymc8 cymr16 cymr cymr8 cymr8 cymr cymr16 cymr cymr8 cymr8 |
-  \repeat unfold 2 { cymr8 cymr16 cymr cymr8 cymr8 cymr cymr16 cymr cymr8 cymr8 | }
+  cymc8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 |
+  \repeat unfold 2 { rb8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 | }
   cymc2. cymc4 |
-  cymc8 cymr16 cymr cymr8 cymr8 cymr cymr16 cymr cymr8 cymr8 |
-  cymr8 cymr16 cymr cymr8 cymr8 cymr cymr16 cymr cymr8 cymr8 |
+  cymc8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 |
+  rb8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 |
   cymc4. cymc4. cymc4 |
   r4. cymc8~ cymc2 |
   s1 |
@@ -358,6 +363,16 @@ drh = \drummode {
 
   \bar "||"
   \barNumberCheck #137
+
+  cymc8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 |
+  \repeat unfold 2 { rb8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 | }
+  cymc2. cymc4 |
+  cymc8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 |
+  rb8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 |
+  cymc2. r8 cymcb8 |
+  r4. cymc8~ cymc2 |
+  cymc1 |
+  cymc4
 }
 
 drl = \drummode {
@@ -515,6 +530,17 @@ drl = \drummode {
 
   \bar "||"
   \barNumberCheck #137
+
+  bd4 sn8 bd r bd sn4 |
+  bd4 sn8 bd r bd16 bd sn8 bd |
+  bd4 sn8 bd r bd sn4 |
+  bd8. bd16 sn8 sn8 r16 sn bd bd sn bd tomml toml |
+  bd4 sn8 bd r bd sn4 |
+  bd4 sn8 bd r bd16 bd sn8 bd16 bd |
+  sn8 sn bd toml bd sn sn bd |
+  r bd sn bd r bd sn8. bd16 |
+  sn8 bd bd toml toml sn sn \oneVoice r \voiceTwo |
+  bd4 \oneVoice r4 r2 | s1
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
@@ -648,6 +674,30 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
 
       \barNumberCheck #137
 
+      e2~ e8 f e d8~ | d2. r4 |
+      d2~ d8 e d c8~ | c2. r4 |
+      e2~ e8 f e d8~ | d2. r8 d |
+      e8. c16~ c8 g8~ g8 b8~ b a~ |
+      a8 c~ c d~ d c~ c c |
+      b4 g8 g~ g4 e8 a8~ |
+      a1 |
+      R1 |
+
+      \bar "||"
+
+      \tempo 4 = 66
+      \teeny
+      r8 g g g g g e g |
+      gis e~ e d16 e d8 c~ c c |
+
+      a c e4~ e8. e16 d8 c |
+      d8. d16 d8 e d16( c8.~) c4 |
+      r8 g'~ g e g16 e8 g16~ g8 g |
+      \grace g( gis8.) e16 e8. e16 d8 c~ c8. c16 |
+      a'8 g e16( d c8~) c4 a8 c |
+      d8. d16 d8 c f e~ e4 \fermata |
+
+      \bar "|."
     }
   }
 }
@@ -701,14 +751,17 @@ leadWords = \new Lyrics \lyricsto "lead" {
   Sing like you're damned
   And wear your heart u -- pon your sleeve
   when your boat be -- comes the shore
+
+
+  \teeny
   I ne -- ver said it would be hea -- ven in a nut -- shell
   But more than this, I think
   your soul will start to tire
 
-  All the little hopes and dreams you had ac -- quired,
+  All the lit -- tle hopes and dreams you had ac -- quir -- ed,
   they weigh you down
 
-  Now you're bur -- ning in the fire
+  Now you're bur -- ning in the fi -- re
 }
 
 backupWords = \new Lyrics \lyricsto "backup" {
