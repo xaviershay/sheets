@@ -109,7 +109,7 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   \repeat unfold 4 { d:m c f g }
   \barNumberCheck #137
   f g e:m c f g a:m
-  f e:m f:maj7 s1
+  f e:m f:maj7 s1 s1
 
   c e a:m bes
   c e a:m bes
@@ -196,6 +196,13 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
       }
     }
     R1
+    s1*136
+    s4 s2
+    \barNumberCheck #146
+    \relative c {
+        R1
+        f16\([  a c e] f8.[ e16] f[ a c e] f8[ e16 f] e[ c a e] c[ e g a] g8[ e] f4\)
+    }
   }
   \new Staff = "down" \with {
   } {
@@ -540,7 +547,7 @@ drl = \drummode {
   sn8 sn bd toml bd sn sn bd |
   r bd sn bd r bd sn8. bd16 |
   sn8 bd bd toml toml sn sn \oneVoice r \voiceTwo |
-  bd4 \oneVoice r4 r2 | s1
+  bd4 \oneVoice r4 r2 | R1 R1
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
@@ -681,9 +688,11 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       a8 c~ c d~ d c~ c c |
       b4 g8 g~ g4 e8 a8~ |
       a1 |
+      R1
       R1 |
 
       \bar "||"
+      \barNumberCheck #149
 
       \tempo 4 = 66
       \teeny
