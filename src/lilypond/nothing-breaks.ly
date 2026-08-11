@@ -109,7 +109,7 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   \repeat unfold 4 { d:m c f g }
   \barNumberCheck #137
   f g e:m c f g a:m
-  f e:m f:maj7 s1 s1
+  f e:m f:maj7 s1
 
   c e a:m bes
   c e a:m bes
@@ -129,6 +129,13 @@ guitarLeadNotes = {
     \bar "||"
     g1 |
   }
+}
+
+pianoTinkleNotes =  \relative c' {
+    \tuplet 3/2 { a16\([ c e a c e] }
+    f16[ e8.]
+    \tuplet 3/2 { e16[ c a e c e] }
+    g16 a16 g8 e f4.\)
 }
 
 synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (sawtooth)" } {
@@ -194,14 +201,6 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
           e8.)( f16 g8. a16 b8 c d e | d8. c16 c4) \ottava #0 r2
         } |
       }
-    }
-    R1
-    s1*136
-    s4 s2
-    \barNumberCheck #146
-    \relative c {
-        R1
-        f16\([  a c e] f8.[ e16] f[ a c e] f8[ e16 f] e[ c a e] c[ e g a] g8[ e] f4\)
     }
   }
   \new Staff = "down" \with {
@@ -379,7 +378,7 @@ drh = \drummode {
   cymc2. r8 cymcb8 |
   r4. cymc8~ cymc2 |
   cymc1 |
-  cymc4
+  cymc4 \fermata
 }
 
 drl = \drummode {
@@ -547,7 +546,7 @@ drl = \drummode {
   sn8 sn bd toml bd sn sn bd |
   r bd sn bd r bd sn8. bd16 |
   sn8 bd bd toml toml sn sn \oneVoice r \voiceTwo |
-  bd4 \oneVoice r4 r2 | R1 R1
+  bd4 \oneVoice r4 r2 | R1
 }
 
 leadVocals = \new Staff \with { instrumentName = "Vocals" } {
@@ -687,16 +686,17 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       e8. c16~ c8 g8~ g8 b8~ b a~ |
       a8 c~ c d~ d c~ c c |
       b4 g8 g~ g4 e8 a8~ |
-      a1 |
-      R1
-      R1 |
+      \tempo 4 = 66
+      <<
+      { a1 \fermata  s1 | }
+      \new Voice = "blah" { \teeny s2 s1*0^"Piano free time" \pianoTinkleNotes }
+      >>
 
       \bar "||"
-      \barNumberCheck #149
+      \barNumberCheck #148
 
-      \tempo 4 = 66
       \teeny
-      r8 g g g g g e g |
+      r8 g^"Backup Vocals" g g g g e g |
       gis e~ e d16 e d8 c~ c c |
 
       a c e4~ e8. e16 d8 c |
