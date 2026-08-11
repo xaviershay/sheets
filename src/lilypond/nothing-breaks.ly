@@ -3,7 +3,7 @@
 \header {
   title = "NOTHING BREAKS (A PORT OF CALL)"
   composer = "Moron Police"
-  arranger = \markup { \italic "Transcribed by Xavier Shay" }
+  % arranger = \markup { \italic "Transcribed by Xavier Shay" }
   tagline = \markup { \column { "" } }
 }
 
@@ -51,28 +51,14 @@ instrumentLabel =
        (ly:music-set-property! music 'elements (octavize-chord
                                                 (ly:music-property music 'elements) t)))
    music)
-pad = \new Staff \with { instrumentName = "Pad" midiInstrument = "pad 2 (warm)" } {
-  \tempo 4 = 60
-  \relative c' {
-    \leadLine { e2^\markup \instrumentLabel "Vox & Strings" d f d e d f d }
-
-    \repeat volta 2 {
-      \grace s8 % HACK: Needed for correct rendering, known issue apparently.
-      c2^\markup \instrumentLabel "Strings" d f1 c4 d e2 a,1
-    }
-  }
-}
 
 makeOctaves = #(define-music-function (arg mus) (integer? ly:music?)
                  (music-map (lambda (x) (octavize x arg)) (event-chord-wrap! mus)))
 
-padChords = \new ChordNames \with { midiInstrument = "pad 2 (warm)" } \chordmode {
-  c2 g:sus4/c f/c g:sus4/c
-  c2 g:sus4/c f/c g:sus4/c
-}
-
 guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \chordmode {
-  s1*9 |
+  c2 g:sus4/c f/c g:sus4/c
+  c2 g:sus4/c f/c g:sus4/c
+  s1*5 |
   bes1 | s1
   g2 c2 |
   c1:m |
@@ -113,38 +99,38 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
 
   c e a:m bes
   c e a:m bes
-
 }
 
 guitarLeadNotes = {
   \relative c'' {
+    \voiceOne
     e4. c8 g2 |
+    \oneVoice
     d'4 c d e |
     d4. c8 c4. aes8 |
     aes4. g8 g4 f |
     e'4. c8 g2 |
     d'4 c d e |
     g4 \staccato r8 g8 \staccato r4 g4 \staccato
-    r8 g8 \staccato r4 g4 \staccato g~ |
+    \voiceOne r8 g8 \staccato r4 g4 \staccato \voiceOne \stemDown g~ |
     \bar "||"
     g1 |
   }
 }
 
 pianoTinkleNotes =  \relative c' {
-    \tuplet 3/2 { a16\([ c e a c e] }
-    f16[ e8.]
-    \tuplet 3/2 { e16[ c a e c e] }
-    g16 a16 g8 e f4.\)
+  \tuplet 3/2 { a16\([ c e a c e] }
+  f16[ e8.]
+  \tuplet 3/2 { e16[ c a e c e] }
+  g16 a16 g8 e f4.\)
 }
 
-synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (sawtooth)" } {
+synth = {
   \relative c'' {
-    R1*8
     R1 \fermata
     \bar "||"
 
-    f4 e8 d c2 |
+    f4^"Lead" e8 d c2 |
     r2 a4 c |
     d4. e8 e2 |
     g4 f8 ees c4. c8~ |
@@ -157,13 +143,10 @@ synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (saw
     c8 a'~ a g e4 d8 c d c b c g2
     c'4. b8 a4 g e4 g d8 e16 d c4
     d2 e4 g d2 c2 |
-    c4
-    r4
-    c4
-    r4
+    c4 r4 c4 r4 |
     c1~ c1
 
-    g8 c e d~ d2 |
+    g8^"Piano" c e d~ d2 |
     a8 d fis e~ e2 |
     aes,8 c f aes~ aes2 |
     R1 |
@@ -174,10 +157,6 @@ synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (saw
 
     \bar "||"
 
-    s1*60
-    s4
-    \barNumberCheck #96
-    \guitarLeadNotes
   }
 }
 
@@ -188,9 +167,11 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
     \repeat volta 2 {
       \relative c''' {
         \slashedGrace {g16 c16} <e e,>8.( \makeOctaves #-1 {
-          c16 g4) }
+          c16 g4)
+        }
 
-        \slashedGrace { fis16 a } <d d,>8( \makeOctaves #-1 { c d e |
+        \slashedGrace { fis16 a } <d d,>8( \makeOctaves #-1 {
+          c d e |
 
           \tuplet 3/2 { d4 c8 }
           \tuplet 3/2 { c4) \ottava #1 aes'8(  }
@@ -209,7 +190,6 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
     \repeat volta 2 {
       \relative c {
         \grace s8 % HACK: Needed for correct rendering, known issue apparently.
-        % TODO: Place note in top staff and slur to it: https://music.stackexchange.com/questions/63372/how-can-i-change-slur-from-above-to-below-notes-when-switching-staff-in-lilypond
         c16( g' c e
         g4)
         d,16( fis a c d4)
@@ -548,13 +528,26 @@ drl = \drummode {
   bd4 \oneVoice r4 r2 | R1
 }
 
-leadVocals = \new Staff \with { instrumentName = "Vocals" } {
+leadVocals = \new Staff \with { instrumentName = "" } {
+  \tempo 4 = 60
+  \new Voice = "pad" {
+    \relative c' {
+      \leadLine { e2^\markup \instrumentLabel "Vox & Strings" d f d e d f d }
+
+      \repeat volta 2 {
+        \grace s8 % HACK: Needed for correct rendering, known issue apparently.
+        c2^\markup \instrumentLabel "Strings" d f1 c4 d e2 a,1
+      }
+    }
+  }
+  \new Voice = "synthy" {
+    \synth
+  }
   \new Voice = "lead" {
-    s1*35 s2
     \bar "||"
     \barNumberCheck #36
     \relative c'' {
-      c4 c8 c8~ c2 |
+      c4^"Vocals" c8 c8~ c2 |
       c4 c8 c8~ c2 |
       c4 aes8 aes~ aes g~ g \appoggiatura f g~ g4. f8 f f~ f e8~ e2 r4. e8 |
       \appoggiatura bes' c2. d8 c8~ |
@@ -634,14 +627,19 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       f e~ e d~ d c~ c2 |
       \bar "||"
       \time 4/4
-      c1~ |
-      c1
-
-      r1*5
-      r2 r4 r8 c8
-      \bar "||"
-      \barNumberCheck #104
-      e8 e~ e e~ e d c d~ |
+      <<
+        {
+          \voiceTwo
+          c1 |
+          s1
+          s1*5
+          \voiceTwo r2. r8 c8
+          \bar "||"
+          \barNumberCheck #104
+          e8 e~ e e~ e d c d~ |
+        }
+        \new Voice = "guitar" { \guitarLeadNotes }
+      >>
       d4 c d e |
       d4. c4. c4~ |
       c2 r4 e8 e
@@ -687,8 +685,8 @@ leadVocals = \new Staff \with { instrumentName = "Vocals" } {
       b4 g8 g~ g4 e8 a8~ |
       \tempo 4 = 66
       <<
-      { a1 \fermata  s1 | }
-      \new Voice = "blah" { \teeny s2 s1*0^"Piano free time" \pianoTinkleNotes }
+        { a1 \fermata  s1 | }
+        \new Voice = "blah" { \teeny s2 s1*0^"Piano free time" \pianoTinkleNotes }
       >>
 
       \bar "||"
@@ -782,14 +780,11 @@ backupWords = \new Lyrics \lyricsto "backup" {
 
 \score {
   <<
+    \guitarChords
     \leadVocals
     \leadWords
     \backupWords
-    \padChords
-    \pad
     \piano
-    \guitarChords
-    \synth
     \new DrumStaff \with { instrumentName = "Drums" drumStyleTable = #drumStyleTable } {
       <<
         \new DrumVoice { \stemUp \drh }
