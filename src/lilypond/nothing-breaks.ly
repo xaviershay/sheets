@@ -225,25 +225,29 @@ drh = \drummode {
   cymc4 cymc4 cymc4 cymc4 |
   cymc4 cymc4 cymc4 cymc4 |
   cymcb2 cymc2 |
-  s2 s4. cymcb8 |
-  s2 s16 cymc8. s4 |
+  r2 r4. cymcb8 |
+  r2 r16 cymc8.~ cymc4 |
   cymc2 cymc2 |
   \time 6/4
   s4 cymc4 cymc4 cymc4  cymc4 cymc4 |
   \time 4/4
-  cymc2 s8 cymcb8 s4 |
+  cymc2 r8 cymcb4. |
   cymc2 s2 |
-  s2. cymcb4 |
-  s2 cymc2 |
+  r2. cymcb4 |
+  r2 cymc2 |
   cymc2 cymc4 cymc4 |
   cymc4 cymc4 cymc4 cymc4 |
-  cymc2 s8 cymcb8 s4 |
-  s4 cymcb4 cymc8 cymc8 s4 |
-  s4 cymc4 s4 cymc4 |
+  cymc2 r8 cymcb8~ cymcb4 |
+  r4 cymcb4 cymc8 cymc8~ cymc4 |
+  r4 cymc4 r4 cymc4 |
   s1*2 |
   \bar "||"
-  % TODO: This voice group sucks, too much clutter
-  cymc4. hh8 r8 hh8 r8 hh8 |
+  cymc4. hh8
+  % Without this override, rest positions alternate between two spots (given the
+  % part underneath), which doesn't match the consistent rhythm. Fixing to a set
+  % height easier to read.
+  \override Rest.staff-position = #6
+  r8 hh8 r8 hh8 |
   r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
   r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
   r8 hh8 r8 hh8 r8 hh8 r8 hh8 |
@@ -270,6 +274,7 @@ drh = \drummode {
   r8 hh8 r8 hh8 r8 hh8 s4
   s1
 
+  \revert Rest.staff-position
   \bar "||"
   \barNumberCheck #52
   cymc4 hh hh hh |
@@ -301,8 +306,9 @@ drh = \drummode {
   cymc1 | s1 |
   \repeat unfold 5 { \repeat unfold 8 { hh8 } }
   hh hh hho4 s2 |
-  cymc4 hhho4 s4. cymc8~ | cymc4 hhho4 s2 |
-  cymc4 hhho4 s4. hhho8 \staccato |
+  \barNumberCheck #92
+  cymc4 hhho2 r8 cymc8~ | cymc4 hhho4 s2 |
+  cymc4 hhho2 r8 hhho8 \staccato |
   \oneVoice r8 \voiceOne hhho8 \staccato
   r8 hhho8 \staccato s2 s4
 
