@@ -146,13 +146,13 @@ synth = {
     c4 r4 c4 r4 |
     c1~ c1
 
-    g8^"Piano" c e d~ d2 |
+    g8^"Banjo" c e d~ d2 |
     a8 d fis e~ e2 |
     aes,8 c f aes~ aes2 |
     R1 |
     g,8 c e d~ d2 |
     a8 d fis e~ e2 |
-    f8. g aes8 c8. aes c8 |
+    f8.^"Lead" g aes8 c8. aes c8 |
     f8. c aes8 g4 f |
 
     \bar "||"
@@ -529,14 +529,14 @@ drl = \drummode {
 }
 
 leadVocals = \new Staff \with { instrumentName = "" } {
-  \tempo 4 = 60
+  \tempo 4 = 64
   \new Voice = "pad" {
     \relative c' {
       \leadLine { e2^\markup \instrumentLabel "Vox & Strings" d f d e d f d }
 
       \repeat volta 2 {
         \grace s8 % HACK: Needed for correct rendering, known issue apparently.
-        c2^\markup \instrumentLabel "Strings" d f1 c4 d e2 a,1
+        <c g>2^\markup \instrumentLabel "Strings" <d a> <c aes>1 <c g>4 <d a> <e b>2 <c a>1
       }
     }
   }
@@ -640,17 +640,18 @@ leadVocals = \new Staff \with { instrumentName = "" } {
         }
         \new Voice = "guitar" { \guitarLeadNotes }
       >>
+      \oneVoice
       d4 c d e |
       d4. c4. c4~ |
-      c2 r4 e8 e
+      c2. e8 e
       e4 e8 g~ g g g a~ |
       a g~ g e~ e f~ f4 |
       e2~ e8 d c4 |
-      g2 r4. c8 |
+      g2. r8 c8 |
       e8 e~ e e~ e d c d~ |
       d4 c d e |
       d4. e4. c4~ |
-      c2 r4. d,8 |
+      c2. r8 d,8 |
       e4. f8 g4. a8 |
       b4 c d e |
       d4. c8 c4. c8 |
@@ -663,7 +664,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
       c' b~ b8 a~ a g~ g4  |
       e  g g g8 g |
       a4. a8 a a g4~ |
-      g2 r4. g8 |
+      g2. r8 g8 |
 
       \barNumberCheck #129
 
@@ -683,7 +684,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
       e8. c16~ c8 g8~ g8 b8~ b a~ |
       a8 c~ c d~ d c~ c c |
       b4 g8 g~ g4 e8 a8~ |
-      \tempo 4 = 66
+      \tempo 4 = 64
       <<
         { a1 \fermata  s1 | }
         \new Voice = "blah" { \teeny s2 s1*0^"Piano free time" \pianoTinkleNotes }
@@ -696,7 +697,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
       r8 g^"Backup Vocals" g g g g e g |
       gis e~ e d16 e d8 c~ c c |
 
-      a c e4~ e8. e16 d8 c |
+      a c e4~ e8 e8~ e d16 c |
       d8. d16 d8 e d16( c8.~) c4 |
       r8 g'~ g e g16 e8 g16~ g8 g |
       \grace g( gis8.) e16 e8. e16 d8 c~ c8. c16 |
