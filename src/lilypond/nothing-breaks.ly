@@ -165,12 +165,9 @@ synth = \new Staff \with { instrumentName = "Lead" midiInstrument = "lead 2 (saw
 
     g8 c e d~ d2 |
     a8 d fis e~ e2 |
-    \hide NoteHead
-    % I don't have this bit yet
-    c8 c c c~ c2 |
-    \undo \hide NoteHead
+    aes,8 c f aes~ aes2 |
     R1 |
-    g8 c e d~ d2 |
+    g,8 c e d~ d2 |
     a8 d fis e~ e2 |
     f8. g aes8 c8. aes c8 |
     f8. c aes8 g4 f |
@@ -190,8 +187,10 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
 
     \repeat volta 2 {
       \relative c''' {
-        \slashedGrace {g16^( c16} <e) e,>8.( \makeOctaves #-1 {
-          c16 g4) d'8( c d e |
+        \slashedGrace {g16 c16} <e e,>8.( \makeOctaves #-1 {
+          c16 g4) }
+
+        \slashedGrace { fis16 a } <d d,>8( \makeOctaves #-1 { c d e |
 
           \tuplet 3/2 { d4 c8 }
           \tuplet 3/2 { c4) \ottava #1 aes'8(  }
