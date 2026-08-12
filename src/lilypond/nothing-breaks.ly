@@ -33,13 +33,13 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   \time 4/4
   a1:m c f g a:m c f g c
   s1 s1 |
-  \barNumberCheck #28
+  \barNumberCheck #26
   \repeat unfold 5 { c d/c f:m/c s1 }
   c d f:m/c s1
-  \barNumberCheck #52
+  \barNumberCheck #50
   \repeat unfold 3 { c d/c f:m/c s1 }
   c e a:m
-  \barNumberCheck #67
+  \barNumberCheck #65
   f g e:m c f g a:m
   f e:m f:maj7 s1
   g a:m f g
@@ -47,17 +47,17 @@ guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \ch
   g a:m f g
   g a:m bes f
   aes bes s4
-  \barNumberCheck #96
+  \barNumberCheck #94
   c1 d/c f:m s
   c d/c f:m s
-  \barNumberCheck #104
+  \barNumberCheck #102
   c d/c f:m s
   c d/c f:m s
   c d/c f:m s
   c e a:m
   c f
   \repeat unfold 4 { d:m c f g }
-  \barNumberCheck #137
+  \barNumberCheck #135
   f g e:m c f g a:m
   f e:m f:maj7 s1
 
@@ -130,7 +130,7 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
 
     \repeat volta 2 {
       \relative c''' {
-        \slashedGrace {g16 c16} <e e,>8.( <c c,>16 <g \parenthesize g,>4
+        \slashedGrace {g16 c16} <e e,>8.( <c c,>16 <g \parenthesize g,>4)
 
         \slashedGrace { fis16 a } <d d,>8( \makeOctaves #-1 {
           c d e |
@@ -185,7 +185,7 @@ drh = \drummode {
   R1*6 |
   s1 |
   \bar "||"
-  \barNumberCheck #10
+  \barNumberCheck #8
   \voiceOne
   cymc4 cymc4 cymc4 cymc4 |
   cymc4 cymc4 cymc4 cymc4 |
@@ -241,7 +241,7 @@ drh = \drummode {
 
   \revert Rest.staff-position
   \bar "||"
-  \barNumberCheck #52
+  \barNumberCheck #50
   cymc4 hh hh hh |
   \repeat unfold 7 { hh hh hh hh }
   cymc4 hh hh hh |
@@ -252,7 +252,7 @@ drh = \drummode {
   cymc2 r8 cymcb8~ cymcb4 |
 
   \bar "||"
-  \barNumberCheck #67
+  \barNumberCheck #65
   cymc8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 |
   \repeat unfold 2 { rb8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 | }
   cymc2. cymc4 |
@@ -264,21 +264,21 @@ drh = \drummode {
   cymc2~ cymc4. \tuplet 3/2 { cymr16_( cymr cymr } |
   cymr4) \oneVoice r4 r2 \voiceOne
   \bar "||"
-  \barNumberCheck #78
+  \barNumberCheck #76
 
   \repeat unfold 5 { \repeat unfold 8 { hh8 } }
   hh hh hho4 s2 |
   cymc1 | s1 |
   \repeat unfold 5 { \repeat unfold 8 { hh8 } }
   hh hh hho4 s2 |
-  \barNumberCheck #92
+  \barNumberCheck #90
   cymc4 hhho2 r8 cymc8~ | cymc4 hhho4 s2 |
   cymc4 hhho2 r8 hhho8 \staccato |
   \oneVoice r8 \voiceOne hhho8 \staccato
   r8 hhho8 \staccato s2 s4
 
   \bar "||"
-  \barNumberCheck #96
+  \barNumberCheck #94
 
   cymcb4 cymc cymc cymc
   cymc cymc cymc cymc
@@ -288,7 +288,7 @@ drh = \drummode {
   cymc cymc cymc cymc
   s1*2
   \bar "||"
-  \barNumberCheck #104
+  \barNumberCheck #102
 
   cymc4 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
   rb8 cymr16 cymr16 rb8 cymr8 rb8 cymr16 cymr16 rb8 cymr8
@@ -313,12 +313,12 @@ drh = \drummode {
   hhho4 hhho hhho s |
 
   \bar "||"
-  \barNumberCheck #129
+  \barNumberCheck #127
 
   \repeat unfold 8 { cymc4. cymc8~ cymc4 cymc4 | }
 
   \bar "||"
-  \barNumberCheck #137
+  \barNumberCheck #135
 
   cymc8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 |
   \repeat unfold 2 { rb8 cymr16 cymr rb8 cymr8 rb cymr16 cymr rb8 cymr8 | }
@@ -338,7 +338,7 @@ drl = \drummode {
   \voiceTwo
   bd8 \slashedGrace sn8 sn4 |
   \bar "||"
-  \barNumberCheck #10
+  \barNumberCheck #8
   bd4 sn8 bd sn4 sn8 bd |
   sn bd sn bd sn bd  \slashedGrace sn sn bd |
   bd4 \slashedGrace sn8 sn bd bd4 sn8 bd |
@@ -389,7 +389,7 @@ drl = \drummode {
   tomh8 bd8 sn8 tommh toml bd sn bd |
 
   \bar "||"
-  \barNumberCheck #52
+  \barNumberCheck #50
 
   \repeat unfold 7 { bd8 bd sn bd r bd sn4 | }
   bd8 bd sn bd bd bd sn8 bd |
@@ -400,7 +400,7 @@ drl = \drummode {
   bd4 sn8 bd r bd16 bd sn8 bd |
 
   \bar "||"
-  \barNumberCheck #67
+  \barNumberCheck #65
   \repeat unfold 3 { bd4 sn8 bd r bd sn4 | }
   bd8. bd16 sn16 bd sn8 r bd16 bd sn bd tomml toml |
   \repeat unfold 1 { bd4 sn8 bd r bd sn4 | }
@@ -411,7 +411,7 @@ drl = \drummode {
   bd4 r4 r2 | s1
 
   \bar "||"
-  \barNumberCheck #78
+  \barNumberCheck #76
 
   ss4 ss ss ss
   ss ss ss8 bd ss bd16 bd |
@@ -433,7 +433,7 @@ drl = \drummode {
   s8 bd sn bd sn16 sn bd bd sn bd sn sn \oneVoice r4 \voiceTwo |
 
   \bar "||"
-  \barNumberCheck #96
+  \barNumberCheck #94
   bd4 sn8 bd bd bd sn bd
   bd bd sn bd bd bd sn bd
   bd bd sn bd bd bd sn bd
@@ -443,7 +443,7 @@ drl = \drummode {
   bd16 bd toml toml toml toml bd bd sn sn bd bd tommh tommh toml toml |
   bd bd sn sn sn sn bd bd sn sn bd bd sn tomh tommh toml |
   \bar "||"
-  \barNumberCheck #104
+  \barNumberCheck #102
   \repeat unfold 3 {
     bd4 sn8 bd8 r8 bd8 sn4 |
   }
@@ -472,7 +472,7 @@ drl = \drummode {
   bd8 bd sn bd bd sn16 sn sn sn8 sn16 |
 
   \bar "||"
-  \barNumberCheck #129
+  \barNumberCheck #127
 
   bd8. bd16 sn8 bd r16 bd sn8 bd16 sn sn sn |
   bd8. bd16 sn8 bd r16 bd sn8 bd16 tommh tomml toml |
@@ -485,7 +485,7 @@ drl = \drummode {
 
 
   \bar "||"
-  \barNumberCheck #137
+  \barNumberCheck #135
 
   bd4 sn8 bd r bd sn4 |
   bd4 sn8 bd r bd16 bd sn8 bd |
@@ -521,7 +521,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
   }
   \new Voice = "lead" {
     \bar "||"
-    \barNumberCheck #36
+    \barNumberCheck #34
     \relative c'' {
       c4^\markup \instrumentLabel "Vocals" c8 c8~ c2 |
       c4 c8 c8~ c2 |
@@ -572,7 +572,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
         }
       >> |
 
-      \barNumberCheck #67
+      \barNumberCheck #65
       \oneVoice
       e2~ e8 f e d8~ | d2. r4 |
       d2~ d8 e d c8~ | c2. r4 |
@@ -611,7 +611,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
           s1*5
           \voiceTwo r2. r8 c8
           \bar "||"
-          \barNumberCheck #104
+          \barNumberCheck #102
           e8 e~ e e~ e d c d~ |
         }
         \new Voice = "guitar" { \guitarLeadNotes }
@@ -642,7 +642,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
       a4. a8 a a g4~ |
       g2. r8 g8 |
 
-      \barNumberCheck #129
+      \barNumberCheck #127
 
       e'8 e~ e e~ e4. e8 |
       d8 c~ c c~ c4 c8 c |
@@ -652,7 +652,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
       c4. e8~ e d c d~ |
       d2 r2 |
 
-      \barNumberCheck #137
+      \barNumberCheck #135
 
       e2~ e8 f e d8~ | d2. r4 |
       d2~ d8 e d c8~ | c2. r4 |
@@ -667,7 +667,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
       >>
 
       \bar "||"
-      \barNumberCheck #148
+      \barNumberCheck #146
 
       \teeny
       r8 g^\markup \instrumentLabel "Backup Vocals" g g g g e g |
