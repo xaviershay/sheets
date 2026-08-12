@@ -1,6 +1,7 @@
 \version "2.24.4"
 #(ly:set-option 'relative-includes #t)
 \include "util/book-title.ly"
+\include "util/instrument-label.ly"
 
 \header {
   title = "NOTHING BREAKS (A PORT OF CALL)"
@@ -30,11 +31,6 @@ leadLine =
      #music
      \revert Stem.stencil
    #})
-
-instrumentLabel =
-#(define-markup-command (instrumentLabel layout props text) (markup?)
-   (interpret-markup layout props
-                     (markup #:italic #:fontsize -3 text)))
 
 % https://wiki.lilypond.community/wiki/Adding_automatic_octaves_to_a_melody
 #(define (octave-up m t)
@@ -139,7 +135,7 @@ synth = {
     R1 \fermata
     \bar "||"
 
-    f4^"Lead" e8 d c2 |
+    f4^\markup \instrumentLabel "Lead" e8 d c2 |
     r2 a4 c |
     d4. e8 e2 |
     g4 f8 ees c4. c8~ |
@@ -155,13 +151,13 @@ synth = {
     c4 r4 c4 r4 |
     c1~ c1
 
-    g8^"Banjo" c e d~ d2 |
+    g8^\markup \instrumentLabel "Banjo" c e d~ d2 |
     a8 d fis e~ e2 |
     aes,8 c f aes~ aes2 |
     R1 |
     g,8 c e d~ d2 |
     a8 d fis e~ e2 |
-    f8.^"Lead" g aes8 c8. aes c8 |
+    f8.^\markup \instrumentLabel "Lead" g aes8 c8. aes c8 |
     f8. c aes8 g4 f |
 
     \bar "||"
@@ -562,7 +558,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
     \bar "||"
     \barNumberCheck #36
     \relative c'' {
-      c4^"Vocals" c8 c8~ c2 |
+      c4^\markup \instrumentLabel "Vocals" c8 c8~ c2 |
       c4 c8 c8~ c2 |
       c4 aes8 aes~ aes g~ g \appoggiatura f g~ g4. f8 f f~ f e8~ e2 r4. e8 |
       \appoggiatura bes' c2. d8 c8~ |
@@ -702,14 +698,14 @@ leadVocals = \new Staff \with { instrumentName = "" } {
       \tempo 4 = 64
       <<
         { a1 \fermata  s1 | }
-        \new Voice = "blah" { \teeny s2 s1*0^"Piano free time" \pianoTinkleNotes }
+        \new Voice = "blah" { \teeny s2 s1*0^\markup \instrumentLabel "Piano free time" \pianoTinkleNotes }
       >>
 
       \bar "||"
       \barNumberCheck #148
 
       \teeny
-      r8 g^"Backup Vocals" g g g g e g |
+      r8 g^\markup \instrumentLabel "Backup Vocals" g g g g e g |
       gis e~ e d16 e d8 c~ c c |
 
       a c e4~ e8 e8~ e d16 c |
