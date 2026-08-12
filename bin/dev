@@ -43,11 +43,16 @@ const PAGE_HTML = `<!doctype html>
   #pdf-pages canvas{display:block;margin:0 auto 8px;box-shadow:0 0 4px rgba(0,0,0,0.5)}
   #midi-bar{position:fixed;top:0;left:0;right:0;height:56px;display:flex;align-items:center;
     padding:0 12px;background:#525659;color:#aaa;font:13px/1 monospace;z-index:2}
-  #midi-bar midi-player{flex:1;width:100%;min-width:0}
-  #midi-bar midi-player::part(control-panel){background:transparent;border-radius:0;box-shadow:none}
-  #midi-bar midi-player::part(play-button){color:#aaa}
-  #midi-bar midi-player::part(seek-bar){accent-color:#6c7a89}
+  #midi-player-slot{flex:1;min-width:0;display:flex;align-items:center}
+  #midi-player-slot midi-player{flex:1;width:100%;min-width:0}
+  #midi-player-slot midi-player::part(control-panel){background:transparent;border-radius:0;box-shadow:none}
+  #midi-player-slot midi-player::part(play-button){color:#aaa}
+  #midi-player-slot midi-player::part(seek-bar){accent-color:#6c7a89}
   #midi-note{flex:none;margin-left:8px;white-space:nowrap}
+  #warning-toggle{flex:none;margin-left:8px;background:transparent;color:#aaa;
+    border:1px solid #6c7a89;border-radius:3px;font:12px/1 monospace;padding:4px 8px;
+    cursor:pointer;display:none}
+  #warning-toggle:hover{color:#fff;border-color:#aaa}
   #error-banner{display:none;position:fixed;top:56px;left:0;right:0;max-height:40%;overflow:auto;
     margin:0;padding:12px;background:#3a0d0d;color:#ffffff;font:15px/1.5 monospace;
     white-space:pre-wrap;box-shadow:0 2px 6px rgba(0,0,0,0.6);z-index:1}
@@ -57,7 +62,10 @@ const PAGE_HTML = `<!doctype html>
 </style>
 </head>
 <body>
-<div id="midi-bar">loading player…</div>
+<div id="midi-bar">
+  <span id="midi-player-slot">loading player…</span>
+  <button id="warning-toggle" type="button"></button>
+</div>
 <pre id="error-banner"></pre>
 <pre id="warning-banner"></pre>
 <div id="pdf-pages"></div>
@@ -65,10 +73,10 @@ const PAGE_HTML = `<!doctype html>
   import * as pdfjsLib from '/vendor/pdf.min.mjs';
   pdfjsLib.GlobalWorkerOptions.workerSrc = '/vendor/pdf.worker.min.mjs';
 
-  const midiBar = document.getElementById('midi-bar');
+  const midiPlayerSlot = document.getElementById('midi-player-slot');
 
   function midiPlayerUnavailable() {
-    midiBar.textContent = 'MIDI unavailable (offline)';
+    midiPlayerSlot.textContent = 'MIDI unavailable (offline)';
   }
 
   const midiScript = document.createElement('script');
@@ -79,7 +87,7 @@ const PAGE_HTML = `<!doctype html>
       midiPlayerUnavailable();
       return;
     }
-    midiBar.innerHTML = '<midi-player id="midi-player" sound-font></midi-player><span id="midi-note"></span>';
+    midiPlayerSlot.innerHTML = '<midi-player id="midi-player" sound-font></midi-player><span id="midi-note"></span>';
     refreshMidiSrc();
   };
   document.head.appendChild(midiScript);
@@ -118,23 +126,46 @@ const PAGE_HTML = `<!doctype html>
 
   const errorBanner = document.getElementById('error-banner');
   const warningBanner = document.getElementById('warning-banner');
+  const warningToggle = document.getElementById('warning-toggle');
+
+  let latestWarning = null;
+  let warningsHidden = localStorage.getItem('dev-warnings-hidden') === '1';
+
+  function renderWarningBanner() {
+    if (!latestWarning) {
+      warningBanner.style.display = 'none';
+      warningToggle.style.display = 'none';
+      return;
+    }
+    warningToggle.style.display = 'block';
+    warningToggle.textContent = warningsHidden ? 'show warnings' : 'hide warnings';
+    if (warningsHidden) {
+      warningBanner.style.display = 'none';
+    } else {
+      warningBanner.textContent = latestWarning;
+      warningBanner.style.display = 'block';
+    }
+  }
+
+  warningToggle.addEventListener('click', () => {
+    warningsHidden = !warningsHidden;
+    localStorage.setItem('dev-warnings-hidden', warningsHidden ? '1' : '0');
+    renderWarningBanner();
+  });
 
   const es = new EventSource('/events');
   es.addEventListener('reload', (e) => {
     errorBanner.style.display = 'none';
     const { warning } = JSON.parse(e.data);
-    if (warning) {
-      warningBanner.textContent = warning;
-      warningBanner.style.display = 'block';
-    } else {
-      warningBanner.style.display = 'none';
-    }
+    latestWarning = warning || null;
+    renderWarningBanner();
     renderPdf('/out.pdf?t=' + Date.now());
     refreshMidiSrc();
   });
   es.addEventListener('error', (e) => {
     if (!e.data) return; // native EventSource connection error, not a server-pushed error event
     warningBanner.style.display = 'none';
+    warningToggle.style.display = 'none';
     errorBanner.textContent = JSON.parse(e.data);
     errorBanner.style.display = 'block';
   });
