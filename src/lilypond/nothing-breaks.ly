@@ -1,10 +1,19 @@
 \version "2.24.4"
+#(ly:set-option 'relative-includes #t)
+\include "util/book-title.ly"
 
 \header {
   title = "NOTHING BREAKS (A PORT OF CALL)"
   composer = "Moron Police"
-  % arranger = \markup { \italic "Transcribed by Xavier Shay" }
+  poet = \markup { \italic "Transcribed by Xavier Shay" }
   tagline = \markup { \column { "" } }
+}
+
+\paper {
+  bookTitleMarkup = \markup \bookTitleFormat
+    \fromproperty #'header:title
+    \fromproperty #'header:composer
+    \fromproperty #'header:poet
 }
 
 % "Lead line" / "Top line" notation: a notehead with a stem extending on

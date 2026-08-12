@@ -1,4 +1,6 @@
 \version "2.24.4"
+#(ly:set-option 'relative-includes #t)
+\include "util/book-title.ly"
 
 % By ear from original and this how to:
 % https://www.youtube.com/watch?v=1LnSctS9iVY
@@ -11,36 +13,10 @@
 }
 
 \paper {
-  bookTitleMarkup = \markup {
-    \override #'(baseline-skip . 3.5)
-    \column {
-      \fill-line { \fromproperty #'header:dedication }
-      \override #'(baseline-skip . 3.5)
-      \column {
-        \fill-line {
-          \huge \larger \larger \bold
-          \fromproperty #'header:title
-        }
-        \fill-line {
-          \large \bold
-          \fromproperty #'header:subtitle
-        }
-        \fill-line {
-          \smaller \bold
-          \fromproperty #'header:subsubtitle
-        }
-        \fill-line {
-          \null
-          \fromproperty #'header:composer
-          \fromproperty #'header:poet
-        }
-        \fill-line {
-          \fromproperty #'header:meter
-          \fromproperty #'header:arranger
-        }
-      }
-    }
-  }
+  bookTitleMarkup = \markup \bookTitleFormat
+    \fromproperty #'header:title
+    \fromproperty #'header:composer
+    \fromproperty #'header:poet
 }
 
 myTabclef =
