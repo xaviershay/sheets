@@ -1,6 +1,7 @@
 \version "2.24.4"
 #(ly:set-option 'relative-includes #t)
 \include "util/book-title.ly"
+\include "util/labeled-tab-clef.ly"
 
 % By ear from original and this how to:
 % https://www.youtube.com/watch?v=1LnSctS9iVY
@@ -18,25 +19,6 @@
     \fromproperty #'header:composer
     \fromproperty #'header:poet
 }
-
-myTabclef =
-  #(define-music-function () ()
-   #{
-      \override Staff.Clef.stencil = #ly:text-interface::print
-      \override Staff.Clef.text = \markup {
-        \vcenter
-          \fontsize #-4
-          \override #'(baseline-skip . 1.5)
-          \center-column
-          \sans \bold \whiteout { E C G C G C }
-
-        % Select classic or modern TAB; comment out the one you don't
-        % want to use.
-
-        % music glyph version
-        \vcenter \musicglyph "clefs.tab"
-     }
-   #})
 
 drh = \drummode {
   cymc4 hh hh hh hh hh hh hh
@@ -124,8 +106,9 @@ guitarNotes = {
       \removeWithTag #'tab \guitarNotes
     }
     \new TabStaff \with {
-      \myTabclef
-      stringTunings = \stringTuning <c, g, c g c' e'>
+      \labeledTabClef <c, g, c g c' e'>
+
+      % This is needed so that text annotations show above the staff
       \revert TextScript.stencil
     } {
       \transpose c g,,
