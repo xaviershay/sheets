@@ -14,15 +14,15 @@
 
 \paper {
   bookTitleMarkup = \markup \bookTitleFormat
-    \fromproperty #'header:title
-    \fromproperty #'header:composer
-    \fromproperty #'header:poet
+  \fromproperty #'header:title
+  \fromproperty #'header:composer
+  \fromproperty #'header:poet
 }
 
 guitarChords = \new ChordNames \with { midiInstrument = "distorted guitar" } \chordmode {
   c2 g:sus4/c f/c g:sus4/c
-  c2 g:sus4/c f/c g:sus4/c
-  s1*5 |
+  c2 d2 f1:m c4 d:m e2:m a1:m
+  s1 |
   bes1 | s1
   g2 c2 |
   c1:m |
@@ -126,7 +126,7 @@ synth = {
 
 piano = \new PianoStaff \with { instrumentName = "Piano" } <<
   \new Staff = "up" {
-    R1 * 4
+    R1 * 2
 
     \repeat volta 2 {
       \relative c''' {
@@ -140,15 +140,18 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
           \tuplet 3/2 { aes4 g8 }
           g8 f8 |
 
-          e8.)( f16 g8. a16 b8 c d e | d8.  } <c \parenthesize c,>16 <c c,>4) \ottava #0 r2
+          e8.)( f16 g8. a16 b8 c d e | d8.
+        } <c \parenthesize c,>16 <c c,>4) \ottava #0 r2
         |
       }
     }
+    R1 \fermata
+    R1
   }
   \new Staff = "down" \with {
   } {
     \clef bass
-    R1 * 4
+    R1 * 2
     \repeat volta 2 {
       \relative c {
         \grace s8 % HACK: Needed for correct rendering, known issue apparently.
@@ -168,7 +171,7 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
         r2
       }
     }
-    R1
+    R1*2
   }
 >>
 
@@ -179,7 +182,7 @@ drumStyleTable = #(alist->hash-table
                          (hash-table->alist drums-style)))
 
 drh = \drummode {
-  R1*8 |
+  R1*6 |
   s1 |
   \bar "||"
   \barNumberCheck #10
@@ -329,7 +332,7 @@ drh = \drummode {
 }
 
 drl = \drummode {
-  R1*8
+  R1*6
   \tempo 4 = 160
   r2 r8 \fermata
   \voiceTwo
@@ -499,12 +502,17 @@ drl = \drummode {
 leadVocals = \new Staff \with { instrumentName = "" } {
   \tempo 4 = 64
   \new Voice = "pad" {
-    \relative c' {
-      \leadLine { e2^\markup \instrumentLabel "Vox & Strings" d f d e d f d }
+    \repeat volta 2 {
+      \relative c' {
+        \leadLine { e2^\markup \instrumentLabel "Vox & Strings" d f d }
+      }
+    }
 
-      \repeat volta 2 {
+    \repeat volta 2 {
+      \relative c' {
         \grace s8 % HACK: Needed for correct rendering, known issue apparently.
-        <c g>2^\markup \instrumentLabel "Strings" <d a> <c aes>1 <c g>4 <d a> <e b>2 <c a>1
+        <c g>2^\markup \instrumentLabel "Strings only after first note" <d a>
+        <c aes>1 | <c g>4 <d a> <e b>2 <c a>1
       }
     }
   }
@@ -770,3 +778,11 @@ backupWords = \new Lyrics \lyricsto "backup" {
   }
   \midi {}
 }
+% touch
+% touch2
+% touch3
+% touch
+% touch
+% touch
+% touch
+% touch
