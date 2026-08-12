@@ -130,9 +130,7 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
 
     \repeat volta 2 {
       \relative c''' {
-        \slashedGrace {g16 c16} <e e,>8.( \makeOctaves #-1 {
-          c16 g4)
-        }
+        \slashedGrace {g16 c16} <e e,>8.( <c c,>16 <g \parenthesize g,>4
 
         \slashedGrace { fis16 a } <d d,>8( \makeOctaves #-1 {
           c d e |
@@ -142,8 +140,8 @@ piano = \new PianoStaff \with { instrumentName = "Piano" } <<
           \tuplet 3/2 { aes4 g8 }
           g8 f8 |
 
-          e8.)( f16 g8. a16 b8 c d e | d8. c16 c4) \ottava #0 r2
-        } |
+          e8.)( f16 g8. a16 b8 c d e | d8.  } <c \parenthesize c,>16 <c c,>4) \ottava #0 r2
+        |
       }
     }
   }
