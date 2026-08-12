@@ -578,7 +578,7 @@ leadVocals = \new Staff \with { instrumentName = "" } {
           r2 r8 e8 e e
           e4 e8 g~ g e d c |
           d4 c8 c~ c a~ a c~ |
-          c4. aes8( g2) |
+          c4. aes8_( g2) |
           R1 | e'8 e~ e e~ e d c d~ |
           d4 c d e |
           d4. c c4~ |
