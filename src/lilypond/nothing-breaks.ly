@@ -371,12 +371,12 @@ drl = \drummode {
   \tempo 4 = 160
   r2 r8 \fermata
   \voiceTwo
-  bd8 \acciaccatura sn8 sn4 |
+  bd8 \slashedGrace sn8 sn4 |
   \bar "||"
   \barNumberCheck #10
   bd4 sn8 bd sn4 sn8 bd |
-  sn bd sn bd sn bd  \acciaccatura sn sn bd |
-  bd4 \acciaccatura sn8 sn bd bd4 sn8 bd |
+  sn bd sn bd sn bd  \slashedGrace sn sn bd |
+  bd4 \slashedGrace sn8 sn bd bd4 sn8 bd |
   sn8 tomh16 tomh16 tommh tommh tommh8 tomml16 tomml16 bd bd sn sn bd8 |
   r8 bd sn4 bd16 sn bd8 sn bd |
   bd4 sn8 bd bd8 sn16 sn toml toml bd bd |
