@@ -227,9 +227,41 @@ function scheduleCompile() {
   debounceTimer = setTimeout(compile, 300);
 }
 
-fs.watch(targetDir, (eventType, filename) => {
-  if (filename && filename.endsWith('.ly')) scheduleCompile();
-});
+function watchByPolling() {
+  const mtimes = new Map();
+  function scan() {
+    let files;
+    try {
+      files = fs.readdirSync(targetDir);
+    } catch {
+      return;
+    }
+    for (const filename of files) {
+      if (!filename.endsWith('.ly')) continue;
+      let mtimeMs;
+      try {
+        mtimeMs = fs.statSync(path.join(targetDir, filename)).mtimeMs;
+      } catch {
+        continue;
+      }
+      const prev = mtimes.get(filename);
+      mtimes.set(filename, mtimeMs);
+      if (prev !== undefined && prev !== mtimeMs) scheduleCompile();
+    }
+  }
+  scan();
+  setInterval(scan, 1000);
+}
+
+try {
+  fs.watch(targetDir, (eventType, filename) => {
+    if (filename && filename.endsWith('.ly')) scheduleCompile();
+  });
+} catch (err) {
+  // inotify is unavailable on some hosts (container/VM filesystem quirks); poll instead.
+  console.warn('fs.watch failed (' + err.code + '), falling back to polling for changes');
+  watchByPolling();
+}
 
 const server = http.createServer((req, res) => {
   if (req.url === '/') {
