@@ -1,37 +1,19 @@
 \version "2.24.4"
+#(ly:set-option 'relative-includes #t)
+\include "util/book-title.ly"
 
 \header {
   title = "MAKE THINGS EASIER"
   composer = "Moron Police"
-  arranger = \markup { \italic "Transcribed by Xavier Shay" }
+  poet = \markup { \italic "Transcribed by Xavier Shay" }
   tagline = \markup { \column { "" } }
 }
 
 \paper {
-  bookTitleMarkup = \markup {
-    \override #'(baseline-skip . 3.5)
-    \column {
-      \override #'(baseline-skip . 3.5)
-      \column {
-        \fill-line {
-          \huge \larger \larger \bold
-          \fromproperty #'header:title
-        }
-        \fill-line {
-          \large \bold
-          \fromproperty #'header:subtitle
-        }
-        \fill-line {
-          \null
-          \fromproperty #'header:composer
-          \fromproperty #'header:arranger
-        }
-        \fill-line {
-          \fromproperty #'header:meter
-        }
-      }
-    }
-  }
+  bookTitleMarkup = \markup \bookTitleFormat
+    \fromproperty #'header:title
+    \fromproperty #'header:composer
+    \fromproperty #'header:poet
 }
 
 violin = \new Staff \with { instrumentName = "Violin" } {
