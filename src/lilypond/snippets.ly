@@ -8,7 +8,7 @@
 % https://www.youtube.com/watch?v=1LnSctS9iVY
 
 \header {
-  title = "PACHINKO (PT. 1, SNIPPETS)"
+  title = "PACHINKO (ASSORTED SNIPPETS)"
   composer = "Moron Police"
   poet = \markup { \italic "Transcribed by Xavier Shay" }
   tagline = \markup { \column { "" } }
@@ -77,6 +77,48 @@ chordText = \new ChordNames {
     }
   >>
 
+  \header {
+    piece = "PACHINKO, PT. 1 (INTRO)"
+  }
+  \layout {}
+  \midi {}
+}
+
+kittensLead = {
+    r2 r4 \repeat volta 2 { f8 g | r a~ a4 g8 r a8 r  |
+   \time 5/4
+    r c~ c4 g f8 e r4
+    \time 4/4
+    f e8 f r a r4
+    \time 2/4 d,2
+    \time 4/4
+    c4 a8 c r g' r f~
+    \time 5/4
+    f2
+    c8 d f g r4
+    \time 4/4
+    a bes8 a r f r g~ g2.
+    }
+}
+
+\score {
+<<
+    \new StaffGroup \with { instrumentName = "Lead" }
+    \new Staff \relative c' {
+      \tempo 4 = 168
+      \kittensLead
+    }
+    % \new DrumStaff \with { instrumentName = "Drums" } {
+    %   <<
+    %     \new DrumVoice { \stemUp \drh }
+    %     \new DrumVoice { \stemDown \drl }
+    %   >>
+    % }
+  >>
+
+  \header {
+    piece = "KING AMONG KITTENS (INTRO)"
+  }
   \layout {}
   \midi {}
 }
