@@ -8,7 +8,7 @@
 % https://www.youtube.com/watch?v=1LnSctS9iVY
 
 \header {
-  title = "PACHINKO (PT. 1)"
+  title = "PACHINKO (PT. 1, SNIPPETS)"
   composer = "Moron Police"
   poet = \markup { \italic "Transcribed by Xavier Shay" }
   tagline = \markup { \column { "" } }
@@ -29,23 +29,35 @@ drl = \drummode {
     \time 2,2,2,2,3 11/8
     r8 bd8 sn4 bd8 bd sn bd sn bd bd \accent |
     \time 4/4
+    r8 bd8 sn4 bd8 bd sn bd |
+    \time 2,2,2,2,3 11/8
+    bd4 sn4 bd8 bd sn bd r bd bd \accent |
+    \time 4/4
     r8 bd8 sn4 bd8 bd sn bd \accent |
     \time 2,2,2,2,3 11/8
-    r8 bd8 sn4 bd8 bd sn bd r bd bd \accent |
+    r8 bd8 sn4 bd8 bd sn bd sn bd bd \accent |
+    \time 4/4
+    r8 bd8 sn4 bd8 bd sn bd |
+    r8 bd sn bd sn bd tomml bd \accent |
 }
 leadNotes = {
     \key d \major
     r2 r4. \xNote { d8 \accent } |
     r4 fis8 f fis4 r8 \xNote { d8 \accent } |
     r4 fis8 f fis f fis d8~ d4 \xNote { d8 \accent } |
-    r4 fis8 f fis4 r8 \xNote { d8 \accent } |
+    r4 fis8 f fis4 r4 |
     g4 g g8 a g fis~ fis4 \xNote { d8 \accent } |
 
-
+    r4 fis8 f fis4 r8 \xNote { d8 \accent } |
+    r4 fis8 f fis f fis d8~ d4 \xNote { d8 \accent } |
+    r4 fis8 f fis4 r8 d~ |
+    d \accent fis g a c a g d \accent |
 }
 chordText = \new ChordNames {
   \chordmode {
-    s2 s4. d8
+    s2 s4. d8 |
+    s1 | s1 s4. | s1 |
+    g1 s4 d8 |
   }
 }
 
