@@ -8,7 +8,7 @@
 % https://www.youtube.com/watch?v=1LnSctS9iVY
 
 \header {
-  title = "PACHINKO (ASSORTED SNIPPETS)"
+  title = "PACHINKO (ASSORTED RIFFS)"
   composer = "Moron Police"
   poet = \markup { \italic "Transcribed by Xavier Shay" }
   tagline = \markup { \column { "" } }
@@ -85,8 +85,9 @@ chordText = \new ChordNames {
 }
 
 kittensLead = {
-    r2 r4 \repeat volta 2 { f8 g | r a~ a4 g8 r a8 r  |
-   \time 5/4
+  \key f \major
+  \repeat volta 2 { \partial 4 f8 g | r a~ a4 g8 r a8 r  |
+  \time 5/4
     r c~ c4 g f8 e r4
     \time 4/4
     f e8 f r a r4
@@ -98,7 +99,7 @@ kittensLead = {
     c8 d f g r4
     \time 4/4
     a bes8 a r f r g~ g2.
-    }
+  }
 }
 
 \score {
