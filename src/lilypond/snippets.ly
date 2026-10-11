@@ -84,6 +84,51 @@ chordText = \new ChordNames {
   \midi {}
 }
 
+pachTwoLead = {
+  \key f \major
+  \clef treble
+  \relative c'' {
+    bes8 a f g~ g f~ f4
+    \repeat volta 2 {
+    a4 a a8 bes c ees8~ ees8 ees8~ ees4
+    ees8 d8 \grace { es16( d c } bes8) d |
+    \time 6/4
+    c4 f, f8 c ees bes' f' f~ f4
+    \time 4/4
+    a,4 a a8 bes c ees8~ ees8 ees8~ ees4
+    ees8 d8 \grace { es16( d c } bes8) d |
+    \time 7/4
+    f4 a, a  bes8 a f g~ g f~ f4
+    \time 4/4
+    }
+  }
+
+  \clef bass
+  f,4 f, a8 c~ c e~ e f8
+  f,4 a c8 e f4
+  f, a c f r8 \teeny \ottava 2 { bes'' ces4 \staccato bes \staccato } \ottava 0
+  \normalsize
+  f,,4 f, a8 c~ c e~ e f8
+  f,4 a c8 e f4
+  f, a8 c8 r4 f r r2 \bar "||"
+}
+
+\score {
+  <<
+    \new StaffGroup \with { instrumentName = "Lead/Gtr." }
+    \new Staff \relative c' {
+      \tempo 4 = 150
+      \pachTwoLead
+    }
+  >>
+
+  \header {
+    piece = "PACHINKO, PT. 2 (INTRO)"
+  }
+  \layout {}
+  \midi {}
+}
+
 kittensLead = {
   \key f \major
   \repeat volta 2 { \partial 4 f8 g | r a~ a4 g8 r a8 r  |
@@ -103,18 +148,12 @@ kittensLead = {
 }
 
 \score {
-<<
+  <<
     \new StaffGroup \with { instrumentName = "Lead" }
     \new Staff \relative c' {
       \tempo 4 = 168
       \kittensLead
     }
-    % \new DrumStaff \with { instrumentName = "Drums" } {
-    %   <<
-    %     \new DrumVoice { \stemUp \drh }
-    %     \new DrumVoice { \stemDown \drl }
-    %   >>
-    % }
   >>
 
   \header {
