@@ -24,7 +24,7 @@ drh = \drummode {
 }
 drl = \drummode {
     \time 4/4
-    r2 r4. bd8 \accent |
+    \partial 8 { bd8 } \accent |
     r8 bd8 sn4 bd8 bd sn bd \accent |
     \time 2,2,2,2,3 11/8
     r8 bd8 sn4 bd8 bd sn bd sn bd bd \accent |
@@ -42,7 +42,7 @@ drl = \drummode {
 }
 leadNotes = {
     \key d \major
-    r2 r4. \xNote { d8 \accent } |
+    \partial 8 \xNote { d8 \accent } |
     r4 fis8 f fis4 r8 \xNote { d8 \accent } |
     r4 fis8 f fis f fis d8~ d4 \xNote { d8 \accent } |
     r4 fis8 f fis4 r4 |
@@ -51,11 +51,12 @@ leadNotes = {
     r4 fis8 f fis4 r8 \xNote { d8 \accent } |
     r4 fis8 f fis f fis d8~ d4 \xNote { d8 \accent } |
     r4 fis8 f fis4 r8 d~ |
-    d \accent fis g a c a g d \accent |
+    d \accent fis g a c a g d \accent
+    \bar "||"
 }
 chordText = \new ChordNames {
   \chordmode {
-    s2 s4. d8 |
+    \partial 8 { d8 } |
     s1 | s1 s4. | s1 |
     g1 s4 d8 |
   }
